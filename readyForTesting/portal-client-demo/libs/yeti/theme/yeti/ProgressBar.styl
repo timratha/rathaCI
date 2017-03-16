@@ -1,0 +1,89 @@
+// :copyright: Copyright 2012 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+.yeti .dijitProgressBar {
+    margin: 2px 0px;
+}
+
+.yeti .dijitProgressBarEmpty {
+    border: none;
+    border-radius: $btnBorderRadius;
+    background-image: $barEmptyBackgroundImage;
+    background-color: $backgroundColor;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+
+.yeti .dijitProgressBarFull {
+    background-color: $defaultAccentColor;
+    background-image: $barFullBackgroundImage;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    transition: width .6s ease;
+}
+
+.yeti .dijitProgressBarTile {
+    display: none;
+}
+
+.yeti .dijitProgressBarLabel {
+    color: $white;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+}
+
+// Colours
+// -------------------
+
+// Danger (red)
+.yeti .dijitProgressBar.danger .dijitProgressBarFull {
+    background-color: $dangerBackground;
+    background-image: $dangerBackgroundImage;
+}
+
+// Success (green)
+.yeti .dijitProgressBar.success .dijitProgressBarFull {
+    background-color: $successBackground;
+    background-image: $successBackgroundImage;
+}
+
+// Info (teal)
+.yeti .dijitProgressBar.info .dijitProgressBarFull {
+    background-color: $infoBackground;
+    background-image: $infoBackgroundImage;
+}
+
+// Warning (orange)
+.yeti .dijitProgressBar.warning .dijitProgressBarFull {
+    background-color: $warningBackground;
+    background-image: $warningBackgroundImage;
+}
+
+// Striped
+.yeti .dijitProgressBar.striped .dijitProgressBarFull {
+    background-size: 40px 40px;
+    background-image: linear-gradient(left bottom, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent) !important;
+}
+
+// Animated (stripes)
+// -------------------
+
+@keyframes progress-bar-stripes {
+    from {
+        background-position: 40px 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}
+
+.yeti .dijitProgressBar.animated .dijitProgressBarFull {
+    animation: progress-bar-stripes 2s linear infinite;
+}
+
+// Indeterminate
+// -------------------
+
+.yeti .dijitProgressBarIndeterminate .dijitProgressBarFull {
+    @extend .yeti .dijitProgressBar.striped .dijitProgressBarFull;
+    @extend .yeti .dijitProgressBar.animated .dijitProgressBarFull;
+}
+
+

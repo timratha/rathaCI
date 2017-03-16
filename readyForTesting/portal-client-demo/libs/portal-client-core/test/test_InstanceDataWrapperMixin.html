@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        require(['yeti'],function(){
+            require([
+                'dijit/registry',
+                'dojo/json',
+                'dojo/parser',
+                'portal/_base/store/PortalStore',
+                'test/widgets/SelectorWidget',
+                'dojo/_base/declare',
+                'portal/_base/widgetWrappers/WidgetWrapperBase',
+                'dojo/domReady!'
+            ], function (registry, json, parser, PortalStore,SelectorWidget,declare, WidgetWrapperBase) {
+                parser.parse();
+                PortalStore.setStore('memory');
+
+                //WidgetWrapperBase already mixed InstanceDataWrapperMixin by default
+                var wrapper= new declare([WidgetWrapperBase])({
+                    model: {
+                        id:'testId',
+                        widgetType:SelectorWidget,
+                        label:'test widget',
+                        iconClass:'fa fa-users',
+                        config:{
+                            options:[
+                                { label: 'one', value: 1},
+                                { label: 'two', value: 2}
+                            ],
+                            value:2
+                        }
+                    }
+                },'cp');
+                wrapper.startup();
+
+                PortalStore.widgets.on('update,add',function(e){
+                    registry.byId('json').set('value',json.stringify(e.target,null,'\t'));
+                })
+            });
+        })
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp" style="width: 500px;height: 500px;display: inline-block;"></div>
+    <div id="json" data-dojo-type="dijit/form/Textarea" style="width: 500px;height: 500px;display: inline-block;vertical-align: top;padding: 10px;"></div>
+</body>
+</html>

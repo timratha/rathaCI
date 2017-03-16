@@ -1,0 +1,59 @@
+.title-bar
+  color: #369;
+  background-color: #eee;
+  line-height: 30px;
+  font-size 14px;
+  position relative;
+  overflow: visible !important;
+  .title-icon
+    margin-left 5px;
+  .title-text
+    color: #333333;
+    display: inline-block;
+    margin 0px 5px;
+  .action-bar
+    display: inline-block;
+    /*float: right;*/
+    //TODO for temp to fix bug. consider  have resize function for titleBar.
+    position absolute;
+    top:0px;
+    right 0px;
+
+    .action
+      display: inline-block;
+      float:right;
+      .action-icon
+        height 20px;
+        width 25px;
+        text-align center;
+      &:hover
+        color: #eee;
+        background-color: #369;
+        border-radius 2px;
+  .hover-btn
+    display none
+
+  &.small
+    position absolute
+    z-index 999
+    width: 100%;
+    >*
+      display none
+    .hover-btn
+      display block
+      position: absolute;
+      line-height: 14px;
+      color rgba(94, 91, 91, 0.59);
+      background-color white;
+      padding: 2px;
+      border-radius: 0 0 5px 0 ;
+      border-color: #ABABAB;
+      border-style: solid;
+      border-width: 0px 1px 1px 0px;
+    &:hover
+      &
+        box-shadow 1px 1px 5px 1px #ababab
+      >*
+        display  inline-block;
+      .hover-btn
+        display none

@@ -1,0 +1,39 @@
+//TODO import varibles.styl
+//TODO responsive when width is small ?
+
+
+$title-action-hover-color?=#eee
+$title-action-background-color?=#369
+.hide
+  display none !important
+
+.title-bar
+  color: #586884;
+  background-color: #E2E4ED;
+  position relative;
+  line-height: 30px;
+  font-size 14px;
+  overflow: visible !important; //necessary for some popupmenu.
+  .title-icon
+    margin-left 5px;
+    color: #596983;
+  .title-text
+    display: inline-block;
+    margin 0px 5px;
+  .action-bar
+    display: inline-block;
+    position absolute;
+    top:0px;
+    right 0px;
+    .action
+      display: inline-block;
+      float:right;
+      cursor pointer;
+      .action-icon
+        height 20px;
+        width 25px;
+        text-align center;
+      &:hover
+        color: $title-action-hover-color;
+        background-color: $title-action-background-color;
+        border-radius 2px;

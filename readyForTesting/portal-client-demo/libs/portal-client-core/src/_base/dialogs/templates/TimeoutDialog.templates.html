@@ -1,0 +1,13 @@
+<div >
+    <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="dialog" class="timeout-dialog" data-dojo-props="closable:false,title:'Timeout'" id="TimeoutDialog">
+        <div class="dijitDialogPaneContentArea" style="color:red;">
+                the session going to timeout after
+                <div data-dojo-attach-point="restTimeNode" class="rest-time"></div>
+                seconds
+        </div>
+        <div class="dijitDialogPaneActionBar">
+            <button data-dojo-type="dijit/form/Button"  class="primary" data-dojo-attach-event="click:continueSession">Continue</button>
+            <!--<button data-dojo-type="dijit/form/Button" data-dojo-attach-event="click:signUp">${nls.signUp}</button>-->
+        </div>
+    </div>
+</div>

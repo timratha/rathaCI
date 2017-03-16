@@ -1,0 +1,6 @@
+.autoHideActionBar .title-bar:hover .action-bar {
+  display: inline-block;
+}
+.autoHideActionBar .title-bar .action-bar {
+  display: none;
+}

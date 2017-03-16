@@ -1,0 +1,22 @@
+{
+  "name": "CI",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "installPath": "demoAppTest3",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "private",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compress": "^0.13.0",
+    "grunt-contrib-stylus": "^0.20.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-dojo": "^1.0.1",
+    "grunt-shell": "",
+    "grunt-task-interval": "0.0.1"
+  }
+}

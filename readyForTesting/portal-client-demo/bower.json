@@ -1,0 +1,14 @@
+{
+  "name": "portal-client-demo",
+  "private": true,
+  "dependencies": {
+    "portal-client-core":"git@gitlab-srv.kisters.de:giswebgroup/portal-client-core.git",
+    "highcharts":"http://gisweb-srv-1/libshare/highcharts.zip",
+    "yeti":"git@gitlab-srv.kisters.de:giswebgroup/themes-yeti.git"
+  },
+  "ignore": [
+    "/libs",
+    "/build",
+    "tests"
+  ]
+}

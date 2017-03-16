@@ -1,0 +1,18 @@
+<div id="${id}">
+    <div class="dijitDialogPaneContentArea">
+
+        <table>
+            <tr>
+                <td style="vertical-align: top;"><label for='description'>description:</label></td>
+                <td>
+                    <input type="text" data-dojo-type="dijit/form/Textarea" style="height:100px;width:300px;" data-dojo-attach-point="bug_report_description"/>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="dijitDialogPaneActionBar">
+        <button data-dojo-type="dijit/form/Button" type="button" data-dojo-attach-event="click:actionReport">Report</button>
+        <button data-dojo-type="dijit/form/Button" type="button" data-dojo-attach-event="click:actionCancel">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,2510 @@
+@import './dijit.css';
+body {
+  font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+  font-size: 14px;
+}
+p {
+  margin: 0 0 10px;
+}
+.lead {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 30px;
+}
+small {
+  font-size: 85%;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+cite {
+  font-style: normal;
+}
+.muted {
+  color: #999;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 1;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+  font-weight: normal;
+  line-height: 1;
+  color: #999;
+}
+h1 {
+  font-size: 36px;
+  line-height: 40px;
+}
+h2 {
+  font-size: 30px;
+  line-height: 40px;
+}
+h3 {
+  font-size: 24px;
+  line-height: 40px;
+}
+h4 {
+  font-size: 18px;
+  line-height: 20px;
+}
+h5 {
+  font-size: 14px;
+  line-height: 20px;
+}
+h6 {
+  font-size: 12px;
+  line-height: 20px;
+}
+h1 small {
+  font-size: 24px;
+}
+h2 small {
+  font-size: 18px;
+}
+h3 small {
+  font-size: 14px;
+}
+h4 small {
+  font-size: 14px;
+}
+.page-header {
+  padding-bottom: 9px;
+  margin: 20px 0 30px;
+  border-bottom: 1px solid #ddd;
+}
+ul,
+ol {
+  padding: 0;
+  margin: 0 0 20px/2 25px;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+li {
+  line-height: 20px;
+}
+ul.unstyled,
+ol.unstyled {
+  margin-left: 0;
+  list-style: none;
+}
+dl {
+  margin-bottom: 20px;
+}
+dt,
+dd {
+  line-height: 20px;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: 20px/2;
+}
+.dl-horizontal dt {
+  float: left;
+  width: 120px;
+  clear: left;
+  text-align: right;
+  -o-text-overflow: ;
+  text-overflow: ;
+}
+.dl-horizontal dd {
+  margin-left: 130px;
+}
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
+}
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted #999;
+}
+abbr.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+blockquote {
+  padding: 0 0 0 15px;
+  margin: 0 0 20px;
+  border-left: 5px solid #ddd;
+}
+blockquote p {
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25px;
+}
+blockquote small {
+  display: block;
+  line-height: 20px;
+  color: #999;
+}
+blockquote small:before {
+  content: '\2014 \00A0';
+}
+blockquote.pull-right {
+  float: right;
+  padding-right: 15px;
+  padding-left: 0;
+  border-right: 5px solid #ddd;
+  border-left: 0;
+}
+blockquote.pull-right p,
+blockquote.pull-right small {
+  text-align: right;
+}
+blockquote.pull-right small:before {
+  content: '';
+}
+blockquote.pull-right small:after {
+  content: '\00A0 \2014';
+}
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+address {
+  display: block;
+  margin-bottom: 20px;
+  font-style: normal;
+  line-height: 20px;
+}
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("./font/fontawesome-webfont.eot");
+  src: url("./font/fontawesome-webfont.eot?#iefix") format('embedded-opentype'), url("./font/fontawesome-webfont.woff") format('woff'), url("./font/fontawesome-webfont.ttf") format('truetype'), url("./font/fontawesome-webfont.svg#FontAwesome") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+}
+a [class^="icon-"],
+a [class*=" icon-"] {
+  display: inline-block;
+  text-decoration: inherit;
+}
+.icon-large:before {
+  vertical-align: middle;
+  font-size: 1.3em;
+}
+.btn [class^="icon-"],
+.nav-tabs [class^="icon-"],
+.btn [class*=" icon-"],
+.nav-tabs [class*=" icon-"] {
+  line-height: 0.9em;
+}
+li [class^="icon-"],
+li [class*=" icon-"] {
+  display: inline-block;
+  width: 1.25em;
+  text-align: center;
+}
+li .icon-large:before {
+  width: 1.875em;
+}
+ul.icons {
+  list-style-type: none;
+  margin-left: 2em;
+  text-indent: -0.8em;
+}
+ul.icons li [class^="icon-"],
+ul.icons li [class*=" icon-"] {
+  width: 0.8em;
+}
+ul.icons li .icon-large:before {
+  vertical-align: initial;
+}
+.icon-border {
+  border: solid 3px #ccc;
+  padding: 0.2em 0.25em 0.15em;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+}
+.icon-muted {
+  color: #ccc;
+}
+.icon-spin {
+  display: inline-block;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -ms-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    -o-transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -ms-transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(359deg);
+  }
+}
+.icon-glass:before {
+  content: "\f000";
+}
+.icon-music:before {
+  content: "\f001";
+}
+.icon-search:before,
+.dijitIconSearch:before {
+  content: "\f002";
+}
+.icon-envelope:before,
+.dijitIconMail:before {
+  content: "\f003";
+}
+.icon-heart:before {
+  content: "\f004";
+}
+.icon-star:before {
+  content: "\f005";
+}
+.icon-star-empty:before {
+  content: "\f006";
+}
+.icon-user:before {
+  content: "\f007";
+}
+.icon-film:before {
+  content: "\f008";
+}
+.icon-th-large:before {
+  content: "\f009";
+}
+.icon-th:before {
+  content: "\f00a";
+}
+.icon-th-list:before {
+  content: "\f00b";
+}
+.icon-ok:before,
+.yeti .dijitCheckBox.dijitCheckBoxChecked:before,
+.yeti .dijitRadio.dijitRadioChecked:before {
+  content: "\f00c";
+}
+.icon-remove:before,
+.dijitIconDelete:before {
+  content: "\f00d";
+}
+.icon-zoom-in:before {
+  content: "\f00e";
+}
+.icon-zoom-out:before {
+  content: "\f010";
+}
+.icon-off:before {
+  content: "\f011";
+}
+.icon-signal:before {
+  content: "\f012";
+}
+.icon-cog:before,
+.dijitIconConfigure:before {
+  content: "\f013";
+}
+.icon-trash:before,
+.dijitEditorIconDelete:before {
+  content: "\f014";
+}
+.icon-home:before {
+  content: "\f015";
+}
+.icon-file:before,
+.dijitLeaf:before,
+.dijitIconFile:before,
+.dijitEditorIconNewPage:before {
+  content: "\f016";
+}
+.icon-time:before {
+  content: "\f017";
+}
+.icon-road:before {
+  content: "\f018";
+}
+.icon-download-alt:before {
+  content: "\f019";
+}
+.icon-download:before {
+  content: "\f01a";
+}
+.icon-upload:before {
+  content: "\f01b";
+}
+.icon-inbox:before {
+  content: "\f01c";
+}
+.icon-play-circle:before {
+  content: "\f01d";
+}
+.icon-repeat:before,
+.dijitEditorIconRedo:before {
+  content: "\f01e";
+}
+.icon-refresh:before {
+  content: "\f021";
+}
+.icon-list-alt:before {
+  content: "\f022";
+}
+.icon-lock:before {
+  content: "\f023";
+}
+.icon-flag:before {
+  content: "\f024";
+}
+.icon-headphones:before {
+  content: "\f025";
+}
+.icon-volume-off:before {
+  content: "\f026";
+}
+.icon-volume-down:before {
+  content: "\f027";
+}
+.icon-volume-up:before {
+  content: "\f028";
+}
+.icon-qrcode:before {
+  content: "\f029";
+}
+.icon-barcode:before {
+  content: "\f02a";
+}
+.icon-tag:before {
+  content: "\f02b";
+}
+.icon-tags:before {
+  content: "\f02c";
+}
+.icon-book:before {
+  content: "\f02d";
+}
+.icon-bookmark:before,
+.dijitIconBookmark:before {
+  content: "\f02e";
+}
+.icon-print:before,
+.dijitIconPrint:before,
+.dijitEditorIconPrint:before {
+  content: "\f02f";
+}
+.icon-camera:before {
+  content: "\f030";
+}
+.icon-font:before {
+  content: "\f031";
+}
+.icon-bold:before,
+.dijitEditorIconBold:before {
+  content: "\f032";
+}
+.icon-italic:before,
+.dijitEditorIconItalic:before {
+  content: "\f033";
+}
+.icon-text-height:before {
+  content: "\f034";
+}
+.icon-text-width:before {
+  content: "\f035";
+}
+.icon-align-left:before,
+.dijitEditorIconJustifyLeft:before {
+  content: "\f036";
+}
+.icon-align-center:before,
+.dijitEditorIconJustifyCenter:before {
+  content: "\f037";
+}
+.icon-align-right:before,
+.dijitEditorIconJustifyRight:before {
+  content: "\f038";
+}
+.icon-align-justify:before,
+.dijitEditorIconJustifyFull:before {
+  content: "\f039";
+}
+.icon-list:before {
+  content: "\f03a";
+}
+.icon-indent-left:before,
+.dijitEditorIconOutdent:before {
+  content: "\f03b";
+}
+.icon-indent-right:before,
+.dijitEditorIconIndent:before {
+  content: "\f03c";
+}
+.icon-facetime-video:before {
+  content: "\f03d";
+}
+.icon-picture:before,
+.dijitEditorIconInsertImage:before {
+  content: "\f03e";
+}
+.icon-pencil:before {
+  content: "\f040";
+}
+.icon-map-marker:before {
+  content: "\f041";
+}
+.icon-adjust:before {
+  content: "\f042";
+}
+.icon-tint:before {
+  content: "\f043";
+}
+.icon-edit:before,
+.dijitIconEdit:before {
+  content: "\f044";
+}
+.icon-share:before {
+  content: "\f045";
+}
+.icon-check:before {
+  content: "\f046";
+}
+.icon-move:before {
+  content: "\f047";
+}
+.icon-step-backward:before {
+  content: "\f048";
+}
+.icon-fast-backward:before {
+  content: "\f049";
+}
+.icon-backward:before {
+  content: "\f04a";
+}
+.icon-play:before {
+  content: "\f04b";
+}
+.icon-pause:before {
+  content: "\f04c";
+}
+.icon-stop:before {
+  content: "\f04d";
+}
+.icon-forward:before {
+  content: "\f04e";
+}
+.icon-fast-forward:before {
+  content: "\f050";
+}
+.icon-step-forward:before {
+  content: "\f051";
+}
+.icon-eject:before {
+  content: "\f052";
+}
+.icon-chevron-left:before,
+.yeti .dijitTabStripSlideLeftIcon:before {
+  content: "\f053";
+}
+.icon-chevron-right:before,
+.yeti .dijitTabStripSlideRightIcon:before {
+  content: "\f054";
+}
+.icon-plus-sign:before,
+.yeti .dijitTreeExpandoClosed:before {
+  content: "\f055";
+}
+.icon-minus-sign:before,
+.yeti .dijitTreeExpandoOpened:before {
+  content: "\f056";
+}
+.icon-remove-sign:before {
+  content: "\f057";
+}
+.icon-ok-sign:before {
+  content: "\f058";
+}
+.icon-question-sign:before {
+  content: "\f059";
+}
+.icon-info-sign:before {
+  content: "\f05a";
+}
+.icon-screenshot:before {
+  content: "\f05b";
+}
+.icon-remove-circle:before {
+  content: "\f05c";
+}
+.icon-ok-circle:before {
+  content: "\f05d";
+}
+.icon-ban-circle:before,
+.dijitEditorIconCancel:before {
+  content: "\f05e";
+}
+.icon-arrow-left:before,
+.yeti .dijitCalendarDecrease:before {
+  content: "\f060";
+}
+.icon-arrow-right:before,
+.yeti .dijitCalendarIncrease:before {
+  content: "\f061";
+}
+.icon-arrow-up:before {
+  content: "\f062";
+}
+.icon-arrow-down:before {
+  content: "\f063";
+}
+.icon-share-alt:before {
+  content: "\f064";
+}
+.icon-resize-full:before {
+  content: "\f065";
+}
+.icon-resize-small:before {
+  content: "\f066";
+}
+.icon-plus:before {
+  content: "\f067";
+}
+.icon-minus:before {
+  content: "\f068";
+}
+.icon-asterisk:before {
+  content: "\f069";
+}
+.icon-exclamation-sign:before,
+.dijitIconError:before {
+  content: "\f06a";
+}
+.icon-gift:before {
+  content: "\f06b";
+}
+.icon-leaf:before {
+  content: "\f06c";
+}
+.icon-fire:before {
+  content: "\f06d";
+}
+.icon-eye-open:before {
+  content: "\f06e";
+}
+.icon-eye-close:before {
+  content: "\f070";
+}
+.icon-warning-sign:before {
+  content: "\f071";
+}
+.icon-plane:before {
+  content: "\f072";
+}
+.icon-calendar:before {
+  content: "\f073";
+}
+.icon-random:before {
+  content: "\f074";
+}
+.icon-comment:before {
+  content: "\f075";
+}
+.icon-magnet:before {
+  content: "\f076";
+}
+.icon-chevron-up:before {
+  content: "\f077";
+}
+.icon-chevron-down:before,
+.yeti .dijitTabStripMenuIcon:before {
+  content: "\f078";
+}
+.icon-retweet:before {
+  content: "\f079";
+}
+.icon-shopping-cart:before {
+  content: "\f07a";
+}
+.icon-folder-close:before,
+.dijitFolderClosed:before,
+.dijitIconFolderClosed:before {
+  content: "\f07b";
+}
+.icon-folder-open:before,
+.dijitFolderOpened:before,
+.dijitIconFolderOpen:before {
+  content: "\f07c";
+}
+.icon-resize-vertical:before {
+  content: "\f07d";
+}
+.icon-resize-horizontal:before {
+  content: "\f07e";
+}
+.icon-bar-chart:before,
+.dijitIconChart:before {
+  content: "\f080";
+}
+.icon-twitter-sign:before {
+  content: "\f081";
+}
+.icon-facebook-sign:before {
+  content: "\f082";
+}
+.icon-camera-retro:before {
+  content: "\f083";
+}
+.icon-key:before,
+.dijitIconKey:before {
+  content: "\f084";
+}
+.icon-cogs:before {
+  content: "\f085";
+}
+.icon-comments:before {
+  content: "\f086";
+}
+.icon-thumbs-up:before {
+  content: "\f087";
+}
+.icon-thumbs-down:before {
+  content: "\f088";
+}
+.icon-star-half:before {
+  content: "\f089";
+}
+.icon-heart-empty:before {
+  content: "\f08a";
+}
+.icon-signout:before {
+  content: "\f08b";
+}
+.icon-linkedin-sign:before {
+  content: "\f08c";
+}
+.icon-pushpin:before {
+  content: "\f08d";
+}
+.icon-external-link:before {
+  content: "\f08e";
+}
+.icon-signin:before {
+  content: "\f090";
+}
+.icon-trophy:before {
+  content: "\f091";
+}
+.icon-github-sign:before {
+  content: "\f092";
+}
+.icon-upload-alt:before {
+  content: "\f093";
+}
+.icon-lemon:before {
+  content: "\f094";
+}
+.icon-phone:before {
+  content: "\f095";
+}
+.icon-check-empty:before {
+  content: "\f096";
+}
+.icon-bookmark-empty:before {
+  content: "\f097";
+}
+.icon-phone-sign:before {
+  content: "\f098";
+}
+.icon-twitter:before {
+  content: "\f099";
+}
+.icon-facebook:before {
+  content: "\f09a";
+}
+.icon-github:before {
+  content: "\f09b";
+}
+.icon-unlock:before {
+  content: "\f09c";
+}
+.icon-credit-card:before {
+  content: "\f09d";
+}
+.icon-rss:before {
+  content: "\f09e";
+}
+.icon-hdd:before {
+  content: "\f0a0";
+}
+.icon-bullhorn:before {
+  content: "\f0a1";
+}
+.icon-bell:before {
+  content: "\f0a2";
+}
+.icon-certificate:before {
+  content: "\f0a3";
+}
+.icon-hand-right:before {
+  content: "\f0a4";
+}
+.icon-hand-left:before {
+  content: "\f0a5";
+}
+.icon-hand-up:before {
+  content: "\f0a6";
+}
+.icon-hand-down:before {
+  content: "\f0a7";
+}
+.icon-circle-arrow-left:before {
+  content: "\f0a8";
+}
+.icon-circle-arrow-right:before {
+  content: "\f0a9";
+}
+.icon-circle-arrow-up:before {
+  content: "\f0aa";
+}
+.icon-circle-arrow-down:before {
+  content: "\f0ab";
+}
+.icon-globe:before {
+  content: "\f0ac";
+}
+.icon-wrench:before {
+  content: "\f0ad";
+}
+.icon-tasks:before,
+.dijitIconTask:before {
+  content: "\f0ae";
+}
+.icon-filter:before,
+.dijitIconFilter:before {
+  content: "\f0b0";
+}
+.icon-briefcase:before {
+  content: "\f0b1";
+}
+.icon-fullscreen:before,
+.dijitEditorIconFullScreen:before {
+  content: "\f0b2";
+}
+.icon-group:before,
+.dijitIconUsers:before {
+  content: "\f0c0";
+}
+.icon-link:before,
+.dijitEditorIconCreateLink:before,
+.dijitEditorIconUnlink:before {
+  content: "\f0c1";
+}
+.icon-cloud:before {
+  content: "\f0c2";
+}
+.icon-beaker:before {
+  content: "\f0c3";
+}
+.icon-cut:before,
+.dijitIconCut:before,
+.dijitEditorIconCut:before {
+  content: "\f0c4";
+}
+.icon-copy:before,
+.dijitIconCopy:before,
+.dijitEditorIconCopy:before {
+  content: "\f0c5";
+}
+.icon-paper-clip:before {
+  content: "\f0c6";
+}
+.icon-save:before,
+.dijitIconSave:before,
+.dijitEditorIconSave:before {
+  content: "\f0c7";
+}
+.icon-sign-blank:before,
+.yeti .dijitTreeExpandoLeaf:before {
+  content: "\f0c8";
+}
+.icon-reorder:before {
+  content: "\f0c9";
+}
+.icon-list-ul:before,
+.dijitEditorIconListBulletIndent:before,
+.dijitEditorIconListBulletOutdent:before,
+.dijitEditorIconInsertUnorderedList:before {
+  content: "\f0ca";
+}
+.icon-list-ol:before,
+.dijitEditorIconListNumIndent:before,
+.dijitEditorIconListNumOutdent:before,
+.dijitEditorIconInsertOrderedList:before {
+  content: "\f0cb";
+}
+.icon-strikethrough:before,
+.dijitEditorIconStrikethrough:before {
+  content: "\f0cc";
+}
+.icon-underline:before,
+.dijitEditorIconUnderline:before {
+  content: "\f0cd";
+}
+.icon-table:before,
+.dijitIconTable:before,
+.dijitEditorIconInsertTable:before {
+  content: "\f0ce";
+}
+.icon-magic:before {
+  content: "\f0d0";
+}
+.icon-truck:before {
+  content: "\f0d1";
+}
+.icon-pinterest:before {
+  content: "\f0d2";
+}
+.icon-pinterest-sign:before {
+  content: "\f0d3";
+}
+.icon-google-plus-sign:before {
+  content: "\f0d4";
+}
+.icon-google-plus:before {
+  content: "\f0d5";
+}
+.icon-money:before {
+  content: "\f0d6";
+}
+.icon-caret-down:before,
+.yeti .dijitArrowButtonInner:before,
+.yeti .dijitTitlePane .dijitOpen .dijitArrowNode:before,
+.yeti .dgrid-sort-arrow:before,
+.yeti .dgrid-sort-down .dgrid-sort-arrow:before {
+  content: "\f0d7";
+}
+.icon-caret-up:before,
+.yeti .dijitUpArrowButton .dijitArrowButtonInner:before,
+.yeti .dgrid-sort-up .dgrid-sort-arrow:before {
+  content: "\f0d8";
+}
+.icon-caret-left:before {
+  content: "\f0d9";
+}
+.icon-caret-right:before,
+.yeti .dijitMenuArrowCell .dijitMenuExpand:before,
+.yeti .dijitTitlePane .dijitClosed .dijitArrowNode:before {
+  content: "\f0da";
+}
+.icon-columns:before {
+  content: "\f0db";
+}
+.icon-sort:before {
+  content: "\f0dc";
+}
+.icon-sort-down:before {
+  content: "\f0dd";
+}
+.icon-sort-up:before {
+  content: "\f0de";
+}
+.icon-envelope-alt:before {
+  content: "\f0e0";
+}
+.icon-linkedin:before {
+  content: "\f0e1";
+}
+.icon-undo:before,
+.dijitIconUndo:before,
+.dijitEditorIconUndo:before {
+  content: "\f0e2";
+}
+.icon-legal:before {
+  content: "\f0e3";
+}
+.icon-dashboard:before {
+  content: "\f0e4";
+}
+.icon-comment-alt:before {
+  content: "\f0e5";
+}
+.icon-comments-alt:before {
+  content: "\f0e6";
+}
+.icon-bolt:before {
+  content: "\f0e7";
+}
+.icon-sitemap:before {
+  content: "\f0e8";
+}
+.icon-umbrella:before {
+  content: "\f0e9";
+}
+.icon-paste:before,
+.dijitIconPaste:before,
+.dijitEditorIconPaste:before {
+  content: "\f0ea";
+}
+.icon-lightbulb:before {
+  content: "\f0eb";
+}
+.icon-exchange:before {
+  content: "\f0ec";
+}
+.icon-cloud-download:before {
+  content: "\f0ed";
+}
+.icon-cloud-upload:before {
+  content: "\f0ee";
+}
+.icon-user-md:before {
+  content: "\f0f0";
+}
+.icon-stethoscope:before {
+  content: "\f0f1";
+}
+.icon-suitcase:before {
+  content: "\f0f2";
+}
+.icon-bell-alt:before {
+  content: "\f0f3";
+}
+.icon-coffee:before {
+  content: "\f0f4";
+}
+.icon-food:before {
+  content: "\f0f5";
+}
+.icon-file-alt:before {
+  content: "\f0f6";
+}
+.icon-building:before {
+  content: "\f0f7";
+}
+.icon-hospital:before {
+  content: "\f0f8";
+}
+.icon-ambulance:before {
+  content: "\f0f9";
+}
+.icon-medkit:before {
+  content: "\f0fa";
+}
+.icon-fighter-jet:before {
+  content: "\f0fb";
+}
+.icon-beer:before {
+  content: "\f0fc";
+}
+.icon-h-sign:before {
+  content: "\f0fd";
+}
+.icon-plus-sign-alt:before {
+  content: "\f0fe";
+}
+.icon-double-angle-left:before {
+  content: "\f100";
+}
+.icon-double-angle-right:before {
+  content: "\f101";
+}
+.icon-double-angle-up:before {
+  content: "\f102";
+}
+.icon-double-angle-down:before {
+  content: "\f103";
+}
+.icon-angle-left:before {
+  content: "\f104";
+}
+.icon-angle-right:before {
+  content: "\f105";
+}
+.icon-angle-up:before {
+  content: "\f106";
+}
+.icon-angle-down:before {
+  content: "\f107";
+}
+.icon-desktop:before {
+  content: "\f108";
+}
+.icon-laptop:before {
+  content: "\f109";
+}
+.icon-tablet:before {
+  content: "\f10a";
+}
+.icon-mobile-phone:before {
+  content: "\f10b";
+}
+.icon-circle-blank:before {
+  content: "\f10c";
+}
+.icon-quote-left:before {
+  content: "\f10d";
+}
+.icon-quote-right:before {
+  content: "\f10e";
+}
+.icon-spinner:before {
+  content: "\f110";
+}
+.icon-circle:before {
+  content: "\f111";
+}
+.icon-reply:before {
+  content: "\f112";
+}
+.icon-github-alt:before {
+  content: "\f113";
+}
+.icon-folder-close-alt:before {
+  content: "\f114";
+}
+.icon-folder-open-alt:before {
+  content: "\f115";
+}
+@-moz-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+.dijitIcon:before,
+.yeti .dijitMenuArrowCell .dijitMenuExpand:before,
+.yeti .dijitTabStripIcon:before,
+.yeti .dijitArrowButtonInner:before,
+.yeti .dijitCheckBox:before,
+.yeti .dijitRadio:before,
+.yeti .dijitCalendarIncrementControl:before,
+.yeti .dijitTreeExpando:before,
+.yeti .dijitTitlePane .dijitArrowNode:before,
+.yeti .dgrid-sort-arrow:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+}
+.dijitNoIcon {
+  display: none;
+}
+.yeti .well,
+.yeti fieldset {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e4e4e4;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+}
+.yeti .well blockquote,
+.yeti fieldset blockquote {
+  border-color: #ddd;
+  border-color: rgba(0,0,0,0.15);
+}
+.yeti .well-large {
+  padding: 24px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+}
+.yeti .well-small {
+  padding: 9px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+}
+body {
+  margin: 0;
+  font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  background-color: #fff;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  color: #2b5782;
+  text-decoration: underline;
+}
+.yeti .dijitReadOnly *,
+.yeti .dijitDisabled *,
+.yeti .dijitReadOnly,
+.yeti .dijitDisabled {
+  cursor: not-allowed;
+}
+.yeti :focus {
+  outline: 1px dotted #555;
+}
+.yeti .dijitFocusedLabel {
+  outline: 1px dotted #555;
+}
+.yeti .alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 transparent;
+  background-color: #f60;
+  border: 1px solid #f73a00;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  color: #fff;
+}
+.yeti .alert h1,
+.yeti .alert h2,
+.yeti .alert h3,
+.yeti .alert h4 {
+  margin: 0;
+}
+.yeti .alert-success {
+  background-color: #6c3;
+  border-color: #7ac230;
+  color: #fff;
+}
+.yeti .alert-danger,
+.yeti .alert-error {
+  background-color: #c03;
+  border-color: #c60052;
+  color: #fff;
+}
+.yeti .alert-info {
+  background-color: #0cf;
+  border-color: #00e5ed;
+  color: #fff;
+}
+.yeti .alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.yeti .alert-block > p,
+.yeti .alert-block > ul {
+  margin-bottom: 0;
+}
+.yeti .alert-block p + p {
+  margin-top: 5px;
+}
+.yeti .application {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.yeti .dijitMenuBar {
+  overflow: visible;
+  margin-bottom: 20px;
+  color: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-image: none;
+  background-color: #369;
+  border: 1px solid #2d5a87;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.065);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.065);
+}
+.yeti .dijitMenuBar .dijitMenuItem {
+  color: #fff;
+  padding: 10px 15px 10px;
+  text-shadow: 0 1px 0 transparent;
+}
+.yeti .dijitMenuBar .dijitMenuItemHover {
+  color: #fff;
+  background-image: none;
+  background-color: #29527a;
+}
+.yeti .dijitMenuBar .dijitMenuItemActive,
+.yeti .dijitMenuBar .dijitMenuItemSelected {
+  color: #fff;
+  text-decoration: none;
+  background-image: none;
+  background-color: #29527a;
+  -webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+  box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+}
+.yeti .dijitMenuBar .dijitMenuItemDisabled {
+  color: #fff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+.yeti .dijitMenuBar .brand {
+  font-weight: 200;
+  color: #fff;
+  text-shadow: 0 1px 0 transparent;
+  font-size: 21px;
+  padding: 10px;
+  display: inline;
+  vertical-align: middle;
+}
+.yeti .dijitMenuBar.primary {
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  margin-bottom: 5px;
+}
+.yeti .dijitMenuBar.inverse {
+  color: #fff;
+  background-image: none;
+  background-color: #033;
+  border-color: #008f8f;
+}
+.yeti .dijitMenuBar.inverse .dijitMenuItem {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+}
+.yeti .dijitMenuBar.inverse .dijitMenuItemHover {
+  background-color: #002929;
+  color: #fff;
+}
+.yeti .dijitMenuBar.inverse .dijitMenuItemActive,
+.yeti .dijitMenuBar.inverse .dijitMenuItemSelected {
+  color: #fff;
+  background-color: #002929;
+  -webkit-box-shadow: inset 0 3px 8px rgba(255,255,255,0.125);
+  box-shadow: inset 0 3px 8px rgba(255,255,255,0.125);
+}
+.yeti .dijitMenuBar.inverse .dijitMenuItemDisabled {
+  color: #fff;
+}
+.yeti .dijitMenuBar.inverse .brand {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+}
+.yeti .dijitMenu {
+  z-index: 1000;
+  padding: 0px 0;
+  margin: 0px 0 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,0.2);
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  border-collapse: separate;
+}
+.yeti .dijitMenuItem,
+.yeti .dijitCalendarMonthMenu .dijitCalendarMonthLabel {
+  font-weight: normal;
+  color: #333;
+  white-space: nowrap;
+  padding: 6px 20px;
+}
+.yeti .dijitMenuItemHover,
+.yeti .dijitMenuItemSelected,
+.yeti .dijitCalendarMonthMenu .dijitCalendarMonthLabelHover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #369;
+  background-image: none;
+}
+.yeti td.dijitMenuItemLabel {
+  padding: 6px 0.3em;
+}
+.yeti tr.dijitMenuItem td:first-child {
+  padding-left: 20px;
+}
+.yeti tr.dijitMenuItem td:last-child {
+  padding-right: 20px;
+}
+.yeti .dijitMenuSeparator {
+  margin: 9px 1px;
+}
+.yeti .dijitMenuSeparatorTop {
+  border-bottom: 1px solid #e5e5e5;
+  height: auto;
+}
+.yeti .dijitMenuSeparatorBottom {
+  height: auto;
+}
+.yeti .dijitMenuItemIcon,
+.yeti .dijitMenuExpand {
+  line-height: 13px;
+}
+.yeti .dijitMenu.inverse {
+  background-color: #033;
+  border-color: #008f8f;
+}
+.yeti .dijitMenu.inverse .dijitMenuItem {
+  color: #fff;
+}
+.yeti .dijitMenu.inverse .dijitMenuItemHover,
+.yeti .dijitMenu.inverse .dijitMenuItemSelected {
+  color: #fff;
+  background-color: #002929;
+}
+.yeti .dijitMenu.inverse .dijitMenuSeparatorTop {
+  border-color: #008f8f;
+}
+.yeti .dijitContentPane {
+  padding: 10px;
+}
+.yeti .dijitTabPaneWrapper {
+  border: 1px solid #ddd;
+}
+.yeti .dijitTabContainerBottom-tabs,
+.yeti .dijitTabContainerTop-tabs,
+.yeti .dijitTabContainerLeft-tabs,
+.yeti .dijitTabContainerRight-tabs {
+  border: none;
+}
+.yeti .dijitTab {
+  color: #369;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  margin-right: 2px;
+  padding-right: 12px;
+  padding-left: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  line-height: 20px;
+  border: 1px solid transparent;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+}
+.yeti .dijitTabHover {
+  color: #2b5782;
+  background-color: #eee;
+  border-color: #ddd;
+}
+.yeti .dijitTabChecked {
+  color: #555;
+  background-color: #fff;
+  border-color: #ddd;
+  cursor: default;
+}
+.yeti .dijitTabCloseButton {
+  font-weight: bold;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+  margin-left: 5px;
+  cursor: pointer;
+}
+.yeti .dijitTabCloseButtonHover {
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+.yeti .dijitTabCloseButton .dijitTabCloseText {
+  display: inline;
+}
+.yeti .dijitTabContainerTop-container {
+  margin-top: -1px;
+}
+.yeti .dijitTabContainerTop .dijitTab {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.yeti .dijitTabContainerTop .dijitTabChecked {
+  border-bottom-color: transparent;
+}
+.yeti .dijitTabContainerBottom-container {
+  margin-bottom: -1px;
+}
+.yeti .dijitTabContainerBottom .dijitTab {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.yeti .dijitTabContainerBottom .dijitTabChecked {
+  border-top-color: transparent;
+}
+.yeti .tabStripButtonHover {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+.yeti .dijitTabDisabled .dijitTabStripIcon {
+  opacity: 0.65;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+  filter: alpha(opacity=65);
+}
+.yeti .dijitTabContainerTop.dijitTabContainerNested {
+  margin-top: 5px;
+}
+.yeti .dijitTabContainerTop .dijitTabPaneWrapperNested {
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+}
+.yeti .dijitTabContainerBottom.dijitTabContainerNested {
+  margin-bottom: 5px;
+}
+.yeti .dijitTabContainerBottom .dijitTabPaneWrapperNested {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+.yeti .dijitAccordionContainer {
+  border: none;
+}
+.yeti .dijitAccordionInnerContainer {
+  margin-bottom: 2px;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+}
+.yeti .dijitAccordionTitle {
+  color: #369;
+  border-bottom: none;
+  padding: 8px 15px;
+}
+.yeti .dijitAccordionChildWrapper {
+  border-top: 1px solid #e5e5e5;
+}
+.yeti .dijitAccordionContainer .dijitAccordionContainer-child {
+  padding: 9px 15px;
+}
+.yeti .dijitAccordionTitleHover,
+.yeti .dijitAccordionTitleSelected {
+  color: #2b5782;
+  background-color: #eee;
+}
+.yeti .dijitButtonNode {
+  border: none;
+}
+.yeti .dijitButtonNode * {
+  vertical-align: baseline;
+}
+.yeti .dijitButtonNode .dijitIcon,
+.yeti .dijitArrowButtonInner {
+  line-height: 13px;
+}
+.yeti .dijitButton .dijitButtonNode,
+.yeti .dijitDropDownButton .dijitButtonNode,
+.yeti .dijitComboButton .dijitButtonNode,
+.yeti .dijitToggleButton .dijitButtonNode,
+.yeti .dijitComboBox .dijitButtonNode,
+.yeti .dijitSpinnerButtonContainer.dijitButtonNode,
+.yeti .dijitSelect .dijitButtonNode {
+  display: block;
+  padding: 6px 14px;
+  margin-bottom: 0;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #333;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+  background-color: #e6e6e6;
+  background-image: none;
+  background-repeat: repeat-x;
+  border-color: #e6e6e6 #e6e6e6 #c4c4c4;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+  border: 1px solid #bbb;
+  border-bottom-color: #a8a8a8;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);
+}
+.yeti .primary .dijitButtonNode {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #369;
+  background-image: none;
+  background-repeat: repeat-x;
+  border-color: #369 #369 #2b5782;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+}
+.yeti .warning .dijitButtonNode {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #f60;
+  background-image: none;
+  background-repeat: repeat-x;
+  border-color: #f60 #f60 #d95700;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+}
+.yeti .danger .dijitButtonNode {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #c03;
+  background-image: none;
+  background-repeat: repeat-x;
+  border-color: #c03 #c03 #ad002b;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+}
+.yeti .success .dijitButtonNode {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #6c3;
+  background-image: none;
+  background-repeat: repeat-x;
+  border-color: #6c3 #6c3 #57ad2b;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+}
+.yeti .info .dijitButtonNode {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #0cf;
+  background-image: none;
+  background-repeat: repeat-x;
+  border-color: #0cf #0cf #00add9;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+}
+.yeti .inverse .dijitButtonNode {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #033;
+  background-image: none;
+  background-repeat: repeat-x;
+  border-color: #033 #033 #002b2b;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+}
+.yeti .dijitButtonHover .dijitButtonNode,
+.yeti .dijitDropDownButtonHover .dijitButtonNode,
+.yeti .dijitComboButton .dijitButtonNodeHover,
+.yeti .dijitComboButton .dijitDownArrowButtonHover,
+.yeti .dijitToggleButtonHover .dijitButtonNode,
+.yeti .dijitDropDownButtonActive .dijitButtonNode {
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  -ms-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+  background-color: #b8b8b8;
+}
+.yeti .primary.dijitButtonHover .dijitButtonNode,
+.yeti .primary.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .primary.dijitComboButton .dijitButtonNodeHover,
+.yeti .primary.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .primary.dijitToggleButtonHover .dijitButtonNode {
+  background-color: #29527a;
+}
+.yeti .warning.dijitButtonHover .dijitButtonNode,
+.yeti .warning.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .warning.dijitComboButton .dijitButtonNodeHover,
+.yeti .warning.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .warning.dijitToggleButtonHover .dijitButtonNode {
+  background-color: #cc5200;
+}
+.yeti .danger.dijitButtonHover .dijitButtonNode,
+.yeti .danger.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .danger.dijitComboButton .dijitButtonNodeHover,
+.yeti .danger.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .danger.dijitToggleButtonHover .dijitButtonNode {
+  background-color: #a30029;
+}
+.yeti .success.dijitButtonHover .dijitButtonNode,
+.yeti .success.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .success.dijitComboButton .dijitButtonNodeHover,
+.yeti .success.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .success.dijitToggleButtonHover .dijitButtonNode {
+  background-color: #52a329;
+}
+.yeti .info.dijitButtonHover .dijitButtonNode,
+.yeti .info.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .info.dijitComboButton .dijitButtonNodeHover,
+.yeti .info.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .info.dijitToggleButtonHover .dijitButtonNode {
+  background-color: #00a3cc;
+}
+.yeti .inverse.dijitButtonHover .dijitButtonNode,
+.yeti .inverse.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .inverse.dijitComboButton .dijitButtonNodeHover,
+.yeti .inverse.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .inverse.dijitToggleButtonHover .dijitButtonNode {
+  background-color: #002929;
+}
+.yeti .dijitButtonActive .dijitButtonNode,
+.yeti .dijitComboButton .dijitButtonNodeActive,
+.yeti .dijitToggleButtonActive .dijitButtonNode,
+.yeti .dijitToggleButtonChecked .dijitButtonNode,
+.yeti .dijitComboButton .dijitArrowButton.dijitHasDropDownOpen {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.05);
+}
+.yeti .dijitButtonDisabled .dijitButtonNode,
+.yeti .dijitDropDownButtonDisabled .dijitButtonNode,
+.yeti .dijitComboButtonDisabled .dijitButtonNode,
+.yeti .dijitToggleButtonDisabled .dijitButtonNode,
+.yeti .dijitComboBoxDisabled .dijitButtonNode,
+.yeti .dijitSpinnerDisabled .dijitButtonNode,
+.yeti .dijitSelectDisabled .dijitButtonNode {
+  cursor: not-allowed;
+  background-image: none;
+  opacity: 0.65;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.yeti .dijitToggleButtonDisabled.dijitToggleButtonChecked .dijitButtonNode {
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.05);
+}
+.yeti .dijitButtonText {
+  padding: 0 0.3em;
+  text-align: center;
+}
+.yeti .dijitArrowButtonInner {
+  height: auto;
+  width: auto;
+}
+.yeti .dijitComboButton td.dijitStretch,
+.yeti .dijitComboButton td.dijitArrowButton {
+  display: table-cell;
+}
+.yeti .dijitComboButton .dijitArrowButton,
+.yeti .dijitComboBox .dijitButtonNode.dijitArrowButton,
+.yeti .dijitSpinnerButtonContainer.dijitButtonNode,
+.yeti .dijitSelect .dijitButtonNode.dijitArrowButton {
+  border-left-width: 0;
+  padding: 6px 10px;
+  -webkit-border-radius: 0 0px 0px 0;
+  border-radius: 0 0px 0px 0;
+}
+.yeti .dijitComboButton .dijitStretch {
+  -webkit-border-radius: 0px 0 0 0px;
+  border-radius: 0px 0 0 0px;
+}
+.yeti table.dijitComboButton {
+  border-collapse: separate;
+}
+.yeti label {
+  vertical-align: middle;
+}
+.yeti .dijitTextBox {
+  display: inline-block;
+  font-size: 14px;
+  color: #555;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+.yeti .dijitTextBoxFocused {
+  outline: none;
+  border-color: rgba(82,168,236,0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6);
+}
+.yeti .dijitInputContainer {
+  padding: 6px 6px;
+}
+.dj_webkit .yeti .dijitInputContainer {
+  padding: 4px 4px;
+}
+.dj_webkit .yeti .dijitInputField .dijitInputInner {
+  height: 20px;
+}
+.dj_webkit .yeti .dijitInline .dijitInputField .dijitInputInner {
+  height: inherit;
+}
+.yeti .dijitPlaceHolder {
+  font-style: normal;
+  padding: 4px 6px;
+}
+.yeti .dijitTextBoxDisabled,
+.yeti .dijitTextBoxReadOnly,
+.yeti .dijitSelect.dijitSelectDisabled .dijitButtonContents {
+  background-image: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: #ddd;
+}
+.dj_webkit .yeti .dijitTextBoxDisabled input,
+.dj_webkit .yeti textarea.dijitTextAreaDisabled,
+.yeti .dijitTextBoxDisabled,
+.yeti .dijitTextBoxReadOnly,
+.yeti .dijitSelect.dijitSelectDisabled .dijitButtonContents {
+  color: #555;
+}
+.yeti .dijitTextArea {
+  padding: 4px 6px;
+  line-height: 1.5;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.yeti .dijitComboBox input.dijitArrowButtonInner {
+  display: none;
+}
+.yeti .dijitComboBoxDisabled .dijitButtonNode,
+.yeti .dijitSpinnerDisabled .dijitButtonNode,
+.yeti .dijitSelectDisabled .dijitButtonNode {
+  background-color: #ddd;
+}
+.yeti .dijitTextBoxError {
+  color: #fff;
+  border-color: #fff;
+}
+.yeti .dijitTextBoxError.dijitTextBoxFocused {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px #fff;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px #fff;
+}
+.yeti .dijitValidationContainer {
+  display: none;
+}
+.dj_webkit .yeti .dijitSpinnerButtonContainer.dijitButtonNode {
+  padding: 4px 10px !important;
+}
+.yeti .dijitCheckBox,
+.yeti .dijitRadio {
+  border: 1px solid #999;
+  -webkit-box-shadow: inset 1px 1px 1px 0 rgba(1,1,1,0.2);
+  box-shadow: inset 1px 1px 1px 0 rgba(1,1,1,0.2);
+  text-align: center;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  padding: 1px;
+  background-color: #fff;
+  position: relative;
+}
+.yeti .dijitCheckBox input,
+.yeti .dijitRadio input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.yeti .dijitCheckBox:before,
+.yeti .dijitRadio:before {
+  vertical-align: top;
+}
+.yeti .dijitCheckBoxDisabled,
+.yeti .dijitRadioDisabled {
+  opacity: 0.65;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+  filter: alpha(opacity=65);
+  background-color: #eee;
+}
+.yeti .dijitRadio {
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.yeti .dijitSlider {
+  color: #999;
+}
+.yeti .dijitSliderRemainingBar,
+.yeti .dijitSliderBumperH {
+  border: none;
+  background-image: none;
+  background-color: #f5f5f5;
+  -webkit-box-shadow: inset 2px 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 2px 1px 2px rgba(0,0,0,0.1);
+}
+.yeti .dijitSliderProgressBar,
+.yeti .dijitSliderBumperH.dijitSliderLeftBumper {
+  border: none;
+  background-color: #369;
+  background-image: none;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+}
+.yeti .dijitSliderImageHandle {
+  border: 1px solid rgba(0,0,0,0.15);
+  background-color: #fff;
+}
+.yeti .dijitRuleMark {
+  border-color: #999;
+}
+.yeti .dijitSliderBarH {
+  height: 1em;
+}
+.yeti .dijitSliderImageHandleH {
+  -webkit-box-shadow: 1px 0 2px rgba(0,0,0,0.15);
+  box-shadow: 1px 0 2px rgba(0,0,0,0.15);
+  width: 11px;
+  height: 1.5em;
+}
+.yeti .dijitSliderBumperH {
+  height: 1em;
+}
+.yeti .dijitSliderBumperH.dijitSliderRightBumper {
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  margin-left: -4px;
+  padding-right: 4px;
+}
+.yeti .dijitSliderBumperH.dijitSliderLeftBumper {
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+.yeti .dijitRuleLabelsContainerH {
+  padding-bottom: 5px;
+}
+.yeti .dijitSliderBarV {
+  width: 1em;
+}
+.yeti .dijitSliderV .dijitSliderRemainingBar,
+.yeti .dijitSliderBumperV {
+  border: none;
+  background-image: none;
+  background-color: #f5f5f5;
+  -webkit-box-shadow: inset 2px -2px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.1);
+}
+.yeti .dijitSliderV .dijitSliderProgressBar,
+.yeti .dijitSliderBumperV.dijitSliderBottomBumper {
+  border: none;
+  background-image: none;
+  background-color: #369;
+  -webkit-box-shadow: inset -1px 0 0 rgba(0,0,0,0.15);
+  box-shadow: inset -1px 0 0 rgba(0,0,0,0.15);
+}
+.yeti .dijitSliderImageHandleV {
+  -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.15);
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.15);
+  width: 1.5em;
+  height: 11px;
+}
+.yeti .dijitSliderBumperV {
+  width: 1em;
+}
+.yeti .dijitSliderBumperV.dijitSliderTopBumper {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  margin-bottom: -4px;
+  padding-top: 4px;
+}
+.yeti .dijitSliderBumperV.dijitSliderBottomBumper {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.yeti .dijitRuleLabelsContainerV {
+  margin: 0 5px;
+}
+.yeti .dijitSliderDisabled {
+  opacity: 0.65;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+  filter: alpha(opacity=65);
+}
+.yeti .dijitSelect {
+  border: none;
+  color: #555;
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+.yeti .dijitSelect .dijitButtonContents {
+  background-color: #fff;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  -webkit-border-radius: 0px 0 0 0px;
+  border-radius: 0px 0 0 0px;
+  border: 1px solid #ccc;
+}
+.yeti .dijitSelectDisabled .dijitButtonContents .dijitButtonText {
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+.yeti .dijitTimePickerItem {
+  font-weight: normal;
+  color: #333;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+.yeti .dijitTimePickerItem .dijitTimePickerItemInner {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.yeti .dijitTimePickerItemHover,
+.yeti .dijitTimePickerItemSelected {
+  text-decoration: none;
+  color: #fff;
+  background-color: #369;
+  background-image: none;
+}
+.yeti .dijitTimePicker {
+  z-index: 1000;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,0.2);
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  border-collapse: separate;
+}
+.yeti .dijitDialog {
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.3);
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+}
+.yeti .dijitDialogCloseIcon .closeText {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+  display: inline;
+  position: relative;
+  margin-top: 2px;
+}
+.yeti .dijitDialogCloseIconHover .closeText {
+  opacity: 0.4;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  filter: alpha(opacity=40);
+}
+.yeti .dijitDialogUnderlay {
+  background-color: #000;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}
+.yeti .dijitDialogTitleBar {
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+}
+.yeti .dijitDialogTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+.yeti .dijitDialogPaneContentArea {
+  padding: 15px;
+}
+.yeti .dijitDialogPaneActionBar {
+  padding: 14px 15px 15px;
+  margin-bottom: 0;
+  text-align: right;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  -webkit-border-radius: 0 0 0px 0px;
+  border-radius: 0 0 0px 0px;
+  -webkit-box-shadow: inset 0 1px 0 #fff;
+  box-shadow: inset 0 1px 0 #fff;
+}
+.yeti .dijitTooltipContainer {
+  background-color: #f5f5f5;
+  border: 1px solid rgba(0,0,0,0.25);
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  padding: 9px 14px;
+}
+.yeti .dijitTooltipConnector,
+.yeti .dijitTooltipConnector:after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-color: transparent;
+  border-style: solid;
+}
+.yeti .dijitTooltipConnector:after {
+  content: "";
+  z-index: -1;
+}
+.yeti .dijitTooltipAbove {
+  padding-bottom: 5px;
+}
+.yeti .dijitTooltipAbove .dijitTooltipConnector {
+  bottom: 1px;
+  border-width: 5px 5px 0;
+  border-top-color: #f5f5f5;
+}
+.yeti .dijitTooltipAbove .dijitTooltipConnector:after {
+  border-width: 6px 6px 0;
+  border-top-color: rgba(0,0,0,0.25);
+  left: -6px;
+  bottom: -1px;
+}
+.yeti .dijitTooltipBelow {
+  padding-top: 5px;
+}
+.yeti .dijitTooltipBelow .dijitTooltipConnector {
+  top: 1px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #f5f5f5;
+}
+.yeti .dijitTooltipBelow .dijitTooltipConnector:after {
+  border-width: 0 6px 6px;
+  border-bottom-color: rgba(0,0,0,0.25);
+  left: -6px;
+  top: -1px;
+}
+.yeti .dijitTooltipLeft {
+  padding-right: 5px;
+}
+.yeti .dijitTooltipLeft .dijitTooltipConnector {
+  right: 1px;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #f5f5f5;
+}
+.yeti .dijitTooltipLeft .dijitTooltipConnector:after {
+  border-width: 6px 0 6px 6px;
+  border-left-color: rgba(0,0,0,0.25);
+  bottom: -6px;
+  right: -1px;
+}
+.yeti .dijitTooltipRight {
+  padding-left: 5px;
+}
+.yeti .dijitTooltipRight .dijitTooltipConnector {
+  left: 1px;
+  border-width: 5px 5px 5px 0;
+  border-right-color: #f5f5f5;
+}
+.yeti .dijitTooltipRight .dijitTooltipConnector:after {
+  border-width: 6px 6px 6px 0;
+  border-right-color: rgba(0,0,0,0.25);
+  bottom: -6px;
+  left: -1px;
+}
+.yeti .dijitTooltipABLeft .dijitTooltipConnector {
+  left: 20px;
+}
+.yeti .dijitTooltipABRight .dijitTooltipConnector {
+  right: 20px;
+}
+.yeti .dijitPopup .dijitCalendar {
+  margin-top: 2px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.yeti .dijitCalendar {
+  background-color: #eee;
+  border-collapse: separate;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  border: 1px solid rgba(0,0,0,0.2);
+  text-align: center;
+  padding: 8px;
+  font-size: 12px;
+}
+.yeti .dijitCalendarDateTemplate {
+  padding: 3px 7px;
+  background-color: #fff;
+}
+.yeti .dijitCalendarDayLabelTemplate {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-weight: 500;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+.yeti .dijitCalendarDateLabel {
+  vertical-align: middle;
+}
+.yeti .dijitCalendarPreviousMonth,
+.yeti .dijitCalendarNextMonth {
+  background-color: #e2e4ed;
+  color: #586884;
+}
+.yeti .dijitCalendarSelectedDate {
+  background-color: #369;
+  color: #fff;
+}
+.yeti .dijitCalendarCurrentDate .dijitCalendarDateLabel {
+  text-decoration: underline;
+}
+.yeti .dijitCalendarSelectedYear {
+  font-size: 1.3em;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.yeti .dijitCalendar tr td:first-child {
+  border-left: none;
+}
+.yeti .dijitCalendarYearLabel {
+  margin-top: 8px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+.yeti .dijitA11ySideArrow {
+  display: none;
+}
+.yeti .dijitProgressBar {
+  margin: 2px 0px;
+}
+.yeti .dijitProgressBarEmpty {
+  border: none;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background-image: none;
+  background-color: #f5f5f5;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+.yeti .dijitProgressBarFull {
+  background-color: #369;
+  background-image: none;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+  -webkit-transition: width 0.6s ease;
+  -moz-transition: width 0.6s ease;
+  -o-transition: width 0.6s ease;
+  -ms-transition: width 0.6s ease;
+  transition: width 0.6s ease;
+}
+.yeti .dijitProgressBarTile {
+  display: none;
+}
+.yeti .dijitProgressBarLabel {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+}
+.yeti .dijitProgressBar.danger .dijitProgressBarFull {
+  background-color: #c03;
+  background-image: none;
+}
+.yeti .dijitProgressBar.success .dijitProgressBarFull {
+  background-color: #6c3;
+  background-image: none;
+}
+.yeti .dijitProgressBar.info .dijitProgressBarFull {
+  background-color: #0cf;
+  background-image: none;
+}
+.yeti .dijitProgressBar.warning .dijitProgressBarFull {
+  background-color: #f60;
+  background-image: none;
+}
+.yeti .dijitProgressBar.striped .dijitProgressBarFull,
+.yeti .dijitProgressBarIndeterminate .dijitProgressBarFull {
+  -webkit-background-size: 40px 40px;
+  -moz-background-size: 40px 40px;
+  background-size: 40px 40px;
+  background-image: -webkit-linear-gradient(left bottom, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent) !important;
+  background-image: -moz-linear-gradient(left bottom, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent) !important;
+  background-image: -o-linear-gradient(left bottom, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent) !important;
+  background-image: -ms-linear-gradient(left bottom, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent) !important;
+  background-image: linear-gradient(to right top, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent) !important;
+}
+.yeti .dijitProgressBar.animated .dijitProgressBarFull,
+.yeti .dijitProgressBarIndeterminate .dijitProgressBarFull {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+  -moz-animation: progress-bar-stripes 2s linear infinite;
+  -o-animation: progress-bar-stripes 2s linear infinite;
+  -ms-animation: progress-bar-stripes 2s linear infinite;
+  animation: progress-bar-stripes 2s linear infinite;
+}
+@-moz-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@-o-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+.yeti .dijitTreeRow {
+  padding: 2px 0;
+}
+.yeti .dijitTreeRowSelected,
+.yeti .dijitTreeRowSelected.dijitTreeRowHover {
+  color: #fff;
+  background-color: #369;
+}
+.yeti .dijitTreeRowHover {
+  color: #333;
+  background-color: #f5f5f5;
+}
+.yeti .dijitTreeExpando:before {
+  cursor: pointer;
+  opacity: 0.3;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+  filter: alpha(opacity=30);
+  padding-left: 4px;
+  padding-right: 2px;
+}
+.yeti .dijitTreeExpandoLeaf:before {
+  cursor: none;
+  visibility: hidden;
+}
+.yeti .dijitTreeIcon {
+  width: 1em;
+  text-align: center;
+}
+.yeti .dijitToolbar {
+  overflow: visible;
+  margin-bottom: 20px;
+  color: #fff;
+  background-image: none;
+  background-color: #369;
+  border-bottom: 1px solid #2d5a87;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.065);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.065);
+  padding: 4px;
+}
+.yeti .dijitToolbar .dijitButton,
+.yeti .dijitToolbar .dijitDropDownButton,
+.yeti .dijitToolbar .dijitComboButton,
+.yeti .dijitToolbar .dijitToggleButton {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.yeti .dijitToolbar .dijitButton .dijitButtonNode,
+.yeti .dijitToolbar .dijitDropDownButton .dijitButtonNode,
+.yeti .dijitToolbar .dijitComboButton .dijitButtonNode,
+.yeti .dijitToolbar .dijitToggleButton .dijitButtonNode {
+  padding: 0px;
+}
+.yeti .dijitToolbar .dijitButtonContents {
+  padding: 4px 8px;
+}
+.yeti .dijitEditor {
+  border: 1px solid #2d5a87;
+}
+.yeti .dijitEditorDisabled {
+  opacity: 0.65;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+  filter: alpha(opacity=65);
+}
+.yeti .dijitTitlePane {
+  border: 1px solid #ddd;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.yeti .dijitTitlePaneTitle {
+  color: #369;
+  background-color: #eee;
+  border-bottom: none;
+  padding: 8px 15px;
+}
+.yeti .dijitTitlePaneTitleHover {
+  color: #2b5782;
+}
+.yeti .dijitTitlePaneContentOuter {
+  margin-bottom: 2px;
+  border-top: 1px solid #ddd;
+}
+.yeti .dijitTitlePaneContentInner {
+  padding: 9px 15px;
+}
+.yeti .dijitTitlePane .dijitArrowNode {
+  margin-right: 9px;
+}
+.yeti .dijitTitlePane .dijitArrowNode:before {
+  text-align: center;
+  width: 12px;
+}
+.yeti .dgrid {
+  background-color: transparent;
+  border-color: #ddd;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  padding: 0px;
+}
+.yeti .dgrid-header,
+.yeti .dgrid-header-scroll,
+.yeti .dgrid-footer {
+  background-image: none;
+  background-color: transparent;
+}
+.yeti .dgrid-header,
+.yeti .dgrid-header-scroll {
+  font-weight: bold;
+  -webkit-box-shadow: 0 -1px 0px rgba(0,0,0,0.06) inset;
+  box-shadow: 0 -1px 0px rgba(0,0,0,0.06) inset;
+}
+.yeti .dgrid .dgrid-cell {
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0 1px 0 0;
+  overflow: hidden;
+  text-shadow: 0 1px 0 #fff;
+}
+.yeti .dgrid .dgrid-cell.dgrid-column-first {
+  border-width: 0px;
+}
+.yeti .dgrid .dgrid-cell-padding {
+  padding: 8px;
+}
+.yeti .dgrid .dgrid-row {
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0 0 1px;
+}
+.yeti .dgrid .dgrid-row-even {
+  background-color: #fff;
+}
+.yeti .dgrid .dgrid-row-odd {
+  background-color: #fff;
+}
+.yeti .dgrid .dgrid-row:hover,
+.yeti .dgrid .dgrid-row:hover .dgrid-cell {
+  background-color: #4785c2;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+}
+.yeti .dgrid-selected,
+.yeti .dgrid-selected .dgrid-cell {
+  background-color: #369;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+}
+.yeti .dgrid-sort-arrow {
+  background: none;
+  width: auto;
+  height: auto;
+  margin: 0px;
+}
+.yeti .dgrid-no-data,
+.yeti .dgrid-loading {
+  color: #aaa;
+  font-size: 3em;
+  padding: 3em;
+  text-align: center;
+}

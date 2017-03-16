@@ -1,0 +1,29 @@
+<div >
+    <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="dialog" class="login-dialog" data-dojo-props="closable:false,title:'Sign Up'" id="signUpDialog">
+        <div data-dojo-attach-point="msg_bar"></div>
+        <div class="dijitDialogPaneContentArea" >
+            <table data-dojo-type="dijit/form/Form" data-dojo-mixins="dijit/_Container" data-dojo-attach-point="userForm">
+                <tr><td>
+                    <input  type="text" data-dojo-type="dijit/form/ValidationTextBox" name="userName"
+                            data-dojo-props="placeHolder:'username',required:true"/>
+                </td></tr>
+                <tr><td>
+                    <input  type="text" data-dojo-type="dijit/form/ValidationTextBox" name="email"
+                            data-dojo-props="placeHolder:'email',required:true,invalidMessage:'not valid email',validator:dojox.validate.isEmailAddress"/>
+                </td></tr>
+                <tr><td>
+                    <input  type="password" data-dojo-type="dijit/form/ValidationTextBox" name="password" data-dojo-attach-point="password"
+                            data-dojo-props="placeHolder:'password',required:true" />
+                </td></tr>
+                <tr><td>
+                    <input  type="password" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="verify_password"
+                            data-dojo-props="placeHolder:'repeat password',required:true,invalidMessage:'not same'"/>
+                </td></tr>
+            </table>
+        </div>
+        <div class="dijitDialogPaneActionBar" style="text-align: center;">
+            <button data-dojo-type="dijit/form/Button" class="primary" data-dojo-attach-event="click:signUp">Sign UP</button>
+            <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="click:login">Login</button>
+        </div>
+    </div>
+</div>

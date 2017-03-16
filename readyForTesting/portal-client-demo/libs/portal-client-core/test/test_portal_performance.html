@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="app">
+    </div>
+    <script type="text/javascript">
+        require([
+            'test/tools/DijitRegistryPane',
+            'portal/_base/common/ViewCacheQueue',
+            'dojo/aspect',
+            'dojo/dom',
+            'portal/_base/common/Util',
+            'dojo/hash',
+            'dojo/promise/all',
+            'test/data/applications',
+            'test/data/dashboards',
+            'test/data/users',
+            'dstore/Memory',
+            'portal',
+            'portal/_base/store/PortalStore',
+            'dojo/domReady!'
+        ], function (DijitRegistryPane,ViewCacheQueue, aspect, dom, Util, hash, all, applications,dashboards,users, Memory, portal,PortalStore) {
+
+            PortalStore.setStore('memory');
+            PortalStore.users._currentUser = users.PortalAdmin;
+            applications.app1.localDataId=applications.app1.key;
+            applications.app2.localDataId=applications.app2.key;
+            all([
+                PortalStore.appStore.installApplication(applications.app1),
+                PortalStore.appStore.installApplication(applications.app2),
+                PortalStore.dashboards.installDashboard(dashboards.gridDash1),
+                PortalStore.dashboards.installDashboard(dashboards.rasterDash1),
+                PortalStore.dashboards.installDashboard(dashboards.freeDash1),
+                PortalStore.dashboards.installDashboard(dashboards.freeDash2)
+            ]).then(function(){
+                var p = new portal({
+                    defaultTheme:'yeti',
+                    defaultApp:'testApp3',
+                    viewCacheSize:3,
+                }, 'app');
+                p.startup();
+
+                var list = [
+                    "testApp1/Generic",
+                    "testApp1/SampleView",
+                    "testApp1/ContentView2",
+                    "testApp1/ContentView1",
+                    "userspace/rasterDash1",
+                    "userspace/freeDash1",
+                    "userspace/freeDash2",
+                    "userspace/DashboardManagement",
+                    "userspace/userInfo",
+                    "userspace/messagingSystem",
+                    "testApp2/ContentView1",
+                    "testApp2/ContentView2",
+                    "testApp2/SampleView",
+                    "testApp2/Generic"
+                ]
+
+                var rand=0;
+                setInterval(function(){
+                    rand >= list.length-1 ?rand =0:rand++;
+                    hash(list[rand]);
+                },2000)
+
+                new DijitRegistryPane({
+                    testInterval:2000*list.length*2
+                }).startup();
+            });
+        });
+    </script>
+
+</body>
+</html>

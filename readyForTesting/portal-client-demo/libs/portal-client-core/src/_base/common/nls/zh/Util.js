@@ -1,0 +1,9 @@
+define({
+        year:'年',
+        month:'月',
+        week:'周',
+        day:'天',
+        hour:'小时',
+        min:'分钟',
+        sec:'秒钟'
+})

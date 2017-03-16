@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        require(['yeti'],function(){
+            // request yeti first to patch the bug of yeti when load slower then portal.
+            // make the iconSupport.js already work
+            require([
+                'portal/_base/common/SettingDialog',
+                'dojo/domReady!'
+            ], function (SettingDialog) {
+                var dialog= new SettingDialog({
+                    onSubmit:function(data){
+                        document.getElementById('result').innerHTML=JSON.stringify(data);
+                    },
+                    dataSchema:[
+                        {
+                            name: "f1",
+                            label: 'String Field',
+                            type: 'string',
+                            help: "please set the value "
+                        },
+                        {
+                            name: 'f2',
+                            label: "Textarea Field",
+                            type: 'textarea',
+                            help: "please set the value "
+                        },
+                        {
+                            name: 'f3',
+                            label: "Checkbox Field",
+                            type: 'checkbox',
+                            help: "please set the value "
+                        },
+                        {
+                            name: 'f4',
+                            label: "Number Field",
+                            constraints:{min:100,max:999},
+                            type: 'number',
+                            help: "please set the value "
+                        },
+                        {
+                            name: 'f5',
+                            label: "Date Field",
+                            type: 'date',
+                            help: "please set the value "
+                        },
+                        {
+                            name: 'f6',
+                            label: "Time Field",
+                            type: 'time',
+                            help: "please set the value "
+                        },
+                        {
+                            name: 'f7',
+                            label: "Selector Field",
+                            type: 'selector',
+                            help: "please set the value ",
+                            options: [
+                                { label: "TN", value: "Tennessee" },
+                                { label: "VA", value: "Virginia"},
+                                { label: "WA", value: "Washington" },
+                                { label: "FL", value: "Florida" },
+                                { label: "CA", value: "California" }
+                            ],
+                            defaultValue:'Virginia'
+                        },
+                        {
+                            name: 'f8',
+                            label: "Json Field",
+                            type: 'json',
+                            help: "please set the value ",
+                            defaultValue:'{"a":{"b":1}}'
+                        },
+                        {
+                            name: 'f9',
+                            label: "TimeZone Field",
+                            type: 'timezone',
+                            help: "please set the value ",
+                            defaultValue:"UTC-7"
+                        }
+                    ]
+                });
+                dialog.placeAt('cp');
+                dialog.startup();
+                dialog.show();
+                dialog.set('data', { f8: { a: { b: 1}, c: 2}});
+                dialog.set('data', {f8:[{a: 1}, {a: 2}]});
+            });
+        })
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp"></div>
+    <div id="result"></div>
+</body>
+</html>

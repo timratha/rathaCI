@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'portal/_base/common/PortalHashHelper',
+            'dojo/_base/lang',
+            'portal/_base/nav/PortalHeader',
+            'dojo/promise/all',
+            'test/data/applications',
+            'test/data/users',
+            'portal/_base/store/PortalStore',
+            'yeti',
+            'dojo/domReady!'
+        ], function (PortalHashHelper, lang, PortalHeader,all, applications,users, PortalStore) {
+
+            PortalStore.setStore('memory');
+            PortalStore.users._currentUser = users.basicUser;
+
+            var app1 = lang.mixin(lang.clone(applications.app1),{label:'Test app1',key:'testApp1'});
+            var app2 = lang.mixin(lang.clone(applications.app1),{label:'Test app2',key:'testApp2'});
+            var app3 = lang.mixin(lang.clone(applications.app1),{label:'Test app3',key:'testApp3'});
+            PortalHashHelper.switchApp(app3.key);
+            all([
+                PortalStore.appStore.installApplication(app1),
+                PortalStore.appStore.installApplication(app2),
+                PortalStore.appStore.installApplication(app3)
+            ]).then(function(){
+                var header= new PortalHeader({
+                    singlePageMode:true //TODO bug when set false.
+                });
+                header.placeAt('cp');
+                header.startup();
+
+                //test events;
+                setTimeout(function(){
+//                    console.log('update app1');
+                    PortalStore.appStore.getAppByKey(app1.key).then(function(app){
+                        app.label ='Test Updated1';
+                        PortalStore.appStore._applicationStore.put(app);
+                    });
+                },1000);
+
+                setTimeout(function(){
+//                    console.log('remove app2');
+                    PortalStore.appStore.getAppByKey(app2.key).then(function(app){
+                        PortalStore.appStore._applicationStore.remove(app.id);
+                    });
+                },1000);
+
+                setTimeout(function(){
+//                    console.log('update app3');
+                    PortalStore.appStore.getAppByKey(app3.key).then(function(app){
+                        app.label ='Test Updated3';
+                        PortalStore.appStore._applicationStore.put(app);
+                    });
+                },1000);
+
+
+                setTimeout(function(){
+//                    console.log('add app4');
+                    var app4 = lang.mixin(lang.clone(applications.app1),{label:'added app',key:'testApp4'});
+                    PortalStore.appStore.installApplication(app4);
+                    //TODO marker: maybe in future can let viewStack listen the event of appStore, and create update app automatically. in single page mode.
+                },1000);
+
+
+            },function(err){
+                console.error(err);
+            });
+
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp"></div>
+</body>
+</html>

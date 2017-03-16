@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'test/tools/DijitRegistryPane',
+            'dojo/promise/all',
+            'test/data/dashboards',
+            'portal/_base/viewWrappers/ViewWrapper',
+            'portal/_base/store/PortalStore',
+            'yeti',
+            'dojo/domReady!'
+        ], function (DijitRegistryPane,all, dashboards,ViewWrapper,PortalStore) {
+
+            PortalStore.setStore('memory');
+            all([
+                PortalStore.dashboards.installDashboard(dashboards.gridDash1),
+                PortalStore.dashboards.installDashboard(dashboards.rasterDash1),
+                PortalStore.dashboards.installDashboard(dashboards.freeDash1),
+                PortalStore.dashboards.installDashboard(dashboards.freeDash2)
+            ]).then(function(){
+                return PortalStore.appStore.installView({
+                    viewType:'portal/views/DashboardManagement',
+                    label:'test view',
+                    iconClass:'fa fa-users',
+                    config:{}
+                })
+            }).then(function(view){
+
+               var wrapper = new ViewWrapper({
+                    viewId:view.id
+                },'cp1');
+
+                wrapper.startup();
+
+                //test performance
+
+                new DijitRegistryPane({
+                    testInterval:2000
+                }).startup();
+
+                setInterval(function(){
+                    wrapper.update();
+                },1000);
+            });
+
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+<div id="cp1"></div>
+</body>
+</html>

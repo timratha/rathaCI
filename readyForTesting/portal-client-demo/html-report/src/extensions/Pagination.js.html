@@ -1,0 +1,2152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src\extensions\Pagination.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">src\extensions\Pagination.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">60.95% <small>(128 / 210)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">44.16% <small>(68 / 154)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">81.25% <small>(26 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">60.95% <small>(128 / 210)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">src\extensions\</a> &#187; Pagination.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">61</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">61</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">61</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">define([
+	'src/extensions/_StoreMixin',
+	'dojo/_base/declare',
+	'dojo/_base/array',
+	'dojo/_base/lang',
+	'dojo/dom-construct',
+	'dojo/dom-class',
+	'dojo/on',
+	'dojo/query',
+	'dojo/string',
+	'dojo/has',
+	'dojo/when',
+	'dgrid/util/misc',
+	'dojo/i18n!./nls/pagination',
+	'dojo/_base/sniff'
+], function (_StoreMixin, declare, arrayUtil, lang, domConstruct, domClass, on, query, string, has, when,
+		miscUtil, i18n) {
+	function cleanupContent(grid) {
+		// Remove any currently-rendered rows, or noDataMessage
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (grid.noDataNode) {
+<span class="cstat-no" title="statement not covered" >			domConstruct.destroy(grid.noDataNode);</span>
+<span class="cstat-no" title="statement not covered" >			delete grid.noDataNode;</span>
+		}
+		else {
+			grid.cleanup();
+		}
+		grid.contentNode.innerHTML = '';
+	}
+	function cleanupLoading(grid) {
+		if (grid.loadingNode) {
+			domConstruct.destroy(grid.loadingNode);
+			delete grid.loadingNode;
+		}
+		else <span class="missing-if-branch" title="if path not taken" >I</span>if (grid._oldPageNodes) {
+			// If cleaning up after a load w/ showLoadingMessage: false,
+			// be careful to only clean up rows from the old page, not the new one
+<span class="cstat-no" title="statement not covered" >			for (var id in grid._oldPageNodes) {</span>
+<span class="cstat-no" title="statement not covered" >				grid.removeRow(grid._oldPageNodes[id]);</span>
+			}
+<span class="cstat-no" title="statement not covered" >			delete grid._oldPageNodes;</span>
+		}
+		delete grid._isLoading;
+	}
+&nbsp;
+	return declare(_StoreMixin, {
+		// summary:
+		//		An extension for adding discrete pagination to a List or Grid.
+&nbsp;
+		// rowsPerPage: Number
+		//		Number of rows (items) to show on a given page.
+		rowsPerPage: 10,
+&nbsp;
+		// pagingTextBox: Boolean
+		//		Indicates whether or not to show a textbox for paging.
+		pagingTextBox: false,
+		// previousNextArrows: Boolean
+		//		Indicates whether or not to show the previous and next arrow links.
+		previousNextArrows: true,
+		// firstLastArrows: Boolean
+		//		Indicates whether or not to show the first and last arrow links.
+		firstLastArrows: false,
+&nbsp;
+		// pagingLinks: Number
+		//		The number of page links to show on each side of the current page
+		//		Set to 0 (or false) to disable page links.
+		pagingLinks: 2,
+		// pageSizeOptions: Array[Number]
+		//		This provides options for different page sizes in a drop-down.
+		//		If it is empty (default), no page size drop-down will be displayed.
+		pageSizeOptions: null,
+&nbsp;
+		// showLoadingMessage: Boolean
+		//		If true, clears previous data and displays loading node when requesting
+		//		another page; if false, leaves previous data in place until new data
+		//		arrives, then replaces it immediately.
+		showLoadingMessage: true,
+&nbsp;
+		// i18nPagination: Object
+		//		This object contains all of the internationalized strings as
+		//		key/value pairs.
+		i18nPagination: i18n,
+&nbsp;
+		showFooter: true,
+		_currentPage: 1,
+&nbsp;
+		buildRendering: function () {
+			this.inherited(arguments);
+&nbsp;
+			// add pagination to footer
+			var grid = this,
+				paginationNode = this.paginationNode =
+					domConstruct.create('div', { className: 'dgrid-pagination' }, this.footerNode),
+				statusNode = this.paginationStatusNode =
+					domConstruct.create('div', { className: 'dgrid-status' }, paginationNode),
+				i18n = this.i18nPagination,
+				navigationNode,
+				node;
+&nbsp;
+			statusNode.tabIndex = 0;
+&nbsp;
+			// Initialize UI based on pageSizeOptions and rowsPerPage
+			this._updatePaginationSizeSelect();
+			this._updateRowsPerPageOption();
+&nbsp;
+			// initialize some content into paginationStatusNode, to ensure
+			// accurate results on initial resize call
+			this._updatePaginationStatus(this._total);
+&nbsp;
+			navigationNode = this.paginationNavigationNode =
+				domConstruct.create('div', { className: 'dgrid-navigation' }, paginationNode);
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (this.firstLastArrows) {
+				// create a first-page link
+<span class="cstat-no" title="statement not covered" >				node = this.paginationFirstNode = domConstruct.create('span', {</span>
+					'aria-label': i18n.gotoFirst,
+					className: 'dgrid-first dgrid-page-link',
+					innerHTML: '«',
+					tabIndex: 0
+				}, navigationNode);
+			}
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (this.previousNextArrows) {
+				// create a previous link
+				node = this.paginationPreviousNode = domConstruct.create('span', {
+					'aria-label': i18n.gotoPrev,
+					className: 'dgrid-previous dgrid-page-link',
+					innerHTML: '‹',
+					tabIndex: 0
+				}, navigationNode);
+			}
+&nbsp;
+			this.paginationLinksNode = domConstruct.create('span', {
+				className: 'dgrid-pagination-links'
+			}, navigationNode);
+&nbsp;
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (this.previousNextArrows) {
+				// create a next link
+				node = this.paginationNextNode = domConstruct.create('span', {
+					'aria-label': i18n.gotoNext,
+					className: 'dgrid-next dgrid-page-link',
+					innerHTML: '›',
+					tabIndex: 0
+				}, navigationNode);
+			}
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (this.firstLastArrows) {
+				// create a last-page link
+<span class="cstat-no" title="statement not covered" >				node = this.paginationLastNode = domConstruct.create('span', {</span>
+					'aria-label': i18n.gotoLast,
+					className: 'dgrid-last dgrid-page-link',
+					innerHTML: '»',
+					tabIndex: 0
+				}, navigationNode);
+			}
+&nbsp;
+			/* jshint maxlen: 121 */
+			this._listeners.push(on(navigationNode, '.dgrid-page-link:click,.dgrid-page-link:keydown', <span class="fstat-no" title="function not covered" >function (event) {</span>
+				// For keyboard events, only respond to enter
+<span class="cstat-no" title="statement not covered" >				if (event.type === 'keydown' &amp;&amp; event.keyCode !== 13) {</span>
+<span class="cstat-no" title="statement not covered" >					return;</span>
+				}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				var cls = this.className,</span>
+					curr, max;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				if (grid._isLoading || cls.indexOf('dgrid-page-disabled') &gt; -1) {</span>
+<span class="cstat-no" title="statement not covered" >					return;</span>
+				}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				curr = grid._currentPage;</span>
+<span class="cstat-no" title="statement not covered" >				max = Math.ceil(grid._total / grid.rowsPerPage);</span>
+&nbsp;
+				// determine navigation target based on clicked link's class
+<span class="cstat-no" title="statement not covered" >				if (this === grid.paginationPreviousNode) {</span>
+<span class="cstat-no" title="statement not covered" >					grid.gotoPage(curr - 1);</span>
+				}
+				else <span class="cstat-no" title="statement not covered" >if (this === grid.paginationNextNode) {</span>
+<span class="cstat-no" title="statement not covered" >					grid.gotoPage(curr + 1);</span>
+				}
+				else <span class="cstat-no" title="statement not covered" >if (this === grid.paginationFirstNode) {</span>
+<span class="cstat-no" title="statement not covered" >					grid.gotoPage(1);</span>
+				}
+				else <span class="cstat-no" title="statement not covered" >if (this === grid.paginationLastNode) {</span>
+<span class="cstat-no" title="statement not covered" >					grid.gotoPage(max);</span>
+				}
+				else <span class="cstat-no" title="statement not covered" >if (cls === 'dgrid-page-link') {</span>
+<span class="cstat-no" title="statement not covered" >					grid.gotoPage(+this.innerHTML); </span>// the innerHTML has the page number
+				}
+			}));
+		},
+&nbsp;
+		destroy: function () {
+			this.inherited(arguments);
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (this._pagingTextBoxHandle) {
+<span class="cstat-no" title="statement not covered" >				this._pagingTextBoxHandle.remove();</span>
+			}
+		},
+&nbsp;
+		_updatePaginationSizeSelect: function () {
+			// summary:
+			//		Creates or repopulates the pagination size selector based on
+			//		the values in pageSizeOptions. Called from buildRendering
+			//		and _setPageSizeOptions.
+&nbsp;
+			var pageSizeOptions = this.pageSizeOptions,
+				paginationSizeSelect = this.paginationSizeSelect,
+				handle;
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (pageSizeOptions &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >pageSizeOptions.length)</span> {
+<span class="cstat-no" title="statement not covered" >				if (!paginationSizeSelect) {</span>
+					// First time setting page options; create the select
+<span class="cstat-no" title="statement not covered" >					paginationSizeSelect = this.paginationSizeSelect = domConstruct.create('select', {</span>
+						'aria-label': this.i18nPagination.rowsPerPage,
+						className: 'dgrid-page-size'
+					}, this.paginationNode);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >					handle = this._paginationSizeChangeHandle =</span>
+						on(paginationSizeSelect, 'change', lang.hitch(this, <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >							this.set('rowsPerPage', +this.paginationSizeSelect.value);</span>
+						}));
+<span class="cstat-no" title="statement not covered" >					this._listeners.push(handle);</span>
+				}
+&nbsp;
+				// Repopulate options
+<span class="cstat-no" title="statement not covered" >				paginationSizeSelect.options.length = 0;</span>
+<span class="cstat-no" title="statement not covered" >				for (var i = 0; i &lt; pageSizeOptions.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >					domConstruct.create('option', {</span>
+						innerHTML: pageSizeOptions[i],
+						selected: this.rowsPerPage === pageSizeOptions[i],
+						value: pageSizeOptions[i]
+					}, paginationSizeSelect);
+				}
+				// Ensure current rowsPerPage value is in options
+<span class="cstat-no" title="statement not covered" >				this._updateRowsPerPageOption();</span>
+			}
+			else <span class="missing-if-branch" title="if path not taken" >I</span>if (!(pageSizeOptions &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >pageSizeOptions.length)</span> &amp;&amp; paginationSizeSelect) {
+				// pageSizeOptions was removed; remove/unhook the drop-down
+<span class="cstat-no" title="statement not covered" >				domConstruct.destroy(paginationSizeSelect);</span>
+<span class="cstat-no" title="statement not covered" >				this.paginationSizeSelect = null;</span>
+<span class="cstat-no" title="statement not covered" >				this._paginationSizeChangeHandle.remove();</span>
+			}
+		},
+&nbsp;
+		_setPageSizeOptions: <span class="fstat-no" title="function not covered" >function (pageSizeOptions) {</span>
+<span class="cstat-no" title="statement not covered" >			this.pageSizeOptions = pageSizeOptions &amp;&amp; pageSizeOptions.sort(<span class="fstat-no" title="function not covered" >function (a, b) {</span></span>
+<span class="cstat-no" title="statement not covered" >				return a - b;</span>
+			});
+<span class="cstat-no" title="statement not covered" >			this._updatePaginationSizeSelect();</span>
+		},
+&nbsp;
+		_updateRowsPerPageOption: function () {
+			// summary:
+			//		Ensures that an option for rowsPerPage's value exists in the
+			//		paginationSizeSelect drop-down (if one is rendered).
+			//		Called from buildRendering and _setRowsPerPage.
+&nbsp;
+			var rowsPerPage = this.rowsPerPage,
+				pageSizeOptions = this.pageSizeOptions,
+				paginationSizeSelect = this.paginationSizeSelect;
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (paginationSizeSelect) {
+<span class="cstat-no" title="statement not covered" >				if (arrayUtil.indexOf(pageSizeOptions, rowsPerPage) &lt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >					this._setPageSizeOptions(pageSizeOptions.concat([rowsPerPage]));</span>
+				}
+				else {
+<span class="cstat-no" title="statement not covered" >					paginationSizeSelect.value = '' + rowsPerPage;</span>
+				}
+			}
+		},
+&nbsp;
+		_setRowsPerPage: <span class="fstat-no" title="function not covered" >function (rowsPerPage) {</span>
+<span class="cstat-no" title="statement not covered" >			this.rowsPerPage = rowsPerPage;</span>
+<span class="cstat-no" title="statement not covered" >			this._updateRowsPerPageOption();</span>
+<span class="cstat-no" title="statement not covered" >			this.gotoPage(1);</span>
+		},
+&nbsp;
+		_updateNavigation: function (total) {
+			// summary:
+			//		Update status and navigation controls based on total count from query
+&nbsp;
+			var grid = this,
+				i18n = this.i18nPagination,
+				linksNode = this.paginationLinksNode,
+				currentPage = this._currentPage,
+				pagingLinks = this.pagingLinks,
+				paginationNavigationNode = this.paginationNavigationNode,
+				end = Math.ceil(total / this.rowsPerPage),
+				pagingTextBoxHandle = this._pagingTextBoxHandle,
+				focused = document.activeElement,
+				focusedPage,
+				lastFocusablePageLink,
+				focusableNodes;
+&nbsp;
+			function pageLink(page, addSpace) {
+				var link;
+				var disabled;
+				<span class="missing-if-branch" title="if path not taken" >I</span>if (grid.pagingTextBox &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >page === currentPage </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >end &gt; 1)</span> {
+					// use a paging text box if enabled instead of just a number
+<span class="cstat-no" title="statement not covered" >					link = domConstruct.create('input', {</span>
+						'aria-label': i18n.jumpPage,
+						className: 'dgrid-page-input',
+						type: 'text',
+						value: currentPage
+					}, linksNode);
+<span class="cstat-no" title="statement not covered" >					grid._pagingTextBoxHandle = on(link, 'change', <span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >						var value = +this.value;</span>
+<span class="cstat-no" title="statement not covered" >						if (!isNaN(value) &amp;&amp; value &gt; 0 &amp;&amp; value &lt;= end) {</span>
+<span class="cstat-no" title="statement not covered" >							grid.gotoPage(+this.value);</span>
+						}
+					});
+<span class="cstat-no" title="statement not covered" >					if (focused &amp;&amp; focused.tagName === 'INPUT') {</span>
+<span class="cstat-no" title="statement not covered" >						link.focus();</span>
+					}
+				}
+				else {
+					// normal link
+					disabled = page === currentPage;
+					link = domConstruct.create('span', {
+						'aria-label': i18n.gotoPage,
+						className: 'dgrid-page-link' + (disabled ? ' dgrid-page-disabled' : ''),
+						innerHTML: page + (addSpace ? ' ' : ''),
+						tabIndex: disabled ? -1 : 0
+					}, linksNode);
+&nbsp;
+					// Try to restore focus if applicable;
+					// if we need to but can't, try on the previous or next page,
+					// depending on whether we're at the end
+					<span class="missing-if-branch" title="if path not taken" >I</span>if (focusedPage === page) {
+<span class="cstat-no" title="statement not covered" >						if (!disabled) {</span>
+<span class="cstat-no" title="statement not covered" >							link.focus();</span>
+						}
+						else <span class="cstat-no" title="statement not covered" >if (page &lt; end) {</span>
+<span class="cstat-no" title="statement not covered" >							focusedPage++;</span>
+						}
+						else {
+<span class="cstat-no" title="statement not covered" >							lastFocusablePageLink.focus();</span>
+						}
+					}
+&nbsp;
+					if (!disabled) {
+						lastFocusablePageLink = link;
+					}
+				}
+			}
+&nbsp;
+			function setDisabled(link, disabled) {
+				domClass.toggle(link, 'dgrid-page-disabled', disabled);
+				link.tabIndex = disabled ? -1 : 0;
+			}
+&nbsp;
+			function addSkipNode() {
+				// Adds visual indication of skipped page numbers in navigation area
+				domConstruct.create('span', {
+					className: 'dgrid-page-skip',
+					innerHTML: '...'
+				}, linksNode);
+			}
+&nbsp;
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (!focused || !this.paginationNavigationNode.contains(focused)) {
+				focused = null;
+			}
+			else <span class="cstat-no" title="statement not covered" >if (focused.className === 'dgrid-page-link') {</span>
+<span class="cstat-no" title="statement not covered" >				focusedPage = +focused.innerHTML;</span>
+			}
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (pagingTextBoxHandle) {
+<span class="cstat-no" title="statement not covered" >				pagingTextBoxHandle.remove();</span>
+			}
+			linksNode.innerHTML = '';
+			query('.dgrid-first, .dgrid-previous', paginationNavigationNode).forEach(function (link) {
+				setDisabled(link, currentPage === 1);
+			});
+			query('.dgrid-last, .dgrid-next', paginationNavigationNode).forEach(function (link) {
+				setDisabled(link, currentPage &gt;= end);
+			});
+&nbsp;
+			if (pagingLinks &amp;&amp; end &gt; 0) {
+				// always include the first page (back to the beginning)
+				pageLink(1, true);
+				var start = currentPage - pagingLinks;
+				<span class="missing-if-branch" title="if path not taken" >I</span>if (start &gt; 2) {
+<span class="cstat-no" title="statement not covered" >					addSkipNode();</span>
+				}
+				else {
+					start = 2;
+				}
+				// now iterate through all the page links we should show
+				for (var i = start; i &lt; Math.min(currentPage + pagingLinks + 1, end); i++) {
+					pageLink(i, true);
+				}
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (currentPage + pagingLinks + 1 &lt; end) {
+					addSkipNode();
+				}
+				// last link
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (end &gt; 1) {
+					pageLink(end);
+				}
+			}
+			else <span class="missing-if-branch" title="if path not taken" >I</span>if (grid.pagingTextBox) {
+				// The pageLink function is also used to create the paging textbox.
+<span class="cstat-no" title="statement not covered" >				pageLink(currentPage);</span>
+			}
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (focused &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >focused.tabIndex === -1)</span> {
+				// One of the first/last or prev/next links was focused but
+				// is now disabled, so find something focusable
+<span class="cstat-no" title="statement not covered" >				focusableNodes = query('[tabindex="0"]', this.paginationNavigationNode);</span>
+<span class="cstat-no" title="statement not covered" >				if (focused === this.paginationPreviousNode || focused === this.paginationFirstNode) {</span>
+<span class="cstat-no" title="statement not covered" >					focused = focusableNodes[0];</span>
+				}
+				else <span class="cstat-no" title="statement not covered" >if (focusableNodes.length) {</span>
+<span class="cstat-no" title="statement not covered" >					focused = focusableNodes[focusableNodes.length - 1];</span>
+				}
+<span class="cstat-no" title="statement not covered" >				if (focused) {</span>
+<span class="cstat-no" title="statement not covered" >					focused.focus();</span>
+				}
+			}
+		},
+&nbsp;
+		_updatePaginationStatus: function (total) {
+			var count = this.rowsPerPage;
+			var start = Math.min(total, (this._currentPage - 1) * count + 1);
+			this.paginationStatusNode.innerHTML = string.substitute(this.i18nPagination.status, {
+				start: start,
+				end: Math.min(total, start + count - 1),
+				total: total
+			});
+		},
+&nbsp;
+		refresh: function (options) {
+			// summary:
+			//		Re-renders the first page of data, or the current page if
+			//		options.keepCurrentPage is true.
+&nbsp;
+			var self = this;
+			var page = options &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >options.keepCurrentPage </span>?
+<span class="branch-0 cbranch-no" title="branch not covered" >				Math.min(this._currentPage, Math.ceil(this._total / this.rowsPerPage)) </span>: 1;
+&nbsp;
+			this.inherited(arguments);
+&nbsp;
+			// Reset to first page and return promise from gotoPage
+			return this.gotoPage(page).then(function (results) {
+				// Emit on a separate turn to enable event to be used consistently for
+				// initial render, regardless of whether the backing store is async
+				setTimeout(function () {
+					on.emit(self.domNode, 'dgrid-refresh-complete', {
+						bubbles: true,
+						cancelable: false,
+						grid: self
+					});
+				}, 0);
+&nbsp;
+				return results;
+			});
+		},
+&nbsp;
+		_onNotification: function (rows, event, collection) {
+			var rowsPerPage = this.rowsPerPage;
+			var pageEnd = this._currentPage * rowsPerPage;
+			var needsRefresh = (event.type === 'add' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >event.index &lt; pageEnd)</span> ||
+				(event.type === 'delete' &amp;&amp; <span class="branch-3 cbranch-no" title="branch not covered" >event.previousIndex &lt; pageEnd)</span> ||
+				(event.type === 'update' &amp;&amp;
+					Math.floor(event.index / rowsPerPage) !== Math.floor(event.previousIndex / rowsPerPage));
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (needsRefresh) {
+				// Refresh the current page to maintain correct number of rows on page
+<span class="cstat-no" title="statement not covered" >				this.gotoPage(Math.min(this._currentPage, Math.ceil(event.totalLength / this.rowsPerPage)));</span>
+			}
+			// If we're not updating the whole page, check if we at least need to update status/navigation
+			else <span class="missing-if-branch" title="if path not taken" >I</span>if (collection === this._renderedCollection &amp;&amp; event.totalLength !== this._total) {
+<span class="cstat-no" title="statement not covered" >				this._updatePaginationStatus(event.totalLength);</span>
+<span class="cstat-no" title="statement not covered" >				this._updateNavigation(event.totalLength);</span>
+			}
+		},
+&nbsp;
+		renderQueryResults: function (results, beforeNode) {
+			var grid = this,
+				rows = this.inherited(arguments);
+&nbsp;
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (!beforeNode) {
+				if (this._topLevelRequest) {
+					// Cancel previous async request that didn't finish
+					this._topLevelRequest.cancel();
+					delete this._topLevelRequest;
+				}
+&nbsp;
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (typeof rows.cancel === 'function') {
+					// Store reference to new async request in progress
+					this._topLevelRequest = rows;
+				}
+&nbsp;
+				rows.then(function () {
+					<span class="missing-if-branch" title="else path not taken" >E</span>if (grid._topLevelRequest) {
+						// Remove reference to request now that it's finished
+						delete grid._topLevelRequest;
+					}
+				});
+			}
+&nbsp;
+			return rows;
+		},
+&nbsp;
+		insertRow: function () {
+			var oldNodes = this._oldPageNodes,
+				row = this.inherited(arguments);
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (oldNodes &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >row === oldNodes[row.id])</span> {
+				// If the previous row was reused, avoid removing it in cleanup
+<span class="cstat-no" title="statement not covered" >				delete oldNodes[row.id];</span>
+			}
+&nbsp;
+			return row;
+		},
+&nbsp;
+		gotoPage: function (page) {
+			// summary:
+			//		Loads the given page.  Note that page numbers start at 1.
+			var grid = this,
+				start = (this._currentPage - 1) * this.rowsPerPage;
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (!this._renderedCollection) {
+<span class="cstat-no" title="statement not covered" >				console.warn('Pagination requires a collection to operate.');</span>
+<span class="cstat-no" title="statement not covered" >				return when([]);</span>
+			}
+&nbsp;
+			if (this._renderedCollection.releaseRange) {
+				this._renderedCollection.releaseRange(start, start + this.rowsPerPage);
+			}
+&nbsp;
+			return this._trackError(function () {
+				var count = grid.rowsPerPage,
+					start = (page - 1) * count,
+					options = {
+						start: start,
+						count: count
+					},
+					results,
+					contentNode = grid.contentNode,
+					loadingNode,
+					oldNodes,
+					children,
+					i,
+					len;
+&nbsp;
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (grid.showLoadingMessage) {
+					cleanupContent(grid);
+					loadingNode = grid.loadingNode = domConstruct.create('div', {
+						className: 'dgrid-loading',
+						innerHTML: grid.loadingMessage
+					}, contentNode);
+				}
+				else {
+					// Reference nodes to be cleared later, rather than now;
+					// iterate manually since IE &lt; 9 doesn't like slicing HTMLCollections
+<span class="cstat-no" title="statement not covered" >					grid._oldPageNodes = oldNodes = {};</span>
+<span class="cstat-no" title="statement not covered" >					children = contentNode.children;</span>
+<span class="cstat-no" title="statement not covered" >					for (i = 0, len = children.length; i &lt; len; i++) {</span>
+<span class="cstat-no" title="statement not covered" >						oldNodes[children[i].id] = children[i];</span>
+					}
+				}
+&nbsp;
+				// set flag to deactivate pagination event handlers until loaded
+				grid._isLoading = true;
+&nbsp;
+				results = grid._renderedCollection.fetchRange({
+					start: start,
+					end: start + count
+				});
+&nbsp;
+				return grid.renderQueryResults(results, null, options).then(function (rows) {
+					cleanupLoading(grid);
+					// Reset scroll Y-position now that new page is loaded.
+					grid.scrollTo({ y: 0 });
+&nbsp;
+					<span class="missing-if-branch" title="else path not taken" >E</span>if (grid._rows) {
+						grid._rows.min = start;
+						grid._rows.max = start + count - 1;
+					}
+&nbsp;
+					results.totalLength.then(function (total) {
+						if (!total) {
+							<span class="missing-if-branch" title="if path not taken" >I</span>if (grid.noDataNode) {
+<span class="cstat-no" title="statement not covered" >								domConstruct.destroy(grid.noDataNode);</span>
+<span class="cstat-no" title="statement not covered" >								delete grid.noDataNode;</span>
+							}
+							// If there are no results, display the no data message.
+							grid.noDataNode = domConstruct.create('div', {
+								className: 'dgrid-no-data',
+								innerHTML: grid.noDataMessage
+							}, grid.contentNode);
+						}
+&nbsp;
+						// Update status text based on now-current page and total.
+						grid._total = total;
+						grid._currentPage = page;
+						grid._rowsOnPage = rows.length;
+						grid._updatePaginationStatus(total);
+&nbsp;
+						// It's especially important that _updateNavigation is called only
+						// after renderQueryResults is resolved as well (to prevent jumping).
+						grid._updateNavigation(total);
+					});
+&nbsp;
+					return results;
+				}, function (error) {
+					cleanupLoading(grid);
+					throw error;
+				});
+			});
+		}
+	});
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 20 2015 17:35:19 GMT+0200 (Mitteleuropäische Sommerzeit)</div>
+</div>
+
+<script src="../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

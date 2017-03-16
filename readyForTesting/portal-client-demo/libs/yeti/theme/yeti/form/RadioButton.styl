@@ -1,0 +1,23 @@
+// :copyright: Copyright 2012 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+.yeti .dijitRadio {
+    @extend .yeti .dijitCheckBox;
+    border-radius: 20px;
+}
+
+.yeti .dijitRadio input {
+    @extend .yeti .dijitCheckBox input;
+}
+
+.yeti .dijitRadioDisabled {
+    @extend .yeti .dijitCheckBoxDisabled;
+}
+
+.yeti .dijitRadio:before {
+    @extend .yeti .dijitCheckBox:before;
+}
+
+.yeti .dijitRadio.dijitRadioChecked:before {
+    @extend .yeti .dijitCheckBox.dijitCheckBoxChecked:before;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'dojo/on',
+            'dojo/_base/lang',
+            'test/data/dashboards',
+            'dojo/promise/all',
+            'portal/_base/store/PortalStore',
+            'dijit/layout/ContentPane',
+            'test/widgets/ContentWidget',
+            'dojo/_base/declare',
+            'dijit/_WidgetBase',
+            'dijit/_TemplatedMixin',
+            'dijit/_WidgetsInTemplateMixin',
+            'dijit/layout/BorderContainer',
+            'portal/_base/widgetWrappers/WidgetWrapper',
+            'portal/_base/wrapperMixins/RemoveAbleWrapperMixin',
+            'portal/_base/wrapperMixins/FullScreenAbleWrapperMixin',
+            'portal/_base/wrapperMixins/ResizeAbleWrapperMixin',
+            'portal/_base/wrapperMixins/MoveAbleWrapperMixin',
+            'portal/_base/wrapperMixins/TittleBarToggleMixin',
+            'portal/_base/wrapperMixins/EventWrapperMixin',
+            'yeti',
+            'dojo/domReady!'
+        ], function (on, lang, dashboards,all, PortalStore,ContentPane, ContentWidget,declare, WidgetBase, TemplatedMixin, WidgetsInTemplateMixin, BorderContainer,
+                     WidgetWrapper,RemoveAbleWrapperMixin,FullScreenAbleWrapperMixin,ResizeAbleWrapperMixin,MoveAbleWrapperMixin,TittleBarToggleMixin,EventWrapperMixin) {
+
+            PortalStore.setStore('memory');
+
+            ContentWidget = declare([ContentWidget],{
+                postCreate:function(){
+                    this.inherited(arguments);
+                    var _t=this;
+                    on(this.domNode,'click',function(){
+                        _t.emit('sample',{from:this.id});
+                    })
+                }
+            })
+            //WidgetWrapper already mixed wrapperMixins by default
+            var wrapper= new declare([WidgetWrapper])({
+                model: {
+                    id:'testId',
+                    widgetType:ContentWidget,
+                    label:'test widget',
+                    iconClass:'fa fa-users',
+                    config:{
+                        content:'success: set model to constructor'
+                    }
+                }
+            },'cp');
+            wrapper.startup();
+            on(wrapper,'sample',function(e){
+                alert(e.from);
+            })
+
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+<div id="cp" style="width: 500px;height: 500px;"></div>
+</body>
+</html>

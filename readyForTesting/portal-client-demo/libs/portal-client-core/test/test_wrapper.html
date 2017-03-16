@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'dijit/layout/ContentPane',
+            'test/widgets/ContentWidget',
+            'dojo/_base/declare',
+            'dijit/_WidgetBase',
+            'dijit/_TemplatedMixin',
+            'dijit/_WidgetsInTemplateMixin',
+            'dijit/layout/BorderContainer',
+            'portal/_base/common/Wrapper',
+            'yeti',
+            'dojo/domReady!'
+        ], function (ContentPane, ContentWidget,declare, WidgetBase, TemplatedMixin, WidgetsInTemplateMixin, BorderContainer, Wrapper) {
+            var wrapper= new declare([Wrapper],{
+                _buildInActions:function(){
+                    var actions=this.inherited(arguments);
+                    actions.push(
+                        {
+                            icon:'fa fa-bars',
+                            onClick:function(){
+                                alert('clicked 1');
+                            }
+                        }
+                    );
+                    return actions;
+                }
+            })({
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({content:'test content'})
+            },'cp');
+            wrapper.startup();
+
+            setTimeout(function(){
+                wrapper.set('instance',new ContentWidget({content:'instance changed'}))
+            },1000)
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp"></div>
+</body>
+</html>

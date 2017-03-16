@@ -1,0 +1,82 @@
+
+.messagingSystem:not(.dijitDialog),
+.messagingSystem:not(.dijitDialog) > * {
+  width: 100%;
+  height: 100%;
+}
+
+.messagingSystem {
+
+  .leftMenu.dijitContentPane {
+    width: 200px;
+    padding: 0;
+    background-color: #e7e7e7;
+  }
+
+  .leftMenu {
+
+    .dijitMenu {
+      width: 100%;
+      margin-top: 55px;
+      border: none;
+      box-shadow: none;
+      padding-top: 0px;
+      background-color: transparent;
+    }
+
+    .dijitMenuItem td {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+
+  .gridContainer.dijitContentPane {
+    padding: 0;
+  }
+
+  .gridContainer > * {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+  }
+
+  .gridContainer {
+
+    .selectorColumn {
+      width: 30px;
+    }
+
+    .senderColumn,
+    .dateColumn {
+      width: 200px;
+    }
+
+    .messageColumn {
+      white-space: nowrap;
+    }
+
+    .messagePreview {
+      color: darkgray;
+    }
+  }
+
+  .dijitDialogPaneContent {
+
+    .dijitContentPane > .dijitContentPane {
+      width: 600px;
+    }
+
+    .dijitTextBox {
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .dijitTextArea {
+      height: 300px;
+    }
+
+    .buttonsContainer {
+      text-align: right;
+    }
+  }
+}

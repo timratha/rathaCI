@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <link rel="stylesheet" id="themeStyles" href="../libs/dijit/themes/claro/claro.css">
+    <script type="text/javascript">
+        require(['yeti'],function(){
+            // request yeti first to patch the bug of yeti when load slower then portal.
+            // make the iconSupport.js already work
+            require([
+                'dojo/_base/declare',
+                'dojox/form/CheckedMultiSelect',
+                'dojo/data/ItemFileReadStore',
+                "dojo/store/Memory",
+                'portal/controllers/SelectItemsFilter',
+                'dojo/domReady!',
+                'xstyle/css!dojox/form/resources/CheckedMultiSelect.css'
+            ], function (declare, CheckedMultiSelect, ItemFileReadStore, Memory, SelectItemsFilter) {
+                    var stateStore = new Memory({
+                        data:[
+                            {name:"Alabama", id:"AL"},
+                            {name:"Alaska", id:"AK"},
+                            {name:"American Samoa", id:"AS"},
+                            {name:"Arizona", id:"AZ"},
+                            {name:"Arkansas", id:"AR"},
+                            {name:"Armed Forces Europe", id:"AE"},
+                            {name:"Armed Forces Pacific", id:"AP"},
+                            {name:"Armed Forces the Americas", id:"AA"},
+                            {name:"California", id:"CA"},
+                            {name:"Colorado", id:"CO"},
+                            {name:"Connecticut", id:"CT"},
+                            {name:"Delaware", id:"DE"}
+                        ]
+                    });
+
+                    var select = new (declare([CheckedMultiSelect,SelectItemsFilter]))({
+                        dropDown:true,
+                        multiple:true,
+                        labelAttr:"name",
+                        store: stateStore
+                    }, "cp");
+                select.startup();
+//                console.log(select.dropDownMenu.getChildren().map(function(item){return item.label;}))
+            });
+        })
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="claro"  style="margin: 0px;">
+    <select id="cp" ></select>
+</body>
+</html>

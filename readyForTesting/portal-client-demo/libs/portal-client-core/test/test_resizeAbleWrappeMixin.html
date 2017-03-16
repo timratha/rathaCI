@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        require([
+            'test/widgets/ContentWidget',
+            'portal/_base/common/Util',
+            'dojo/dom',
+            'test/data/dashboards',
+            'test/data/users',
+            'dojo/promise/all',
+            'portal/_base/store/PortalStore',
+            'dojo/_base/declare',
+            'portal/_base/widgetWrappers/WidgetWrapperBase',
+            'portal/_base/wrapperMixins/ResizeAbleWrapperMixin',
+            'portal/_base/wrapperMixins/MoveAbleWrapperMixin',
+            'portal/_base/wrapperMixins/SendableWrapperMixin',
+            'yeti',
+            'dojo/domReady!'
+        ], function (ContentWidget,Util, dom, dashboards,users,all, PortalStore,declare, WidgetWrapperBase,ResizeAbleWrapperMixin,MoveAbleWrapperMixin,SendableWrapperMixin) {
+
+            PortalStore.setStore('memory');
+            PortalStore.users._currentUser = users.basicUser;
+            all([
+                PortalStore.dashboards.installDashboard(dashboards.gridDash1),
+                PortalStore.dashboards.installDashboard(dashboards.rasterDash1),
+                PortalStore.dashboards.installDashboard(dashboards.freeDash1)
+            ]).then(function(){
+                var wrapper= new declare([WidgetWrapperBase,
+                    ResizeAbleWrapperMixin
+                ])({
+                    widgetId:'testId',
+                    model: {
+                        id:'testId',
+                        widgetType:ContentWidget,
+                        label:'test widget',
+                        iconClass:'fa fa-users',
+                        config:{
+                            style:'min-width:300px;max-width:800px;min-height:300px;max-height:600px;',
+                            content:'resize able wrapper mixin'
+                        }
+                    }
+                },'cp');
+                wrapper.startup();
+
+            });
+
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+<div id="cp" style="width: 500px;height: 500px;"></div>
+</body>
+</html>

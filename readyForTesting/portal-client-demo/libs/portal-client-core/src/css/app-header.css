@@ -1,0 +1,95 @@
+.hide {
+  display: none !important;
+}
+.app-header {
+  z-index: 999 !important;
+  background-color: #369;
+  color: #fff;
+}
+.app-header * {
+  box-sizing: border-box;
+}
+.app-header >* {
+  display: inline-block;
+  height: 100%;
+  top: 0px;
+}
+.app-header .left {
+  float: left;
+}
+.app-header .center {
+  text-align: center;
+}
+.app-header .right {
+  float: right;
+  border-left: 1px solid #ccc;
+}
+.app-header .nav-bar-toggle {
+  display: block;
+  cursor: pointer;
+}
+.app-header .nav-bar-toggle .fa-bars {
+  padding: 5px;
+/*border 1px solid grey*/
+  font-size: 20px;
+  margin: 5px 20px;
+}
+.app-header .brand {
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px 10px;
+}
+.app-header .header-menu {
+  padding: 10px;
+  vertical-align: middle;
+  position: relative;
+  box-sizing: border-box;
+/*padding ( ($header-height - $avatar-size ) /2) 10px;*/
+/*font-size $user-name-font-size;*/
+/*line-height $avatar-size*/
+/*.avatar-container*/
+/*display: inline-block;*/
+/*vertical-align: middle;*/
+/*.avatar*/
+/*display:  inline-block;*/
+/*width $avatar-size*/
+/*height $avatar-size*/
+/*border 1px solid $app-header-color - 20%*/
+/*border-radius ($avatar-size / 2)*/
+/*float left*/
+/*for icon*/
+/*line-height: 28px;*/
+/*text-align: center;*/
+/*font-size: 25px;*/
+/*.user-name*/
+/*padding 0px 10px*/
+/*.logout*/
+/*cursor pointer*/
+/*padding 0px 10px;*/
+}
+.app-header .header-menu .menu-icon {
+  font-size: 25px;
+  vertical-align: middle;
+}
+.app-header .header-menu .menu-label {
+  padding: 0 10px;
+}
+.app-header .header-menu >.drop-menu {
+  position: absolute;
+  top: 100%;
+  margin: -1px;
+  display: none;
+}
+.app-header .header-menu:hover>.drop-menu {
+  display: block;
+}
+.app-header .header-menu .fa-chevron-down {
+  font-size: 8px;
+}
+.app-header .header-menu.right>.drop-menu {
+  right: 0;
+}
+.app-header .header-menu.left>.drop-menu {
+  left: 0;
+}

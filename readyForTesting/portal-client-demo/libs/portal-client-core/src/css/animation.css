@@ -1,0 +1,18 @@
+.nav-bar.layout-left,
+.nav-bar.layout-left>.nav-group {
+  transition: width 0.5s;
+}
+.nav-bar+.layout-center {
+  transition: padding-left 0.5s;
+}
+.nav-bar.layout-right,
+.nav-bar.layout-right>.nav-group {
+  transition: width 0.5s;
+}
+.nav-bar+.layout-center {
+  transition: padding-left 0.5s;
+}
+/*.nav-item*/
+/*>.nav-group*/
+/*transition max-height 1s*/
+/*TODO use js instead css for animation.*/

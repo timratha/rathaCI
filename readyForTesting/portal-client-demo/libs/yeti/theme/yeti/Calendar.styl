@@ -1,0 +1,88 @@
+// :copyright: Copyright 2012 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+.yeti .dijitPopup .dijitCalendar {
+    margin-top: 2px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.yeti .dijitCalendar {
+    background-color: $grayLightest;
+    border-collapse: separate;
+    border-radius: $btnBorderRadius;
+    border: 1px solid rgba(0,0,0,0.2);
+    text-align: center;
+    padding: 8px;
+    font-size: $baseFontSize - 2px;
+}
+
+.yeti .dijitCalendarDateTemplate {
+    padding: 3px 7px;
+    background-color: $white;
+}
+
+.yeti .dijitCalendarDayLabelTemplate {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    font-weight: 500;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.yeti .dijitCalendarDateLabel {
+    vertical-align: middle;
+}
+
+.yeti .dijitCalendarPreviousMonth,
+.yeti .dijitCalendarNextMonth {
+    background-color: $otherMonthBackgroundColor; // #DFE8FF;
+    color: $otherMonthColor; // #0088CC;
+}
+
+.yeti .dijitCalendarSelectedDate {
+    background-color: $defaultAccentColor; // #0074CC;
+    color: $bodyBackground; // $white;
+}
+
+.yeti .dijitCalendarCurrentDate .dijitCalendarDateLabel {
+    text-decoration: underline;
+}
+
+.yeti .dijitCalendarSelectedYear {
+    font-size: 1.3em;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.yeti .dijitCalendar tr td:first-child {
+    border-left: none;
+}
+
+.yeti .dijitCalendarYearLabel {
+    margin-top: 8px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.yeti .dijitCalendarIncrementControl:before {
+    @extend .dijitIcon:before;
+}
+
+.yeti .dijitCalendarIncrease:before {
+    @extend .icon-arrow-right:before;
+}
+
+.yeti .dijitCalendarDecrease:before {
+    @extend .icon-arrow-left:before;
+}
+
+.yeti .dijitA11ySideArrow {
+    display: none;
+}
+
+.yeti .dijitCalendarMonthMenu .dijitCalendarMonthLabel {
+    @extend .yeti .dijitMenuItem;
+}
+
+.yeti .dijitCalendarMonthMenu .dijitCalendarMonthLabelHover {
+    @extend .yeti .dijitMenuItemHover;
+}
+

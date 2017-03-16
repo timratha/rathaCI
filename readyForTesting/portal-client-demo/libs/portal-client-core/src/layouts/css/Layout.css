@@ -1,0 +1,9 @@
+.Layout.locked .WidgetWrapperBase {
+  border: none;
+}
+.Layout.locked .WidgetWrapperBase .title-bar {
+  background: transparent;
+}
+.Layout.locked .WidgetWrapperBase .action-bar {
+  display: none;
+}

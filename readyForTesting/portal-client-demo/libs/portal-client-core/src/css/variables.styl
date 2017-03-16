@@ -1,0 +1,48 @@
+$header-height ?= 40px
+$footer-height ?=  40px
+
+$nav-icon-size ?= 20px
+$sidebar-small-size ?= 50px;
+$sidebar-full-size ?= 200px;
+
+$nav-item-bg-color  ?= #eee
+$nav-item-font-color ?= #336699
+
+$nav-item-bg-color-selected  ?= #336699
+$nav-item-font-color-selected  ?= #FFF
+
+$nav-item-bg-color-hover  ?= $nav-item-bg-color-selected
+$nav-item-font-color-hover  ?= $nav-item-font-color-selected
+
+$link-font-color ?= #336699
+$nav-bar-bg-color ?=  #eee
+$nav-bar-bg-img ?= none;//linear-gradient(to right, $nav-bar-bg-color  93%, $nav-bar-bg-color - 20% 100%);
+
+$app-body-bg-color ?= #FFF
+
+$app-header-color ?= #FFF
+$app-header-bgcolor ?= #336699
+$app-header-bg-img ?= none //linear-gradient(to bottom, $app-header-bgcolor  100%, $app-header-bgcolor - 100% 100%);
+
+$app-footer-color ?= #f3f3f3
+$app-footer-bg-img ?= linear-gradient(to top, $app-footer-color  93%, $app-footer-color - 20% 100%);
+
+$brand-font-size ?= $header-height - 10px
+$avatar-size ?= $header-height - 10px
+
+$top-bar-height ?= 40px
+
+hide()
+  display none !important
+.hide
+  display none !important
+
+highlight($color)
+  color $color
+  :hover
+    color:$color
+
+link($color)
+  cursor pointer
+/*  :hover
+      color:$nav-item-font-color-hover*/

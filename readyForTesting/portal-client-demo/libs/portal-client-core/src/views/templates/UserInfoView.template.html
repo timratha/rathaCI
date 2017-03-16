@@ -1,0 +1,32 @@
+<div>
+    <div class="breadCrumb" data-dojo-attach-point="header"><span class="root"><i class="fa fa-user" ></i>User ></span>  <span><i class="fa fa-user"></i>My Profile</span> </div>
+        <div data-dojo-type="dijit/form/Form" data-dojo-attach-point="userInfoForm"
+                class="userInfoForm">
+            <div class="form-table" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="fields_container">
+                <div class="form-field hide">
+                    <input type="text" name="id" class="field-input"   data-dojo-type="dijit/form/TextBox"  />
+                </div>
+            </div>
+            <div data-dojo-attach-point="err_msg"></div>
+            <div class="btn-bar" data-dojo-attach-point="btn_bar">
+                <button data-dojo-type="dijit/form/Button" data-dojo-attach-point="resetPwBtn" data-dojo-attach-event="click:resetPassword">Reset Password</button>
+                <button data-dojo-type="dijit/form/Button" class="primary" data-dojo-attach-event="click:save">
+                    <i  class="fa fa-spinner fa-spin saving_loader"></i>
+                    Save
+                </button>
+                <!--         <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="click:cancel">Cancel</button>-->
+            </div>
+        </div>
+    <div class="userPhoto" data-dojo-attach-point="userPhoto">
+        <img data-dojo-attach-point="userImage" class="userImage" style="display:none" />
+        <i data-dojo-attach-point="placeholderImage" class="placeholderImage fa fa-user" style="display:block" ></i>
+
+        <div class="dijit dijitReset dijitInline primary dijitButton fileUploadButton">
+            <span class="dijitReset dijitInline dijitButtonNode">Change</span>
+            <input type='file' data-dojo-attach-point="imageUpload"  class="uploadBtn"/>
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require(['yeti'],function() { // request yeti first to patch the bug of yeti when load slower then portal.
+            require([
+                'dojo/_base/lang',
+                'dojo/promise/all',
+                'test/data/applications',
+                'test/data/dashboards',
+                'test/data/users',
+                'dstore/Memory',
+                'portal',
+                'portal/_base/store/PortalStore',
+                'yeti',
+                'dojo/domReady!'
+            ], function (lang, all, applications, dashboards, users, Memory, portal, PortalStore) {
+
+                PortalStore.setStore('memory');
+                PortalStore.users._currentUser = users.PortalAdmin;
+
+                var app = applications.navApp;
+
+
+                var app1 = lang.clone(app);
+                app1.menu.position = 'left';
+                app1.label = 'Left Navigation';
+                app1.key = 'testApp1';
+
+                var app2 = lang.clone(app);
+                app2.menu.position = 'right';
+                app2.label = 'Right Navigation';
+                app2.key = 'testApp2';
+
+                var app3 = lang.clone(app);
+                app3.menu.position = 'top';
+                app3.label = 'Top Navigation';
+                app3.key = 'testApp3';
+
+                var app4 = lang.clone(app);
+                app4.menu.position = 'left';
+                app4.label = 'Responsive Navigation';
+                app4.key = 'testApp4';
+                app4.menu.menuSize="responsive";
+
+                var app5 = lang.clone(app);
+                app5.menu.position = 'left';
+                app5.label = 'Hidden Navigation';
+                app5.key = 'testApp5';
+                app5.menu.menuSize="hidden";
+
+
+                var app6 = lang.clone(app);
+                app6.menu.position = 'left';
+                app6.label = 'collapsed Navigation';
+                app6.key = 'testApp6';
+                app6.menu.menuSize="collapsed";
+
+                var app7 = lang.clone(app);
+                app7.menu.position = 'left';
+                app7.label = 'full Navigation';
+                app7.key = 'testApp7';
+                app7.menu.menuSize="full";
+
+                all([
+                    PortalStore.appStore.installApplication(app1),
+                    PortalStore.appStore.installApplication(app2),
+                    PortalStore.appStore.installApplication(app3),
+                    PortalStore.appStore.installApplication(app4),
+                    PortalStore.appStore.installApplication(app5),
+                    PortalStore.appStore.installApplication(app6),
+                    PortalStore.appStore.installApplication(app7)
+                ]).then(function () {
+                    var p = new portal({
+                        defaultApp: 'testApp1' //TODO
+                    }, 'app');
+                    p.startup();
+                });
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="app"></div>
+</body>
+</html>

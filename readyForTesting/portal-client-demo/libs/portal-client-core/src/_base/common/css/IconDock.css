@@ -1,0 +1,19 @@
+.IconDock {
+  color: #369;
+  background-color: #f7f7f7;
+}
+.IconDock .DockNode {
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  width: 40px;
+  line-height: 20px;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.IconDock .DockNode:hover {
+  color: #f7f7f7;
+  background-color: #369;
+}

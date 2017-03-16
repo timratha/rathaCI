@@ -1,0 +1,90 @@
+.app-view .breadCrumb {
+  padding: 10px 0;
+}
+.app-view .breadCrumb span {
+  vertical-align: middle;
+}
+.app-view .breadCrumb span i {
+  padding: 0 5px;
+}
+.app-view .breadCrumb span.root {
+  font-size: 2em;
+}
+.app-view .gridContainerTable {
+  border: 0;
+}
+.app-view .title-bar {
+  color: #369;
+  background-color: #eee;
+  line-height: 30px;
+  font-size: 14px;
+  position: relative;
+}
+.app-view .title-bar .title-icon {
+  margin-left: 5px;
+}
+.app-view .title-bar .title-text {
+  color: #333;
+  display: inline-block;
+  margin: 0px 5px;
+}
+.app-view .title-bar .action-bar {
+  display: inline-block;
+/*float: right;*/
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.app-view .title-bar .action-bar .action {
+  display: inline-block;
+  float: right;
+}
+.app-view .title-bar .action-bar .action .action-icon {
+  height: 20px;
+  width: 25px;
+  text-align: center;
+}
+.app-view .title-bar .action-bar .action:hover {
+  color: #eee;
+  background-color: #369;
+  border-radius: 2px;
+}
+.app-view .title-bar .hover-btn {
+  display: none;
+}
+.app-view .title-bar.small {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+}
+.app-view .title-bar.small >* {
+  display: none;
+}
+.app-view .title-bar.small .hover-btn {
+  display: block;
+  position: absolute;
+  line-height: 14px;
+  color: rgba(94,91,91,0.59);
+  background-color: #fff;
+  padding: 2px;
+  border-radius: 0 0 5px 0;
+  border-color: #ababab;
+  border-style: solid;
+  border-width: 0px 1px 1px 0px;
+}
+.app-view .title-bar.small:hover {
+  box-shadow: 1px 1px 5px 1px #ababab;
+}
+.app-view .title-bar.small:hover >* {
+  display: inline-block;
+}
+.app-view .title-bar.small:hover .hover-btn {
+  display: none;
+}
+.app-view .title-bar {
+  background-color: #fff;
+  border-bottom: 1px solid #d8d8d8;
+}
+.app-view >.instance-container {
+  height: 100%;
+}

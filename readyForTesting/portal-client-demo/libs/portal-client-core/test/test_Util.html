@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+<script type="text/javascript">
+    require([
+        'portal/_base/common/Util',
+        'dojo/domReady!'
+    ], function (Util) {
+        var simpleCompare=function(obj1,obj2){
+//            console.log(obj1,obj2,JSON.stringify(obj1) == JSON.stringify(obj2))
+            return JSON.stringify(obj1) == JSON.stringify(obj2);
+        }
+        simpleCompare(Util.period.parse('P1D'),{day:1});
+        simpleCompare(Util.period.parse('P1W'),{week:1});
+        simpleCompare(Util.period.parse('P1M'),{month:1});
+        simpleCompare(Util.period.parse('P1Y'),{year:1});
+        simpleCompare(Util.period.parse('PT1S'),{sec:1});
+        simpleCompare(Util.period.parse('PT1M'),{min:1});
+        simpleCompare(Util.period.parse('PT1H'),{hour:1});
+        simpleCompare(Util.period.parse('P1Y2M3DT4H5M11S'),{
+            year:1,
+            month:2,
+            day:3,
+            hour:4,
+            min:5,
+            sec:11
+        });
+
+        simpleCompare('P1D',Util.period.build({day:1}));
+        simpleCompare('P1W',Util.period.build({week:1}));
+        simpleCompare('P1M',Util.period.build({month:1}));
+        simpleCompare('P1Y',Util.period.build({year:1}));
+        simpleCompare('PT1S',Util.period.build({sec:1}));
+        simpleCompare('PT1M',Util.period.build({min:1}));
+        simpleCompare('PT1H',Util.period.build({hour:1}));
+        simpleCompare('P1Y2M3DT4H5M11S',Util.period.build({
+            year:1,
+            month:2,
+            day:3,
+            hour:4,
+            min:5,
+            sec:11
+        }));
+
+    });
+</script>
+</body>
+</html>

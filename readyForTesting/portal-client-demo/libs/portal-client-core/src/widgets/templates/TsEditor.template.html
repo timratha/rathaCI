@@ -1,0 +1,11 @@
+<div class="TsEditor">
+    <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="_splitterClass:dojox.layout.ToggleSplitter" data-dojo-attach-point="borderContainer">
+        <div data-dojo-attach-point="chartPaneNode" class="chartPane"></div>
+        <div data-dojo-type="dijit/layout/AccordionContainer"  data-dojo-attach-point="grids" data-dojo-props="region:'right',splitter:true" class="gridPaneContainer">
+        </div>
+        <div data-dojo-type='dijit/layout/ContentPane' data-dojo-props="region:'bottom'" data-dojo-attach-point="buttonBar" style="text-align: center;">
+            <div data-dojo-type='dijit/form/Button' data-dojo-attach-point="saveBtn" data-dojo-attach-event="click:_save" data-dojo-props="disabled:true" >Save</div>
+            <div data-dojo-type='dijit/form/Button' data-dojo-attach-event="click:close">Close</div>
+        </div>
+    </div>
+</div>

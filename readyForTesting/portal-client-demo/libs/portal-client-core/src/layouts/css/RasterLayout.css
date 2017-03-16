@@ -1,0 +1,24 @@
+.raster-layout {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+}
+.raster-layout .grids {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+.raster-layout .grids .cell {
+  border: 1px dashed rgba(130,223,250,0.37);
+  vertical-align: top;
+}
+.raster-layout .grids .cell .wrapper .titleBarContainer {
+  cursor: move;
+}
+.raster-layout .grids .dojoDndContainerOver {
+  border: 1px solid #82dffa;
+}
+.dojoDndAvatarHeader {
+  display: none !important;
+}

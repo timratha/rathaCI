@@ -1,0 +1,12 @@
+.breadCrumb {
+  padding: 10px 0;
+}
+.breadCrumb span {
+  vertical-align: middle;
+}
+.breadCrumb span i {
+  padding: 0 5px;
+}
+.breadCrumb span.root {
+  font-size: 2em;
+}

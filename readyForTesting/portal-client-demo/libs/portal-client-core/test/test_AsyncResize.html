@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        global ={};
+        require([
+            'test/widgets/ContentWidget',
+            'portal/_base/viewWrappers/ViewWrapper',
+            'dojo/dom-geometry',
+            'dijit/layout/_LayoutWidget',
+            'dojo/_base/declare',
+            'portal/_base/widgetWrappers/WidgetWrapperBase',
+            'portal/_base/store/PortalStore',
+            'portal/_base/widgetWrappers/DialogWidgetWrapper',
+            'test/data/users',
+            'yeti',
+            'dojo/domReady!'
+        ], function (ContentWidget, ViewWrapper, domGeometry, LayoutWidget, declare, WidgetWrapperBase, PortalStore, DialogWidgetWrapper, users) {
+
+            PortalStore.setStore('memory');
+            PortalStore.users._currentUser = users.basicUser;
+
+            var view = declare([LayoutWidget],{
+
+                _load:function(){
+                    var _t=this;
+                    setTimeout(function(){
+                        _t.w1 = new ContentWidget(
+                                {
+                                    content:'load async',
+                                    style:'border:black 1px solid'
+                                }
+                        );
+                        _t.w2 = new ContentWidget(
+                                {
+                                    content:'load async',
+                                    style:'border:black 1px solid'
+                                }
+                        );
+                        _t.w1.placeAt(_t.domNode);
+                        _t.w2.placeAt(_t.domNode);
+                        _t.emit('resize');
+                    },0)
+                },
+
+                postCreate:function(){
+                    this.inherited(arguments);
+                    this._load();
+                },
+
+                layout:function(){
+                    var size = domGeometry.getContentBox(this.domNode);
+                    if(this.w1){
+                        this.w1.resize({w:size.w/3,h:size.h/2})
+                    }
+                    if(this.w2){
+                        this.w2.resize({w:size.w/2,h:size.h/2})
+                    }
+                }
+
+
+
+            });
+            new ViewWrapper({
+                model: {
+                    viewType:view,
+                    label:'test view',
+                    iconClass:'fa fa-users',
+                    config:{
+                    }
+                }
+            },'cp1').startup();
+
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp1"></div>
+</body>
+</html>

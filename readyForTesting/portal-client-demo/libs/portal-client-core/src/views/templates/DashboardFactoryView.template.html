@@ -1,0 +1,37 @@
+<div class="DashboardFactoryView">
+    <div class="breadCrumb" data-dojo-attach-point="header"><span class="root"><i class="fa fa-user" ></i>User ></span><span><i class="fa fa-user"></i>Dashboard Factory</span></div>
+    <div data-dojo-type="dijit/form/Form" data-dojo-attach-point="DashboardCreationForm"
+         class="DashboardCreationForm">
+        <div class="form-table" data-dojo-attach-point="fields_container">
+            <div  class="form-field hide">
+                <label class="field-label">${nls.Key}</label>
+                <input class="field-input" data-dojo-type="dijit/form/ValidationTextBox"  data-dojo-attach-point="keyField"  type="text" name="key"  data-dojo-props="required:true,value:'dash'+new Date().valueOf()" />
+            </div>
+            <div  class="form-field">
+                <label class="field-label">${nls.IconClass}</label>
+                <input class="field-input" data-dojo-attach-point="iconSelect" />
+            </div>
+            <div  class="form-field">
+                <label class="field-label">${nls.Label}</label>
+                <input class="field-input" data-dojo-type="dijit/form/ValidationTextBox"  type="text" name="label"  data-dojo-props="required:true"/>
+            </div>
+            <div  class="form-field">
+                <label class="field-label">${nls.backgroundColor}</label>
+
+                <button class="field-input" data-dojo-attach-point="backgroundColorSelector" >
+                </button>
+            </div>
+            <div  class="form-field">
+                <label class="field-label">${nls.Layout}</label>
+                <div class="field-input" data-dojo-type="dijit/form/Select" data-dojo-attach-point="layoutType_field" name="layoutType" required="true"  ></div>
+            </div>
+        </div>
+        <div data-dojo-attach-point="layout_form_container" >
+        </div>
+        <div data-dojo-attach-point="err_msg"></div>
+        <div class="btn-bar" data-dojo-attach-point="btn_bar">
+            <button data-dojo-type="dijit/form/Button" class="primary" data-dojo-attach-event="click:createDashboard">${nls.Create}</button>
+            <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="click:cancel">${nls.Cancel}</button>
+        </div>
+    </div>
+</div>

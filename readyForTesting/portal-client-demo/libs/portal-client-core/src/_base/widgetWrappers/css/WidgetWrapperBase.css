@@ -1,0 +1,9 @@
+.WidgetWrapperBase {
+  border: 2px solid #e2e4ed;
+}
+.WidgetWrapperBase .title-bar:hover .action-bar {
+  display: inline-block;
+}
+.WidgetWrapperBase .title-bar .action-bar {
+  display: none;
+}

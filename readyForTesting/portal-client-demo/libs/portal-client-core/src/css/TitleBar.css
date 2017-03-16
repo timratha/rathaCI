@@ -1,0 +1,68 @@
+.title-bar {
+  color: #369;
+  background-color: #eee;
+  line-height: 30px;
+  font-size: 14px;
+  position: relative;
+}
+.title-bar .title-icon {
+  margin-left: 5px;
+}
+.title-bar .title-text {
+  color: #333;
+  display: inline-block;
+  margin: 0px 5px;
+}
+.title-bar .action-bar {
+  display: inline-block;
+/*float: right;*/
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.title-bar .action-bar .action {
+  display: inline-block;
+  float: right;
+}
+.title-bar .action-bar .action .action-icon {
+  height: 20px;
+  width: 25px;
+  text-align: center;
+}
+.title-bar .action-bar .action:hover {
+  color: #eee;
+  background-color: #369;
+  border-radius: 2px;
+}
+.title-bar .hover-btn {
+  display: none;
+}
+.title-bar.small {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+}
+.title-bar.small >* {
+  display: none;
+}
+.title-bar.small .hover-btn {
+  display: block;
+  position: absolute;
+  line-height: 14px;
+  color: rgba(94,91,91,0.59);
+  background-color: #fff;
+  padding: 2px;
+  border-radius: 0 0 5px 0;
+  border-color: #ababab;
+  border-style: solid;
+  border-width: 0px 1px 1px 0px;
+}
+.title-bar.small:hover {
+  box-shadow: 1px 1px 5px 1px #ababab;
+}
+.title-bar.small:hover >* {
+  display: inline-block;
+}
+.title-bar.small:hover .hover-btn {
+  display: none;
+}

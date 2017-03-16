@@ -1,0 +1,11 @@
+.ClearTextMixin .clearBtn {
+  right: 0px;
+  position: absolute;
+  color: #d3d3d3;
+  background-color: #fff;
+  padding: 0px 5px;
+  display: none;
+}
+.ClearTextMixin .clearBtn.show {
+  display: block;
+}

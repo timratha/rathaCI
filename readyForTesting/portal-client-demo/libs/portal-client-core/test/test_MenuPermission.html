@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        require(['yeti'],function() { // request yeti first to patch the bug of yeti when load slower then portal.
+            require([
+                'dojo/_base/lang',
+                'dojo/promise/all',
+                'test/data/applications',
+                'test/data/dashboards',
+                'test/data/users',
+                'dstore/Memory',
+                'portal',
+                'portal/_base/store/PortalStore',
+                'yeti',
+                'dojo/domReady!'
+            ], function (lang, all, applications, dashboards, users, Memory, portal, PortalStore) {
+
+                PortalStore.setStore('memory');
+                PortalStore.users._currentUser = users.basicUser;
+//                PortalStore.users._currentUser.functionalPermissions['permission.can.see.AllViews']=4;
+//                PortalStore.users._currentUser.functionalPermissions['permission.can.see.Layout']=4;
+//                PortalStore.users._currentUser.functionalPermissions['permission.can.see.Generic']=4;
+
+
+                var app = applications.menuPermissionApp;
+
+                all([
+                    PortalStore.appStore.installApplication(app)
+                ]).then(function () {
+                    var p = new portal({
+                        defaultApp: 'menuPermissionApp' //TODO
+                    }, 'app');
+                    p.startup();
+                });
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="app"></div>
+</body>
+</html>

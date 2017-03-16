@@ -1,0 +1,40 @@
+.small-bar-toggle
+  display none
+small-bar-toggle(side)
+  .small-bar-toggle
+    display block
+    width: 20px
+    height: 20px
+    padding:5px
+    margin-top 5px
+    background-color $nav-item-font-color
+    color: white
+    z-index: 999
+    text-align center
+    cursor pointer
+    if side == 'left'
+      border-radius 3px 0px 0px 3px
+      float:right
+    if side == 'right'
+      border-radius 0px 3px 3px 0px
+      float:left;
+
+
+  if side == 'left'
+    &.full .small-bar-toggle
+      arrow(left)
+    &.small .small-bar-toggle
+      arrow(right)
+  if side == 'right'
+    &.full .small-bar-toggle
+      arrow(left)
+    &.small .small-bar-toggle
+      arrow(right)
+
+arrow(direction)
+  if direction == 'left'
+    .fa-arrow-circle-left:before
+      content: "\f0a8";
+  if direction == 'right'
+    .fa-arrow-circle-left:before
+      content: "\f0a9";

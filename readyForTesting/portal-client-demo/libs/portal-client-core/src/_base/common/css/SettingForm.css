@@ -1,0 +1,15 @@
+.setting-form {
+  display: table;
+  padding: 10px;
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+.setting-form .form-field {
+  display: table-row;
+}
+.setting-form .form-field .form-label {
+  display: table-cell;
+}
+.setting-form .form-field .form-input {
+  display: table-cell;
+}

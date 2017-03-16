@@ -1,0 +1,21 @@
+.TittleBarToggleMixin
+  .titleBarContainer
+    min-height 5px; //left space to have drag handle
+  .collapseToggle
+    display block
+    opacity 0.2
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    line-height: 14px;
+    color rgba(94, 91, 91, 0.59);
+    background-color white;
+    padding: 2px;
+    border-radius: 0 0 5px 0 ;
+    border-color: #ABABAB;
+    border-style: solid;
+    border-width: 0px 1px 1px 0px;
+    cursor pointer
+    &:hover
+      opacity 1

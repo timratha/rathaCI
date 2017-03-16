@@ -1,0 +1,32 @@
+{
+  "name": "portal-client-core",
+  "author": "Zuhui Qiu",
+  "version": "0.1.7",
+  "versionDate":"2016-03-11 15:00",
+  "description": "Portal client core. Needed for portal clientside applications based on dojo",
+  "licenses": [
+    {
+      "type": "Commercial",
+      "url": ""
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab-srv.kisters.de:9000/giswebgroup/kisters-web-portal-core.git"
+  },
+  "directories": {
+    "tests": "../test",
+    "libs": "../libs"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compress": "^0.13.0",
+    "grunt-contrib-stylus": "^0.21.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-dojo": "^1.0.1"
+  },
+  "main": "main",
+  "homepage": "http://confluence.kisters.de/display/platform/KISTERS+Web+Portal",
+  "dojoBuild": "package.js"
+}

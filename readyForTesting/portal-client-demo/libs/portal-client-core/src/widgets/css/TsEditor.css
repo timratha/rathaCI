@@ -1,0 +1,43 @@
+.TsEditor .dijitAccordionText i.editedIcon {
+  cursor: help;
+  position: absolute;
+  right: 10px;
+  font-size: 1.2em;
+}
+.TsEditor .chartPane {
+  margin-right: 10px;
+}
+.TsEditor .gridPaneContainer {
+  width: 400px;
+}
+.TsEditor .gridPaneContainer .gridPane .addRow {
+  margin: 10px;
+  float: left;
+  cursor: pointer;
+  color: #369;
+}
+.TsEditor .gridPaneContainer .gridPane .field-x {
+  width: 140px;
+}
+.TsEditor .gridPaneContainer .gridPane .valueField {
+  text-align: right;
+}
+.TsEditor .gridPaneContainer .gridPane .dgrid-no-data,
+.TsEditor .gridPaneContainer .gridPane .dgrid-loading {
+  font-size: 14px;
+}
+.TsEditor .gridPaneContainer .gridPane .dropArea {
+  margin: 5px 0px;
+  height: 35px;
+  line-height: 40px;
+  font-size: 25px;
+  text-align: center;
+  color: #d3d3d3;
+  border: 2px #d3d3d3 dashed;
+}
+.TsEditor .gridPaneContainer .gridPane .dropArea.filehover {
+  border-color: #0c0 !important;
+}
+.TsEditor .dijitBorderContainer .dijitSplitterV .dojoxToggleSplitterIcon {
+  outline: none;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        require([
+            'dijit/TitlePane',
+            "dojo/dom",
+            "dojo/parser",	// scan page for widgets and instantiate them
+
+            "dijit/Menu",
+            "dijit/MenuItem",
+            "dijit/PopupMenuItem",
+            "dijit/CheckedMenuItem",
+            "dijit/RadioMenuItem",
+            "dijit/MenuSeparator",
+
+            "dijit/MenuBar",
+            "dijit/MenuBarItem",
+            "dijit/PopupMenuBarItem",
+
+            "dijit/ColorPalette",
+            "dijit/form/TextBox",
+
+            "dojo/domReady!",
+                "yeti"
+        ], function(TitlePane, dom,parser){
+            new TitlePane({
+                style:'width:500px;height:500px;'
+            },'cp1')
+
+            parser.parse();
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../src/css/portal.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+        <div id="cp1"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+// :copyright: Copyright 2012 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+// Body reset
+// -------------------------
+
+body {
+    margin: 0;
+    font-family: $baseFontFamily;
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    color: $textColor;
+    background-color: $bodyBackground;
+}
+
+
+// Links
+// -------------------------
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    color: $linkColorHover;
+    text-decoration: underline;
+}
+
+
+// Disabled
+// -------------------------
+
+.yeti .dijitReadOnly *,
+.yeti .dijitDisabled *,
+.yeti .dijitReadOnly,
+.yeti .dijitDisabled {
+    cursor: not-allowed;
+}
+
+// Focus
+// -------------------------
+.yeti :focus {
+    outline: 1px dotted $outlineColor;
+}
+
+.yeti .dijitFocusedLabel {
+    // For checkboxes or radio buttons, hatch border around the corresponding
+    // label, to indicate focus.
+    outline: 1px dotted $outlineColor;
+}

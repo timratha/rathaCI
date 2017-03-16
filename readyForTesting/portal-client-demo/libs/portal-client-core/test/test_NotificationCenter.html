@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <style>
+        html,body{
+            width: 100%;height: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+    require(['portal/PortalSupport'],function(){
+            require([
+                'dojo/topic',
+                'portal/_base/common/NotificationCenter',
+                'yeti',
+                'dojo/domReady!'
+            ], function (topic, NotificationCenter) {
+                topic.publish('portal/systemMessage',{
+                    type:'error',
+                    content:'show show sample error'
+                });
+                //TODO bug
+                topic.publish('portal/systemMessage',{
+                    type:'success',
+                    content:'show show sample success',
+                    seconds:2000,
+                })
+                window.openMsg=function(){
+                    topic.publish('portal/systemMessage',{
+                        type:'success',
+                        content:'show show sample success'
+                    })
+                }
+            });
+    })
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <button onclick="openMsg()">add</button>
+</body>
+</html>

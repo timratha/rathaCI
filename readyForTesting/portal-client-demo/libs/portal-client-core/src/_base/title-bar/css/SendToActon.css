@@ -1,0 +1,7 @@
+.SendToAction .sentToMenu {
+  display: none;
+}
+.SendToAction:hover .sentToMenu {
+  position: absolute;
+  display: block;
+}

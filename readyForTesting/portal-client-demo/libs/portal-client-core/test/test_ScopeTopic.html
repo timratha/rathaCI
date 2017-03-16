@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        // deps:['portal/PortalSupport'] already defined in dojoConfig
+
+        require([
+            'dojo/promise/all',
+            'test/data/users',
+            'portal',
+            'portal/_base/store/PortalStore',
+            'dojo/domReady!'
+        ], function (all, users, portal, PortalStore) {
+
+            PortalStore.setStore('memory');
+            PortalStore.users._currentUser = users.basicUser;
+
+            var app = {
+                "key": 'testApp',
+                "defaultView": "sampleView1",
+                "label": "Test Application2",
+                "editTime": "2015-08-12 18:08:44.597",
+                "creationTime": "2015-08-12 18:08:44.597",
+                "version": "0.0.9",
+                "applicationType": "Test Application",
+                "iconClass": null,
+                "packageName": "portal-core-test",
+                "menu": {
+                    "position": "left",
+                    "menuSize": "responsive",
+                    "items": [
+                        {
+                            "key": "sampleView1",
+                            "iconClass": "fa fa-sun-o",
+                            "label": "Sample view"
+                        }
+                    ]
+                },
+                "views": [
+                    {
+                        key:"sampleView1",
+                        version:"0.0.1",
+                        label:"Sample view",
+                        viewType:'portal/views/TemplateView',
+                        config:{
+                            templatePath:'test/views/templates/ImageTemplatedView.template.html' //Path to template (HTML file) for this widget relative to dojo.baseUrl.
+                        },
+                        iconClass:"fa fa-line-flash",
+                        widgets:[
+                            {
+                                "key":"selector",
+                                version:"0.0.1",
+                                "label":"Image Selector",
+                                "widgetType":"test/widgets/ImageSelector",
+                                "iconClass":"fa fa-line-chart",
+                                "config":{
+                                    options:[
+                                        {label:'',value:''},
+                                        {label:'1.jpg',value:'test/img/05_Electricity_2.jpg'},
+                                        {label:'2.jpg',value:'test/img/2488756769_d04884509a_o.jpg'}
+                                    ]
+                                }
+                            },
+                            {
+                                "key":"imgBox",
+                                version:"0.0.1",
+                                "label":"Image Box Chart",
+                                "widgetType":"test/widgets/ImageBox",
+                                "iconClass":"fa fa-line-chart",
+                                "config":{}
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var dash= {
+                "key": "freeDash1",
+                "editTime": "2015-07-07T16:50:18.834+08:00",
+                "creationTime": "2015-07-07T16:50:18.834+08:00",
+                "label": "test free Dash",
+                "version": "1",
+                "iconClass": "fa fa-angle-double-down",
+                "userID": "5295B972-53C1-44EF-82B4-0324DE6B114F",
+                "layout": {
+                    "config": {
+                    },
+                    "type": "portal/layouts/FreeLayout"
+                },
+                widgets:[
+                    {
+                        "key":"selector",
+                        version:"0.0.1",
+                        "label":"Image Selector",
+                        "widgetType":"test/widgets/ImageSelector",
+                        "iconClass":"fa fa-line-chart",
+                        "layoutChildConfig": {},
+                        "config":{
+                            options:[
+                                {label:'',value:''},
+                                {label:'1.jpg',value:'img/05_Electricity_2.jpg'},
+                                {label:'2.jpg',value:'img/2488756769_d04884509a_o.jpg'}
+                            ]
+                        }
+                    },
+                    {
+                        "key":"imgBox",
+                        version:"0.0.1",
+                        "label":"Image Box Chart",
+                        "widgetType":"test/widgets/ImageBox",
+                        "iconClass":"fa fa-line-chart",
+                        "layoutChildConfig": {},
+                        "config":{}
+                    }
+                ],
+                "config": {}
+            }
+
+            all([
+                PortalStore.appStore.installApplication(app),
+                PortalStore.dashboards.installDashboard(dash)
+            ]).then(function () {
+                var p = new portal({
+                    defaultApp: 'testApp' //TODO
+                }, 'app');
+                p.startup();
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  style="margin: 0px;">
+<div id="app"></div>
+</body>
+</html>

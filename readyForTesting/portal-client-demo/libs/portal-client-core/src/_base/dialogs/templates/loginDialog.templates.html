@@ -1,0 +1,26 @@
+<div >
+    <div data-dojo-type="dijit/Dialog" data-dojo-attach-point="dialog" class="login-dialog" data-dojo-props="closable:false,title:'Login'" id="loginDialog">
+        <div data-dojo-attach-point="msg_bar"></div>
+        <table class="dijitDialogPaneContentArea"  data-dojo-type="dijit/form/Form" data-dojo-mixins="dijit/_Container" data-dojo-attach-point="userForm">
+            <tr ><td>
+                <div style="padding: 5px 0px;">
+                <input type="text" data-dojo-type="dijit/form/ValidationTextBox" name="userName" data-dojo-attach-point="userName"
+                       data-dojo-props="placeHolder:'username',required:true"/>
+                </div>
+            </td></tr>
+            <tr><td>
+                <div style="padding: 5px 0px;">
+                <input type="password" data-dojo-type="dijit/form/ValidationTextBox" name="password" data-dojo-attach-point="password"
+                       data-dojo-props="placeHolder:'password',required:true" />
+                </div>
+            </td></tr>
+            <tr>
+                <td><div style="text-align: right; padding: 5px 0px;"><a data-dojo-attach-point="forget_password_btn">${nls.forgotPassword}</a></div></td>
+            </tr>
+        </table>
+        <div class="dijitDialogPaneActionBar">
+            <button data-dojo-type="dijit/form/Button"  class="primary" data-dojo-attach-event="click:login">${nls.Login}</button>
+           <!-- <button data-dojo-type="dijit/form/Button" data-dojo-attach-event="click:signUp">${nls.signUp}</button>-->
+        </div>
+    </div>
+</div>

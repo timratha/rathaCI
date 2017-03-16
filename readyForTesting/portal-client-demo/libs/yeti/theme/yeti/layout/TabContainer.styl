@@ -1,0 +1,132 @@
+// :copyright: Copyright 2012 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+// Common
+.yeti .dijitTabPaneWrapper {
+    border: 1px solid $borderColor;
+}
+
+.yeti .dijitTabContainerBottom-tabs,
+.yeti .dijitTabContainerTop-tabs,
+.yeti .dijitTabContainerLeft-tabs,
+.yeti .dijitTabContainerRight-tabs {
+    border: none;
+}
+
+.yeti .dijitTab {
+    color: $linkColor;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    margin-right: 2px;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: $baseLineHeight;
+    border: 1px solid transparent;
+    border-radius: $btnBorderRadius;
+}
+
+.yeti .dijitTabHover {
+    color: $linkColorHover;
+    background-color: $grayLightest;
+    border-color: $borderColor;
+}
+
+.yeti .dijitTabChecked {
+    color: $gray;
+    background-color: $white;
+    border-color: $borderColor;
+    cursor: default;
+}
+
+.yeti .dijitTabCloseButton {
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255,255,255,1);
+    opacity: 0.2;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.yeti .dijitTabCloseButtonHover {
+    opacity: 0.5;
+}
+
+.yeti .dijitTabCloseButton .dijitTabCloseText {
+    display: inline;
+}
+
+// Top
+.yeti .dijitTabContainerTop-container {
+    margin-top: -1px;
+}
+
+.yeti .dijitTabContainerTop .dijitTab {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.yeti .dijitTabContainerTop .dijitTabChecked {
+    border-bottom-color: transparent;
+}
+
+// Bottom
+.yeti .dijitTabContainerBottom-container {
+    margin-bottom: -1px;
+}
+
+.yeti .dijitTabContainerBottom .dijitTab {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.yeti .dijitTabContainerBottom .dijitTabChecked {
+    border-top-color: transparent;
+}
+
+// Tab strip buttons
+.yeti .tabStripButtonHover {
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+.yeti .dijitTabStripIcon:before {
+    @extend .dijitIcon:before;
+}
+
+.yeti .dijitTabStripSlideLeftIcon:before {
+    @extend .icon-chevron-left:before;
+}
+
+.yeti .dijitTabStripSlideRightIcon:before {
+    @extend .icon-chevron-right:before;
+}
+
+.yeti .dijitTabStripMenuIcon:before {
+    @extend .icon-chevron-down:before;
+}
+
+.yeti .dijitTabDisabled .dijitTabStripIcon {
+    opacity: 0.65;
+}
+
+// Nested
+.yeti .dijitTabContainerTop.dijitTabContainerNested {
+    margin-top: 5px;
+}
+
+.yeti .dijitTabContainerTop .dijitTabPaneWrapperNested {
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+}
+
+.yeti .dijitTabContainerBottom.dijitTabContainerNested {
+    margin-bottom: 5px;
+}
+
+.yeti .dijitTabContainerBottom .dijitTabPaneWrapperNested {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+

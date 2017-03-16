@@ -1,0 +1,9 @@
+.loaderNode {
+  background: no-repeat scroll center center #e9e9e9;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  opacity: 0.6;
+  border-radius: 4px;
+  display: none;
+}

@@ -1,0 +1,40 @@
+{
+  "name": "portal-client-core",
+  "private": true,
+  "main":"./src/main",
+  "dependencies": {
+    "dgrid": ">=0.4.0",
+    "dijit": ">=1.10.4",
+    "dojo": ">=1.10.4",
+    "dojox": ">=1.10.4",
+    "dstore": ">=1.1.0",
+    "font-awesome": "~4.4.0",
+    "highcharts": "git@gitlab-srv.kisters.de:giswebgroup/js-customlib-highcharts.git",
+    "jspdf": "git@gitlab-srv.kisters.de:giswebgroup/js-customlib-jspdf.git",
+    "put-selector": ">=0.3.6",
+    "util": "dojo-util#9d92e7014ae08af9717b251a113bc2f1cafe2d7e",
+    "xstyle": "git@gitlab-srv.kisters.de:giswebgroup/js-customlib-xstyle.git#master",
+    "yeti": "git@gitlab-srv.kisters.de:giswebgroup/themes-yeti.git#>=0.0.1",
+    "flat": "git@gitlab-srv.kisters.de:giswebgroup/themes-flat.git",
+    "rubyred": "git@gitlab-srv.kisters.de:giswebgroup/themes-rubyred.git",
+    "sandybrown": "git@gitlab-srv.kisters.de:giswebgroup/themes-sandybrown.git",
+    "seagreen": "git@gitlab-srv.kisters.de:giswebgroup/themes-seagreen.git",
+    "skyblue": "git@gitlab-srv.kisters.de:giswebgroup/themes-skyblue.git",
+    "orangered": "git@gitlab-srv.kisters.de:giswebgroup/themes-orangered.git",
+    "oceanblue": "git@gitlab-srv.kisters.de:giswebgroup/themes-oceanblue.git",
+    "grassgreen": "git@gitlab-srv.kisters.de:giswebgroup/themes-grassgreen.git",
+    "steelblue": "git@gitlab-srv.kisters.de:giswebgroup/themes-steelblue.git",
+    "angular":">=1.5.0"
+  },
+  "ignore": [
+    "/libs",
+    "/.gitignore",
+    "libs"
+  ],
+  "resolutions": {
+    "xstyle": "master",
+    "dstore": ">=1.1.0",
+    "font-awesome": "~4.4.0",
+    "jspdf": "3899436dd0"
+  }
+}

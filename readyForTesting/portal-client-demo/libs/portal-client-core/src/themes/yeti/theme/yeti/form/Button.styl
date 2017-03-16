@@ -1,0 +1,200 @@
+// :copyright: Copyright 2012 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+// Common styling
+//
+
+.yeti .dijitButtonNode {
+    border: none;
+}
+
+.yeti .dijitButtonNode * {
+    vertical-align: baseline;
+}
+
+.yeti .dijitButtonNode .dijitIcon {
+    // Keeps button heights with and without icons the same
+    line-height: $baseLineHeight * 0.65;
+}
+
+.yeti .dijitButton .dijitButtonNode,
+.yeti .dijitDropDownButton .dijitButtonNode,
+.yeti .dijitComboButton .dijitButtonNode,
+.yeti .dijitToggleButton .dijitButtonNode {
+    display: block; // Stretch to fill space
+    padding: 6px 14px;
+    margin-bottom: 0; // For input.btn
+    font-size: $baseFontSize;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    buttonBackground($btnBackground, $btnBackgroundHighlight, $grayDark, 0 1px 1px rgba(255,255,255,.75));
+    border: 1px solid $btnBorder;
+    border-bottom-color: darken($btnBorder, 10%);
+    border-radius: $btnBorderRadius;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);
+}
+
+// Colours
+.yeti .primary .dijitButtonNode {
+    buttonBackground($btnPrimaryBackground, $btnPrimaryBackgroundHighlight);
+}
+
+.yeti .warning .dijitButtonNode {
+    buttonBackground($btnWarningBackground, $btnWarningBackgroundHighlight);
+}
+
+.yeti .danger .dijitButtonNode {
+    buttonBackground($btnDangerBackground, $btnDangerBackgroundHighlight);
+}
+
+.yeti .success .dijitButtonNode {
+    buttonBackground($btnSuccessBackground, $btnSuccessBackgroundHighlight);
+}
+
+.yeti .info .dijitButtonNode {
+    buttonBackground($btnInfoBackground, $btnInfoBackgroundHighlight);
+}
+
+.yeti .inverse .dijitButtonNode {
+    buttonBackground($btnInverseBackground, $btnInverseBackgroundHighlight);
+}
+
+// Hover
+.yeti .dijitButtonHover .dijitButtonNode,
+.yeti .dijitDropDownButtonHover .dijitButtonNode,
+.yeti .dijitComboButton .dijitButtonNodeHover,
+.yeti .dijitComboButton .dijitDownArrowButtonHover,
+.yeti .dijitToggleButtonHover .dijitButtonNode {
+    text-decoration: none;
+    background-position: 0 -15px;
+    transition: background-position .1s linear;
+    background-color: darken($btnBackground, 20%);
+}
+
+.yeti .primary.dijitButtonHover .dijitButtonNode,
+.yeti .primary.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .primary.dijitComboButton .dijitButtonNodeHover,
+.yeti .primary.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .primary.dijitToggleButtonHover .dijitButtonNode {
+    background-color: darken($btnPrimaryBackground, 20%);
+}
+
+.yeti .warning.dijitButtonHover .dijitButtonNode,
+.yeti .warning.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .warning.dijitComboButton .dijitButtonNodeHover,
+.yeti .warning.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .warning.dijitToggleButtonHover .dijitButtonNode {
+    background-color: darken($btnWarningBackground, 20%);
+}
+
+.yeti .danger.dijitButtonHover .dijitButtonNode,
+.yeti .danger.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .danger.dijitComboButton .dijitButtonNodeHover,
+.yeti .danger.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .danger.dijitToggleButtonHover .dijitButtonNode {
+    background-color: darken($btnDangerBackground, 20%);
+}
+
+.yeti .success.dijitButtonHover .dijitButtonNode,
+.yeti .success.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .success.dijitComboButton .dijitButtonNodeHover,
+.yeti .success.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .success.dijitToggleButtonHover .dijitButtonNode {
+    background-color: darken($btnSuccessBackground, 20%);
+}
+
+.yeti .info.dijitButtonHover .dijitButtonNode,
+.yeti .info.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .info.dijitComboButton .dijitButtonNodeHover,
+.yeti .info.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .info.dijitToggleButtonHover .dijitButtonNode {
+    background-color: darken($btnInfoBackground, 20%);
+}
+
+.yeti .inverse.dijitButtonHover .dijitButtonNode,
+.yeti .inverse.dijitDropDownButtonHover .dijitButtonNode,
+.yeti .inverse.dijitComboButton .dijitButtonNodeHover,
+.yeti .inverse.dijitComboButton .dijitDownArrowButtonHover,
+.yeti .inverse.dijitToggleButtonHover .dijitButtonNode {
+    background-color: darken($btnInverseBackground, 20%);
+}
+
+// Active - pressed
+.yeti .dijitButtonActive .dijitButtonNode,
+.yeti .dijitComboButton .dijitButtonNodeActive,
+.yeti .dijitToggleButtonActive .dijitButtonNode,
+.yeti .dijitToggleButtonChecked .dijitButtonNode {
+    background-image: none;
+    outline: 0;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+}
+
+.yeti .dijitDropDownButtonActive .dijitButtonNode {
+    @extend .yeti .dijitDropDownButtonHover .dijitButtonNode;
+}
+
+// Disabled
+.yeti .dijitButtonDisabled .dijitButtonNode,
+.yeti .dijitDropDownButtonDisabled .dijitButtonNode,
+.yeti .dijitComboButtonDisabled .dijitButtonNode,
+.yeti .dijitToggleButtonDisabled .dijitButtonNode {
+    cursor: not-allowed;
+    background-image: none;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.yeti .dijitToggleButtonDisabled.dijitToggleButtonChecked .dijitButtonNode {
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+}
+
+// Content
+.yeti .dijitButtonText {
+    padding: 0 0.3em;
+    text-align: center;
+}
+
+// Arrow
+.yeti .dijitArrowButtonInner {
+    @extend .yeti .dijitButtonNode .dijitIcon;
+    height: auto;
+    width: auto;
+}
+
+.yeti .dijitArrowButtonInner:before {
+    @extend .dijitIcon:before;
+    @extend .icon-caret-down:before;
+}
+
+.yeti .dijitUpArrowButton .dijitArrowButtonInner:before {
+    @extend .icon-caret-up:before;
+}
+
+// Specific Styling
+//
+
+// Combo Box
+.yeti .dijitComboButton td.dijitStretch,
+.yeti .dijitComboButton td.dijitArrowButton {
+    display: table-cell;
+}
+
+.yeti .dijitComboButton .dijitArrowButton {
+    border-left-width: 0;
+    padding: 6px 10px;
+    border-radius: 0 $btnBorderRadius $btnBorderRadius 0;
+}
+
+.yeti .dijitComboButton .dijitArrowButton.dijitHasDropDownOpen {
+    @extend .yeti .dijitButtonActive .dijitButtonNode;
+}
+
+.yeti .dijitComboButton .dijitStretch {
+    border-radius: $btnBorderRadius 0 0 $btnBorderRadius;
+}
+
+.yeti table.dijitComboButton {
+    border-collapse: separate;
+}
+

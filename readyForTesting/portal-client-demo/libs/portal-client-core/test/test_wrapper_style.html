@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <style>
+        .fixSize{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <script type="text/javascript">
+
+        require([
+            'test/widgets/ContentWidget',
+            'portal/_base/common/Wrapper',
+            'yeti',
+            'dojo/domReady!'
+        ], function (ContentWidget,Wrapper) {
+            new Wrapper({
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({content:'behavior like a natural div element,just with title(optional)'})
+            },'cp1').startup();
+
+            new Wrapper({
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({content:'take the style from the domNode, wrapper size should be 200 * 200'})
+            },'cp2').startup();
+
+            new Wrapper({
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    content:'take the style from the domNode,wrapper size should be 200 * auto'
+                })
+            },'cp6').startup();
+
+
+            new Wrapper({
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    content:'take the style from the domNode,wrapper size should be auto * 200'
+                })
+            },'cp7').startup();
+
+            //TODO
+           new Wrapper({
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({content:'will take the class from the domNode,wrapper size should be .fixSize.width * .fixSize.height'})
+            },'cp3').startup();
+
+            new Wrapper({
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                class:'fixSize',
+                instance:new ContentWidget({
+                    content:'will take the class from param,wrapper size should be .fixSize.width * .fixSize.height '
+                })
+            },'cp8').startup();
+
+            new Wrapper({
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    style:'width:300px;height:300px;',
+                    content:'will have scroll bar if widget is bigger',
+                    resize:function(){
+                        // do nothing
+                    }
+                })
+            },'cp4').startup();
+
+            new Wrapper({
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                style:{
+                    width: '200px',
+                    height: '200px'
+                },
+                instance:new ContentWidget({
+                    content:'set style via constructor, wrapper size should be 200 * 200',
+                    resize:function(){
+                        // do nothing
+                    }
+                })
+            },'cp9').startup();
+
+            new Wrapper({
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                style:'width:200px;height:200px;',
+                instance:new ContentWidget({
+                    content:'set style via constructor, wrapper size should be 200 * 200',
+                    resize:function(){
+                        // do nothing
+                    }
+                })
+            },'cp10').startup();
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp1"></div>
+    <div id="cp2" style="width: 200px;height: 200px;"></div>
+    <div id="cp6" style="width: 200px;" ></div>
+    <div id="cp7" style="height: 200px;" ></div>
+    <div id="cp3" class="fixSize"></div>
+    <div id="cp8" ></div>
+    <div id="cp4" style="width: 200px;height: 200px;"></div>
+    <div id="cp9" ></div>
+    <div id="cp10" ></div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+define({
+    userName:'用户名',
+    email:'电子邮箱',
+    Address:'地址',
+    Message:'简介',
+    creationTime:'创建时间',
+    Timezone:'时区',
+    Language:'语言',
+    Theme:'主题'
+});

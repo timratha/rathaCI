@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <style>
+        html,body,#app{
+            width: 100%;height: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        require(['yeti'],function() {
+            require([
+                'dojo/promise/all',
+                'dstore/Memory',
+                'portal/_base/store/PortalStore',
+                'portal/_base/viewWrappers/ViewWrapper',
+                'dojo/domReady!',
+                'yeti'
+            ], function (all, Memory, PortalStore, ViewWrapper) {
+
+                PortalStore.setStore('memory');
+
+                var SampleTemplateView = {
+                    "key": "SampleTemplateView",
+                    "viewType": "test/views/SampleTemplateView",
+                    "label": "test template view",
+                    "iconClass": "fa fa-users",
+                    "widgets": [
+                        {
+                            "key": "leftPanel",
+                            "widgetType": "test/widgets/ContentWidget",
+                            "label": "test widget",
+                            "iconClass": "fa fa-users",
+                            "config": {
+                                "content": "content of widget_001"
+                            }
+                        },
+                        {
+                            "key": "rightPanel",
+                            "widgetType": "test/widgets/ContentWidget",
+                            "label": "test widget",
+                            "iconClass": "fa fa-users",
+                            "config": {
+                                "content": "content of widget_002"
+                            }
+                        }
+                    ]
+                };
+                PortalStore.appStore.installView(SampleTemplateView).then(function (view) {
+                    new ViewWrapper({
+                        viewId: view.id
+                    }, 'cp1').startup();
+                });
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+        <div id="cp1" style="height: 500px;width: 500px;"></div>
+</body>
+</html>

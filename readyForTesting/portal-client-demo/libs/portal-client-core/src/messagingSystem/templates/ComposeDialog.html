@@ -1,0 +1,26 @@
+<div class="${baseClass} dijitDialog" role="dialog" aria-labelledby="dialogCompose_title">
+    <div data-dojo-attach-point="titleBar" class="dijitDialogTitleBar">
+		<span data-dojo-attach-point="titleNode" class="dijitDialogTitle" id="dialogCompose_title"
+              role="header" level="1"></span>
+		<span data-dojo-attach-point="closeButtonNode" class="dijitDialogCloseIcon"
+              data-dojo-attach-event="ondijitclick: onCancel" title="Close" role="button" tabIndex="-1">
+			<span data-dojo-attach-point="closeText" class="closeText" title="Close">x</span>
+		</span>
+    </div>
+    <div data-dojo-attach-point="containerNode" class="dijitDialogPaneContent">
+        <div data-dojo-type="dijit/layout/ContentPane">
+            <div data-dojo-type="dijit/layout/ContentPane">
+                <input data-dojo-type="dojox/form/MultiComboBox" required="true" autocomplete="false" data-dojo-attach-point="recipientsCombobox" placeholder="${nls.to}" title="${nls.to}">
+            </div>
+            <div data-dojo-type="dijit/layout/ContentPane">
+                <input data-dojo-type="dijit/form/TextBox" data-dojo-attach-point="subjectTextbox" placeholder="${nls.subject}" title="${nls.subject}">
+            </div>
+            <div data-dojo-type="dijit/layout/ContentPane">
+                <textarea data-dojo-type="dijit/form/SimpleTextarea" data-dojo-attach-point="messageTextbox" title="${nls.message}"></textarea>
+            </div>
+            <div data-dojo-type="dijit/layout/ContentPane" class="buttonsContainer">
+                <button data-dojo-type="dijit/form/Button" data-dojo-attach-point="sendButton" iconClass="fa fa-share">${nls.send}</button>
+            </div>
+        </div>
+    </div>
+</div>

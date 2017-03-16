@@ -1,0 +1,19 @@
+.DijitRegistryPane {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 9999999;
+  background-color: #fff;
+  padding: 20px;
+  height: 400px;
+  width: 500px;
+  overflow: auto;
+  box-shadow: 1px 1px 10px 1px #808080;
+}
+.DijitRegistryPane .errorMax {
+  color: #f00;
+}
+.DijitRegistryPane .error {
+  background-color: #f00;
+  color: #fff;
+}

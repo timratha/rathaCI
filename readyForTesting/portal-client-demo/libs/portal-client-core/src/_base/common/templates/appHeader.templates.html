@@ -1,0 +1,28 @@
+<div class="app-header layout-top" >
+    <div class="left">
+
+        <div class="left nav-bar-toggle" data-dojo-attach-event="click:toggleNavBar" data-dojo-attach-point="nav_bar_toggle">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div data-dojo-attach-point="applications"></div>
+    </div>
+
+    <div class="right header-menu">
+        <span class="user-info">
+            <i class="menu-icon fa fa-user"></i>
+            <span class="menu-label user-name" data-dojo-attach-point="user_name"><i class="fa fa-refresh fa-spin"></i></span>
+            <i class="fa fa-chevron-down"></i>
+        </span>
+        <div data-dojo-attach-point="userInfo_drop_menu" data-dojo-type="dijit/DropDownMenu" class="drop-menu" >
+            <!--<div data-dojo-type="dijit/MenuItem" data-dojo-props="iconClass:'fa fa-users'" data-dojo-attach-point="user_management_menu">User Management</div>-->
+            <div data-dojo-type="dijit/MenuItem" data-dojo-props="iconClass:'fa fa-inbox'" data-dojo-attach-point="messaging_system_menu">Messages</div>
+            <div data-dojo-type="dijit/MenuItem" data-dojo-props="iconClass:'fa fa-user'" data-dojo-attach-point="user_profile_menu">My Profile</div>
+            <div data-dojo-type="dijit/MenuItem" data-dojo-props="iconClass:'fa fa-th'" data-dojo-attach-point="user_dashboards_menu">Dashboards</div>
+            <div data-dojo-type="dijit/MenuSeparator"></div>
+            <div data-dojo-type="dijit/MenuItem" data-dojo-props="iconClass:'fa fa-power-off'" data-dojo-attach-point="logout_menu">Logout</div>
+
+        </div>
+    </div>
+    <div data-dojo-attach-point="dashboards"></div>
+
+</div>

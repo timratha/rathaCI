@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <style>
+        html,body,#app{
+            width: 100%;height: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        require(['yeti'],function() {
+            require([
+                'portal/_base/widgetWrappers/WidgetWrapperBase',
+                'dojo/promise/all',
+                'dstore/Memory',
+                'portal/_base/store/PortalStore',
+                'portal/_base/viewWrappers/ViewWrapper',
+                'dojo/domReady!',
+                'yeti'
+            ], function (WidgetWrapperBase,all, Memory, PortalStore, ViewWrapper) {
+
+                PortalStore.setStore('memory');
+
+                PortalStore.appStore.installWidget( {
+                    widgetType:'test/widgets/ContentWidget',
+                    label:'test widget',
+                    iconClass:'fa fa-users',
+                    config:{
+                        content:'success: load model from widget id, and content will be sync'
+                    }
+                }).then(function(w){
+
+                    var wp1 = new WidgetWrapperBase({
+                        widgetId: w.id
+                    },'cp1');
+                    wp1.startup();
+                });
+
+                var SampleTemplateView = {
+                    "key": "SampleTemplateView",
+                    "viewType": "test/views/SampleTemplateView",
+                    "label": "test template view",
+                    "iconClass": "fa fa-users",
+                    "widgets": [
+                        {
+                            "key": "leftPanel",
+                            "widgetType": "test/widgets/ContentWidget",
+                            "label": "test widget",
+                            "iconClass": "fa fa-users",
+                            "config": {
+                                "content": "content of widget_001"
+                            }
+                        },
+                        {
+                            "key": "rightPanel",
+                            "widgetType": "test/widgets/ContentWidget",
+                            "label": "test widget",
+                            "iconClass": "fa fa-users",
+                            "config": {
+                                "content": "content of widget_002"
+                            }
+                        }
+                    ]
+                };
+                PortalStore.appStore.installView(SampleTemplateView).then(function (view) {
+                    var w=new ViewWrapper({
+                        autoLoad:false,
+                        viewId: view.id
+                    }, 'cp2');
+                    w.startup();
+                    w.load();
+                });
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+        <div id="cp1" style="height: 500px;width: 500px;float:left;margin:10px;"></div>
+        <div id="cp2" style="height: 500px;width: 500px;float:left;margin:10px;"></div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+// :copyright: Copyright 2012 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+// General
+.yeti .dijitSlider {
+    color: $grayLight;
+}
+
+.yeti .dijitSliderRemainingBar {
+    border: none;
+    background-image: $barEmptyBackgroundImage;
+    background-color: $backgroundColor;
+    box-shadow: inset 2px 1px 2px rgba(0,0,0,.1);
+}
+
+.yeti .dijitSliderProgressBar {
+    border: none;
+    background-color: $defaultAccentColor;
+    background-image: $barFullBackgroundImage;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+}
+
+.yeti .dijitSliderImageHandle {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background-color: $white;
+}
+
+.yeti .dijitRuleMark {
+    border-color: $grayLight;
+}
+
+// Horizontal
+.yeti .dijitSliderBarH {
+    height: 1em;
+}
+
+.yeti .dijitSliderImageHandleH {
+    box-shadow: 1px 0 2px rgba(0, 0, 0, 0.15);
+    width: 11px;
+    height: 1.5em;
+}
+
+.yeti .dijitSliderBumperH {
+    @extend .yeti .dijitSliderRemainingBar;
+    height: 1em;
+}
+
+.yeti .dijitSliderBumperH.dijitSliderRightBumper {
+    border-bottom-right-radius: $btnBorderRadius;
+    border-top-right-radius: $btnBorderRadius;
+    margin-left: -4px; // To hide box shadow
+    padding-right: (@margin-left * -1);
+}
+
+.yeti .dijitSliderBumperH.dijitSliderLeftBumper {
+    @extend .yeti .dijitSliderProgressBar;
+    border-bottom-left-radius: $btnBorderRadius;
+    border-top-left-radius: $btnBorderRadius;
+}
+
+.yeti .dijitRuleLabelsContainerH {
+    padding-bottom: 5px;
+}
+
+// Vertical
+.yeti .dijitSliderBarV {
+    width: 1em;
+}
+
+.yeti .dijitSliderV .dijitSliderRemainingBar {
+    border: none;
+    background-image: $barEmptyBackgroundImage;
+    background-color: $backgroundColor;
+    box-shadow: inset 2px -2px 2px rgba(0,0,0,.1);
+}
+
+.yeti .dijitSliderV .dijitSliderProgressBar {
+    border: none;
+    background-image: $barFullVerticalBackgroundImage;
+    background-color: $defaultAccentColor;
+    box-shadow: inset -1px 0 0 rgba(0,0,0,.15);
+}
+
+.yeti .dijitSliderImageHandleV {
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+    width: 1.5em;
+    height: 11px;
+}
+
+.yeti .dijitSliderBumperV {
+    @extend .yeti .dijitSliderV .dijitSliderRemainingBar;
+    width: 1em;
+}
+
+.yeti .dijitSliderBumperV.dijitSliderTopBumper {
+    border-top-left-radius: $btnBorderRadius;
+    border-top-right-radius: $btnBorderRadius;
+    margin-bottom: -4px; // To hide box shadow
+    padding-top: (@margin-bottom * -1);
+}
+
+.yeti .dijitSliderBumperV.dijitSliderBottomBumper {
+    @extend .yeti .dijitSliderV .dijitSliderProgressBar;
+    border-bottom-left-radius: $btnBorderRadius;
+    border-bottom-right-radius: $btnBorderRadius;
+}
+
+.yeti .dijitRuleLabelsContainerV {
+    margin: 0 5px;
+}
+
+// Disabled
+.yeti .dijitSliderDisabled {
+    opacity: 0.65;
+}

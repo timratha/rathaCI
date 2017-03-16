@@ -1,0 +1,223 @@
+//TODO consider about color, maybe set by theme will be better. now color of yeti is black ,is not good
+
+$nav-menu-background-color= #eee
+$nav-menu-color= #369
+$label-min-width = 120px;
+.hide
+  display none !important; //TODO move this to common
+
+toggle(direction)
+  if direction == 'left'
+    text-align right
+
+  if direction == 'right'
+    text-align left
+
+collapse-toggle(side)
+  .collapse-toggle
+    display block
+    z-index: 999
+    text-align center
+    cursor pointer
+    background-color inherit
+    color inherit
+    line-height: 20px;
+    padding: 5px 10px;
+    .toggle-icon>i.fa:before
+      display: inline-block;
+      font-size: 14px;
+      width: 20px;
+      text-align: center;
+      vertical-align: middle;
+      height: 20px;
+      content: "\f0c9";
+      line-height 20px;
+    if side == 'left'
+      toggle('left')
+    if side == 'right'
+      toggle('right')
+  if side == 'left'
+    &.collapsed
+      .navMainMenuItem.navMenuItem>.navMenuItemLabel
+        display  none
+      .collapse-toggle
+        text-align center
+  if side == 'right'
+    &.collapsed
+      .navMainMenuItem.navMenuItem>.navMenuItemLabel
+        display  none
+      .collapse-toggle
+        text-align center
+
+
+
+
+
+select-marker(side)
+  if side == 'left'
+    .fa.selectedMarker
+      position: absolute; // no space for it.
+      right: 0px;
+      display inline-block
+      &:after
+        content: "\f0d9";
+  if side == 'right'
+    .fa.selectedMarker
+      position: absolute;
+      left: 0px;
+      display inline-block
+      &:after
+        content: "\f0da";
+
+.navigation-bar
+  background-color: $nav-menu-background-color;
+  color: $nav-menu-color
+.navMenu
+  border-radius 2px
+  border none
+  box-shadow none
+  margin 0px;
+  color inherit
+  background-color: inherit;
+  .groupName
+    display none
+    background: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-bottom: 1px solid lightgray;
+    color: grey;
+    font-weight: bolder;
+    white-space: nowrap;
+  .navMenuItem
+    .navMenuItemNode
+      line-height 20px;
+      padding 10px 10px
+      white-space: nowrap;
+      .navMenuItemIcon
+        display inline-block
+        font-size: 20px;
+        width: 20px;
+        text-align: center;
+        vertical-align middle
+      .navMenuItemLabel
+        display inline-block
+        vertical-align middle
+        font-size 14px;
+        padding-left 10px;
+      .selectedMarker
+        display none;
+        line-height: inherit;
+    .subMenuContainer
+      display none
+      box-sizing border-box
+      padding-left 25px;
+      .navMenuItem .navMenuItemLabel
+        min-width $label-min-width - 25 ;
+  .navMenuItem
+    cursor pointer
+    position relative
+    color inherit
+    background-color inherit
+    padding  1px 0px; //make select and hover different.
+    .subMenuIndicator
+      display none
+    &.selected
+    &>.navMenuItemNode:hover
+      color: $nav-menu-background-color;
+      background-color: $nav-menu-color;
+    &.showSubMenu>.subMenuContainer
+    &.childSelected>.subMenuContainer
+      display block
+
+
+side-bar(side)
+  .navMenuItem
+    .subMenuIndicator>i.fa:after
+        content: "\f054";
+    &.showSubMenu .subMenuIndicator>i.fa:after
+      content: "\f078";
+    &.hasSubMenu>.navMenuItemNode>.subMenuIndicator
+        display inline-block
+    &.navMainMenuItem>.navMenuItemNode .navMenuItemLabel
+        min-width $label-min-width;
+    .subMenuContainer
+      .navSubMenu
+        border-left 1px dotted $nav-menu-color
+  collapse-toggle(side)
+  .navMenuItem.selected>.navMenuItemNode
+    select-marker(side)
+  &.collapsed
+    overflow: visible;
+    .navMainMenuItem
+      &.hasSubMenu>.navMenuItemNode>.subMenuIndicator
+        display none
+      &>.navMenuItemNode>.navMenuItemLabel
+        display none;
+      &>.subMenuContainer
+        display none
+        position absolute
+        background-color $nav-menu-background-color
+        top 0
+        {side} 100%
+        padding-left 0px;
+        if side == 'left'
+          box-shadow  1px 1px 5px 1px lightgray;
+        if side == 'right'
+          box-shadow  -1px 1px 5px 1px lightgray;
+      &:hover>.subMenuContainer
+        display block
+        .groupName
+          display block
+        .navSubMenu
+          border none
+      &.childSelected
+        color: $nav-menu-background-color;
+        background-color: $nav-menu-color;
+        &>.navMenuItemNode
+          select-marker(side)
+
+/*Top nav bar*/
+top-bar()
+  overflow: visible;
+  .collapse-toggle
+    display none
+  .navMainMenuItem.navMenuItem
+    display inline-block
+    padding 0px 1px //make select and hover different.
+    &.hasSubMenu>.navMenuItemNode>.subMenuIndicator
+      display inline-block
+      >i.fa:after
+        content: "\f078";
+    &>.navMenuItemNode
+      .navMenuItemIcon
+        font-size 24px
+    &>.subMenuContainer
+      background-color $nav-menu-background-color
+      display none
+      position absolute
+      top 100%
+      left 0
+      padding-left 0px;
+      box-shadow  1px 1px 5px 1px lightgray;
+    &:hover>.subMenuContainer
+      display block;
+    &.childSelected
+      color: $nav-menu-background-color;
+      background-color: $nav-menu-color;
+
+
+
+
+
+.navigation-bar.dijitAlignTop
+  top-bar()
+
+.navigation-bar.dijitAlignLeft
+  side-bar('left')
+
+.navigation-bar.dijitAlignRight
+  side-bar('right')
+
+
+
+

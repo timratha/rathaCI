@@ -1,0 +1,11 @@
+.nav-bar
+  for side in 'left' 'right'
+    &.layout-{side},&.layout-{side}>.nav-group
+      transition width 0.5s
+    &+.layout-center
+      transition padding-left 0.5s
+
+/*.nav-item*/
+  /*>.nav-group*/
+    /*transition max-height 1s*/
+    /*TODO use js instead css for animation.*/

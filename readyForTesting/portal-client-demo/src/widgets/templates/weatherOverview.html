@@ -1,0 +1,44 @@
+<div data-dojo-attach-point="divContainer" class="${baseClass}">
+    <div class="divWeatherOverview" data-dojo-attach-point="divWeatherOverview">
+        <table style='font-family:Arial;'>
+            <tr>
+                <th colspan='2' style='font-size: 12pt; text-align: left' data-dojo-attach-point="header">
+                    <span data-dojo-attach-point="header"></span>
+                </th>
+            </tr>
+            <tr>
+                <td>&nbsp; &nbsp <span data-dojo-attach-point="image"></span> <br>
+                </td>
+                <td style='font-size: 16pt; font-weight: bold'>
+                    <br><br>
+                    <span data-dojo-attach-point="temp"></span>  ºC <br>
+                    <span data-dojo-attach-point="prognose"></span> <br>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td><span data-dojo-attach-point="nlsWind"></span></td>
+                <td>
+                    <span data-dojo-attach-point="windSpeed"></span> m/s. &nbsp;&nbsp;
+                    <span data-dojo-attach-point="windName"></span> . &nbsp;&nbsp;
+                    <span data-dojo-attach-point="windSpeedName"></span> . &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span data-dojo-attach-point="highTemperature"></span>
+                </td>
+                <td> <span data-dojo-attach-point="maxTemperature"></span> º C <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span data-dojo-attach-point="lowTemperature"></span>
+                </td>
+                <td> <span data-dojo-attach-point="minTemperature"></span> º C <br>
+            </tr>
+        </table>
+    </div>
+</div>

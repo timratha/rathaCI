@@ -1,0 +1,37 @@
+// :copyright: Copyright 2012 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+
+.yeti .dijitSelect {
+    border: none;
+    color: $gray;
+    transition: border linear .2s, box-shadow linear .2s;
+}
+
+.yeti .dijitSelect .dijitButtonNode {
+    @extend .yeti .dijitComboBox .dijitButtonNode;
+}
+
+.yeti .dijitSelect .dijitButtonNode.dijitArrowButton {
+    @extend .yeti .dijitComboBox .dijitButtonNode.dijitArrowButton;
+}
+
+.yeti .dijitSelect .dijitButtonContents {
+    background-color: $inputBackground;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    border-radius: $inputBorderRadius 0 0 $inputBorderRadius;
+    border: 1px solid $inputBorder;
+}
+
+// Disabled
+.yeti .dijitSelect.dijitSelectDisabled .dijitButtonContents {
+    @extend .yeti .dijitTextBoxDisabled;
+}
+
+.yeti .dijitSelectDisabled .dijitButtonNode {
+    @extend .yeti .dijitComboBoxDisabled .dijitButtonNode;
+}
+
+.yeti .dijitSelectDisabled .dijitButtonContents .dijitButtonText {
+    opacity: 0.5;
+}

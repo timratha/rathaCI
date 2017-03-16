@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <style>
+        .w3{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <script type="text/javascript">
+
+        require([
+            'dojo/_base/lang',
+            'dojo/date/locale',
+            'dojo/date',
+            'dijit/form/NumberTextBox',
+            'portal/_base/store/PortalStore',
+            'portal/widgets/TsEditor',
+            'dojo/_base/declare',
+            'portal/_base/widgetWrappers/WidgetWrapper',
+            'portal/_base/wrapperMixins/ResizeAbleWrapperMixin',
+            'portal/_base/wrapperMixins/FullScreenAbleWrapperMixin',
+            'portal/_base/widgetWrappers/DialogWidgetWrapper',
+            'dstore/Memory',
+            'dstore/Trackable',
+            'dojo/_base/array',
+            'yeti',
+            'dojo/domReady!'
+        ], function (lang, locale, date, NumberTextBox, PortalStore, TsEditor,declare,
+                     WidgetWrapper,ResizeAbleWrapperMixin, FullScreenAbleWrapperMixin, DialogWidgetWrapper, Memory, Trackable, array) {
+
+
+            PortalStore.setStore('memory');
+
+
+
+            var createRandomData = function (options) {
+                var startDate = (options && options.startDate) || new Date('2010-11-01');
+                var endDate = (options && options.endDate) || new Date('2014-12-01');
+                var period = (options && options.period) || 24 * 3600 * 1000;
+                startDate = startDate.valueOf();
+                endDate = endDate.valueOf();
+
+                var data = [];
+                for (var d = startDate; d < endDate; d += period) {
+                    data.push([
+                        new Date(d).getTime(),
+                        parseFloat((Math.random() * 10).toFixed(2)),
+
+                    ])
+                }
+                return data;
+            };
+
+            var createRandomAreaData = function (options) {
+                var startDate = (options && options.startDate) || new Date('2012-11-01');
+                var endDate = (options && options.endDate) || new Date('2013-12-01');
+                var period = (options && options.period) || 24 * 3600 * 1000;
+                startDate = startDate.valueOf();
+                endDate = endDate.valueOf();
+
+                var data = [];
+                for (var d = startDate; d < endDate; d += period) {
+                    var rnd = Math.random() * 10;
+                    data.push([
+
+                        new Date(d).getTime(),
+                        parseFloat((rnd).toFixed(2)),
+                        parseFloat((rnd+1).toFixed(2)),
+                    ])
+                }
+                return data;
+            };
+
+            var dataset1= createRandomData();
+
+//            console.log(JSON.stringify(dataset1));
+
+            var dataset2= createRandomAreaData();
+
+         //   new declare([WidgetWrapper,ResizeAbleWrapperMixin,FullScreenAbleWrapperMixin])({
+
+           var wrap= new declare([DialogWidgetWrapper])({
+               style:"height:90%;width:90%;",
+                model:{
+                    widgetType:TsEditor,
+                    label:'test wrapper',
+                    iconClass:'fa fa-user',
+                    config:{
+                        chartOptions:{
+
+                        chart: {
+                            //  renderTo:"cp1",
+                            animation: false
+                        },
+                        title: {
+                            text: 'Time Series Sample'
+                        },
+                        yAxis: {
+                            title: {
+                                text: ''
+                            }
+                        },
+                        plotOptions: {
+                            series: {
+                                 dataGrouping:{
+                                     enabled:true
+                                 }
+                            }
+                        },
+                        rangeSelector: {
+                            selected: 1
+                        },
+                        legend:{
+                            enabled:true
+                        },
+                        series:[ {
+                            label:'test line',
+                            data:dataset1,
+                            editable:true,
+                            //     cursor:"ns-resize",
+                            marker: {
+                                symbol: "diamond",
+                                enabled: true,
+                                radius: 5,
+                                fillColor: '#90ed7d', states: {hover: {fillColor: '#90ed7d'}}
+                            },
+                            id:"testLine",
+                            draggableY:true
+                        },
+                            {
+                                label:'test line 2',
+                                data:    createRandomData({startDate:new Date('2012-12-01'),endDate:new Date('2013-12-01')}),
+                                //    editable:true,
+                                //     cursor:"ns-resize",
+                                marker: {
+                                    symbol: "circle",
+                                    enabled: true,
+                                    radius: 5,
+                                    fillColor: '#ff0000', states: {hover: {fillColor: '#90ed7d'}}
+                                },
+                                draggableY:true
+                            }]
+
+
+                    }
+                    }
+                }
+            })
+
+/*            setTimeout(function(){
+                wrap.instance.addSeries([
+
+                {
+                    label:'test arearange',
+                            data:dataset2,
+                        type:'arearange',
+                    //    draggableY:true
+
+                }
+                ])
+            },5000)*/
+            wrap.startup();
+            wrap.show();
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp1" style="width: 1300px;height: 500px;"></div>
+</body>
+</html>

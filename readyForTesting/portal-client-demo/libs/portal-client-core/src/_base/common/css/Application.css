@@ -1,0 +1,15 @@
+.app {
+  min-width: 100%;
+  min-height: 100%;
+}
+.app .ViewStack {
+  margin: 10px;
+}
+.app .app-footer {
+  height: 40px;
+  background: #369;
+  color: #fff;
+}
+.app .app-footer.dijitContentPane {
+  padding: 0 15px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'dojo/_base/lang',
+            'test/data/dashboards',
+            'dojo/promise/all',
+            'portal/_base/store/PortalStore',
+            'dijit/layout/ContentPane',
+            'test/widgets/ContentWidget',
+            'dojo/_base/declare',
+            'dijit/_WidgetBase',
+            'dijit/_TemplatedMixin',
+            'dijit/_WidgetsInTemplateMixin',
+            'dijit/layout/BorderContainer',
+            'portal/_base/widgetWrappers/WidgetWrapperBase',
+            'portal/_base/wrapperMixins/RemoveAbleWrapperMixin',
+            'portal/_base/wrapperMixins/FullScreenAbleWrapperMixin',
+            'portal/_base/wrapperMixins/ResizeAbleWrapperMixin',
+            'portal/_base/wrapperMixins/MoveAbleWrapperMixin',
+            'portal/_base/wrapperMixins/TittleBarToggleMixin',
+            'yeti',
+            'dojo/domReady!'
+        ], function (lang, dashboards,all, PortalStore,ContentPane, ContentWidget,declare, WidgetBase, TemplatedMixin, WidgetsInTemplateMixin, BorderContainer,
+                     WidgetWrapperBase,RemoveAbleWrapperMixin,FullScreenAbleWrapperMixin,ResizeAbleWrapperMixin,MoveAbleWrapperMixin,TittleBarToggleMixin) {
+
+            PortalStore.setStore('memory');
+
+            lang.extend(ContentWidget,{
+                getActions:function(){
+                    return [
+                        {
+                            icon: 'fa fa-user',
+                            onClick: function () {
+                                alert('to check the order of actions (according action.index)');
+                            }
+                        }
+                    ]
+                }
+            });
+
+            var wrapper= new declare([WidgetWrapperBase,
+                RemoveAbleWrapperMixin,
+                FullScreenAbleWrapperMixin,
+                ResizeAbleWrapperMixin,
+                MoveAbleWrapperMixin,
+                TittleBarToggleMixin
+            ])({
+                widgetId:'testId',
+                model: {
+                    id:'testId',
+                    widgetType:'test/widgets/ContentWidget',
+                    label:'test widget',
+                    iconClass:'fa fa-users',
+                    config:{
+                        content:'success: set model to constructor'
+                    }
+                },
+                removeFromParent:function(){
+                    alert('removed');
+                }
+            },'cp');
+            wrapper.startup();
+
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp" style="width: 500px;height: 500px;"></div>
+</body>
+</html>

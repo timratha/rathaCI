@@ -1,0 +1,56 @@
+.messagingSystem:not(.dijitDialog),
+.messagingSystem:not(.dijitDialog) > * {
+  width: 100%;
+  height: 100%;
+}
+.messagingSystem .leftMenu.dijitContentPane {
+  width: 200px;
+  padding: 0;
+  background-color: #e7e7e7;
+}
+.messagingSystem .leftMenu .dijitMenu {
+  width: 100%;
+  margin-top: 55px;
+  border: none;
+  box-shadow: none;
+  padding-top: 0px;
+  background-color: transparent;
+}
+.messagingSystem .leftMenu .dijitMenuItem td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.messagingSystem .gridContainer.dijitContentPane {
+  padding: 0;
+}
+.messagingSystem .gridContainer > * {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.messagingSystem .gridContainer .selectorColumn {
+  width: 30px;
+}
+.messagingSystem .gridContainer .senderColumn,
+.messagingSystem .gridContainer .dateColumn {
+  width: 200px;
+}
+.messagingSystem .gridContainer .messageColumn {
+  white-space: nowrap;
+}
+.messagingSystem .gridContainer .messagePreview {
+  color: #a9a9a9;
+}
+.messagingSystem .dijitDialogPaneContent .dijitContentPane > .dijitContentPane {
+  width: 600px;
+}
+.messagingSystem .dijitDialogPaneContent .dijitTextBox {
+  box-sizing: border-box;
+  width: 100%;
+}
+.messagingSystem .dijitDialogPaneContent .dijitTextArea {
+  height: 300px;
+}
+.messagingSystem .dijitDialogPaneContent .buttonsContainer {
+  text-align: right;
+}

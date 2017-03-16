@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'portal/_base/store/PortalStore',
+            'dojo/_base/declare',
+            'portal/_base/widgetWrappers/WidgetWrapperBase',
+            'portal/_base/wrapperMixins/FullScreenAbleWrapperMixin',
+            'yeti',
+            'dojo/domReady!'
+        ], function (PortalStore,declare, WidgetWrapperBase,FullScreenAbleWrapperMixin) {
+
+            PortalStore.setStore('memory');
+
+            PortalStore.appStore.installWidget( {
+                widgetType:'test/widgets/ContentWidget',
+                label:'test widget',
+                iconClass:'fa fa-users',
+                config:{
+                    content:'success: set model to constructor'
+                }
+            }).then(function(w){
+                var wrapper= new declare([WidgetWrapperBase, FullScreenAbleWrapperMixin
+                ])({
+                    widgetId: w.id,
+                    removeFromParent:function(){
+                        alert('removed');
+                    }
+                },'cp');
+                wrapper.startup();
+            });
+
+
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp" style="width: 500px;height: 500px;"></div>
+</body>
+</html>

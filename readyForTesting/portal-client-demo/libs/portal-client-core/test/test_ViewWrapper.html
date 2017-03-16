@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'portal/_base/viewWrappers/ViewWrapper',
+            'portal/_base/store/PortalStore',
+            'yeti',
+            'dojo/domReady!'
+        ], function (ViewWrapper,PortalStore) {
+
+            PortalStore.setStore('memory');
+
+            new ViewWrapper({
+                viewId:'testId',
+                model:{
+                    id:'testId',
+                    viewType:'test/views/ContentView',
+                    label:'test view',
+                    iconClass:'fa fa-users',
+                    config:{
+                        content:'success: set model to constructor'
+                    }
+                }
+            },'cp1').startup();
+
+
+            PortalStore.appStore.installView({
+                viewType:'test/views/ContentView',
+                label:'test view',
+                iconClass:'fa fa-users',
+                config:{
+                    content:'success: load model by view id'
+                }
+            }).then(function(view){
+
+                new ViewWrapper({
+                    viewId:view.id
+                },'cp2').startup();
+
+            });
+
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp1"></div>
+    <div id="cp2"></div>
+</body>
+</html>

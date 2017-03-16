@@ -1,0 +1,1486 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for tests\core\trackable.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">tests\core\trackable.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">98.4% <small>(185 / 188)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">91.67% <small>(22 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">95% <small>(38 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">98.4% <small>(185 / 188)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">tests\core\</a> &#187; trackable.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">226</span>
+<span class="cline-any cline-yes">226</span>
+<span class="cline-any cline-yes">226</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2879</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2517</span>
+<span class="cline-any cline-yes">2517</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">448</span>
+<span class="cline-any cline-yes">448</span>
+<span class="cline-any cline-yes">2484</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">448</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">228</span>
+<span class="cline-any cline-yes">228</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2069</span>
+<span class="cline-any cline-yes">2069</span>
+<span class="cline-any cline-yes">2069</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">225</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">225</span>
+<span class="cline-any cline-yes">225</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">356</span>
+<span class="cline-any cline-yes">356</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2739</span>
+<span class="cline-any cline-yes">2739</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2650</span>
+<span class="cline-any cline-yes">2650</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2650</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-yes">356</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-yes">1414</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1414</span>
+<span class="cline-any cline-yes">1414</span>
+<span class="cline-any cline-yes">1325</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">220</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">152</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">68</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">356</span>
+<span class="cline-any cline-yes">1214</span>
+<span class="cline-any cline-yes">1214</span>
+<span class="cline-any cline-yes">356</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-yes">89</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">define([
+	'intern!tdd',
+	'intern/chai!assert',
+	'dojo/_base/declare',
+	'dojo/aspect',
+	'dojo/dom-class',
+	'dojo/query',
+	'tests/data/createSyncStore',
+	'dgrid/OnDemandList'
+], function (test, assert, declare, aspect, domClass, query, createSyncStore, OnDemandList) {
+&nbsp;
+	var widget,
+		storeCounter = 0;
+&nbsp;
+	function destroyWidget() {
+		<span class="missing-if-branch" title="else path not taken" >E</span>if (widget) {
+			widget.destroy();
+			widget = null;
+		}
+	}
+&nbsp;
+	function indexToId(index) {
+		return (index + 1) * 10;
+	}
+&nbsp;
+	function createItem(index) {
+		var id = indexToId(index);
+		return { id: id, value: 'Value ' + id + ' / Store ' + storeCounter };
+	}
+&nbsp;
+	function createData(numStoreItems) {
+		var data = [];
+		for (var i = 0; i &lt; numStoreItems; i++) {
+			data.push(createItem(i));
+		}
+		return data;
+	}
+&nbsp;
+	function createStore(numStoreItems) {
+		storeCounter++;
+		return createSyncStore({
+			data: createData(numStoreItems)
+		});
+	}
+&nbsp;
+	function renderRow(object) {
+		var div = document.createElement('div');
+		div.appendChild(document.createTextNode(object.value));
+		return div;
+	}
+&nbsp;
+	function createList(numStoreItems, itemsPerQuery, overlap, shouldTrackCollection) {
+		widget = new OnDemandList({
+			collection: createStore(numStoreItems),
+			minRowsPerPage: itemsPerQuery,
+			maxRowsPerPage: itemsPerQuery,
+			queryRowsOverlap: overlap,
+			renderRow: renderRow,
+			shouldTrackCollection: shouldTrackCollection !== false,
+			sort: 'id'
+		});
+		document.body.appendChild(widget.domNode);
+		widget.startup();
+	}
+&nbsp;
+	function itemTest(itemAction, index, numToModify, backwards) {
+		// Creates a single test case for performing an action on numToModify rows/items.
+		var description = itemAction.actionName + ' ' + numToModify + ' item' + (numToModify &gt; 1 ? 's' : '') +
+			' starting at index ' + index + ', in ' + (backwards ? 'decreasing' : 'increasing') + ' order';
+&nbsp;
+		numToModify = numToModify || <span class="branch-1 cbranch-no" title="branch not covered" >1;</span>
+&nbsp;
+		test.test(description, function () {
+			var i,
+				cnt,
+				step = function () {
+					cnt++;
+					backwards ? i-- : i++;
+				},
+				tmp,
+				expectedValues = [],
+				msgPrefix;
+&nbsp;
+			function testRow(element, i) {
+				var expectedValue = expectedValues[i];
+				if (expectedValue == null || expectedValue.deleted) {
+					assert.isTrue(element == null, msgPrefix + 'row at index ' + i + ' should not be found');
+				}
+				else {
+					expectedValue = expectedValue.value;
+					assert.isTrue(element != null,
+						msgPrefix + 'row at index ' + i + ' with an expected value of "' +
+						expectedValue + '" is missing');
+					assert.strictEqual(expectedValue, element.innerHTML,
+						msgPrefix + element.innerHTML + ' should be ' + expectedValue);
+				}
+			}
+&nbsp;
+			// Perform the actions and update the array of expected values.
+			expectedValues = createData(widget.collection.data.length);
+			for (i = index, cnt = 0; cnt &lt; numToModify; step()) {
+				itemAction(indexToId(i), expectedValues);
+			}
+&nbsp;
+			// Use the dgrid widget API to test if the action was performed properly.
+			msgPrefix = 'dgrid API: ';
+			tmp = [];
+			for (i = 0; i &lt; expectedValues.length; i++) {
+				var expectedValue = expectedValues[i],
+					expectedId = expectedValue.id;
+				testRow(widget.row(expectedId).element, i);
+				if (!expectedValue.deleted) {
+					tmp.push(expectedValue);
+				}
+			}
+			expectedValues = tmp;
+&nbsp;
+			// Query the DOM to verify the structure matches the expected results.
+			msgPrefix = 'DOM query: ';
+			query('.dgrid-row', widget.domNode).forEach(testRow);
+		});
+	}
+&nbsp;
+	function itemTestSuite(widgetClassName, storeSize, itemsPerQuery, overlap, config) {
+		// Create a test suite that performs one action type (itemAction) on 1 to config.itemsModifiedMax with
+		// a given amount of overlap.
+		var index, numToModify;
+&nbsp;
+		test.suite(widgetClassName + ' with ' + overlap + ' overlap', function () {
+&nbsp;
+			test.beforeEach(function () {
+				createList(storeSize, itemsPerQuery, overlap);
+			});
+&nbsp;
+			test.afterEach(destroyWidget);
+&nbsp;
+			// Modify items counting up.
+			for (numToModify = 1; numToModify &lt;= config.itemsModifiedMax; numToModify++) {
+				for (index = 0; index &lt;= (storeSize - numToModify); index++) {
+					itemTest(config.itemAction, index, numToModify);
+				}
+			}
+			// Modify items counting down.  Starting at a count of 2 because
+			// single item modification were tested above.
+			for (numToModify = 2; numToModify &lt;= config.itemsModifiedMax; numToModify++) {
+				for (index = numToModify - 1; index &lt; storeSize; index++) {
+					itemTest(config.itemAction, index, numToModify, true);
+				}
+			}
+		});
+	}
+&nbsp;
+	function itemActionTestSuite(description, itemAction, config) {
+		// Creates multiple item test suites for a given action (itemAction):
+		// - a list that executes a single query
+		// - lists with overlap from 0 to config.itemOverlapMax
+&nbsp;
+		// Note: for debugging, comment out the contents of destroyWidget so the dgrid widgets are not destroyed.
+		// Each widget uses a different store id and those ids are used in the row contents allowing you to
+		// easily match up an error message like
+		//  "Error: dgrid API: row at index 2 with an expected value of "Value 30 / Store 10 / Changed!" is missing"
+		// with the correct widget on the page.
+		config.itemAction = itemAction;
+&nbsp;
+		test.suite(description, function () {
+			// Test widgets with only one query: total item count equals item count per query.
+			itemTestSuite('OnDemandList one query', config.itemsPerQuery, config.itemsPerQuery, 0, config);
+&nbsp;
+			// Test widgets that make multiple query requests: twice as many items as items per query so multiple
+			// queries will create multiple observers.
+			var storeSize = config.itemsPerQuery * 2;
+			// Test with OnDemandList with varying overlap values
+			for (var overlap = 0; overlap &lt;= config.itemOverlapMax; overlap++) {
+				itemTestSuite('OnDemandList multiple queries', storeSize, config.itemsPerQuery, overlap, config);
+			}
+		});
+	}
+&nbsp;
+	function itemAddEmptyStoreTest(itemsToAddCount, itemsPerQuery, overlap) {
+		var i;
+&nbsp;
+		function rowHasClass(rowNode, cssClass) {
+			assert.isTrue(domClass.contains(rowNode, cssClass), rowNode.outerHTML + ' should have ' + cssClass);
+		}
+&nbsp;
+		test.test('Add ' + itemsToAddCount + ' items with ' + overlap + ' overlap', function () {
+			createList(0, itemsPerQuery, overlap);
+			var store = widget.collection;
+			for (i = 0; i &lt; itemsToAddCount; i++) {
+				store.put(createItem(i));
+			}
+&nbsp;
+			var rows = query('.dgrid-content &gt; div', widget.domNode);
+			rowHasClass(rows[0], 'dgrid-preload');
+			for (i = 1; i &lt;= itemsToAddCount; i++) {
+				rowHasClass(rows[i], (i % 2) ? 'dgrid-row-even' : 'dgrid-row-odd');
+			}
+			rowHasClass(rows[i], 'dgrid-preload');
+&nbsp;
+			for (i = 0; i &lt; itemsToAddCount; i++) {
+				store.put(createItem(i));
+			}
+&nbsp;
+			rows = query('.dgrid-content &gt; div', widget.domNode);
+			rowHasClass(rows[0], 'dgrid-preload');
+			for (i = 1; i &lt;= itemsToAddCount; i++) {
+				rowHasClass(rows[i], (i % 2) ? 'dgrid-row-even' : 'dgrid-row-odd');
+			}
+			rowHasClass(rows[i], 'dgrid-preload');
+		});
+	}
+&nbsp;
+	function itemAddEmptyStoreTestSuite(config) {
+		test.suite('Add items to empty store', function () {
+&nbsp;
+			test.afterEach(destroyWidget);
+&nbsp;
+			itemAddEmptyStoreTest(1, config.itemsPerQuery, 0);
+&nbsp;
+			// Test with OnDemandList with varying overlap values
+			for (var overlap = 0; overlap &lt;= config.itemOverlapMax; overlap++) {
+				itemAddEmptyStoreTest(config.itemsPerQuery + overlap + 1, config.itemsPerQuery, overlap);
+			}
+		});
+	}
+&nbsp;
+	test.suite('Trackable lists', function () {
+		// Creates test suites that execute the following actions on OnDemandLists with varying amount of
+		// overlap and modifying varying number of items:
+		// - modify existing items
+		// - remove existing items
+		// - add new items before existing items
+		// - add new items after existing items
+&nbsp;
+		function findIndex(id, objs) {
+			for (var i = 0; i &lt; objs.length; i++) {
+				var obj = objs[i];
+				if (obj &amp;&amp; obj.id === id) {
+					return i;
+				}
+			}
+<span class="cstat-no" title="statement not covered" >			return -1;</span>
+		}
+&nbsp;
+		var modifyAction = function (id, expectedValues) {
+			var index = findIndex(id, expectedValues);
+			var value = expectedValues[index].value + ' / Changed!';
+			var dataObj = {id: id, value: value};
+			widget.collection.put(dataObj);
+			expectedValues[index] = dataObj;
+		};
+		modifyAction.actionName = 'Modify';
+&nbsp;
+		var removeAction = function (id, expectedValues) {
+			widget.collection.remove(id);
+			var index = findIndex(id, expectedValues);
+			expectedValues[index].deleted = true;
+		};
+		removeAction.actionName = 'Remove';
+&nbsp;
+		var addBeforeAction = function (id, expectedValues) {
+			var index = findIndex(id, expectedValues);
+			var obj = { id: id - 5, value: expectedValues[index].value + ' / Added before!' };
+			widget.collection.add(obj);
+			expectedValues.splice(index, 0, obj);
+		};
+		addBeforeAction.actionName = 'Add before';
+&nbsp;
+		var addAfterAction = function (id, expectedValues) {
+			var index = findIndex(id, expectedValues);
+			var obj = {id: id + 5, value: expectedValues[index].value + ' / Added after!'};
+			widget.collection.add(obj);
+			expectedValues.splice(index + 1, 0, obj);
+		};
+		addAfterAction.actionName = 'Add after';
+&nbsp;
+		// Run a test case with each action (modify, remove, add before, add after) and vary the amount of
+		// queryRowsOverlap and vary the number of items modified during each test case.  A configuration
+		// object controls the amount of variation.  The properties are:
+		// itemsPerQuery - The OnDemandList is configured to request this number of items per query.
+		//		This property also determines the size of the store.  Test cases run with a store size
+		//		equal to this number and test cases run with a store size twice this number.
+		// itemOverlapMax - Each test case is executed with a queryRowsOverap value of 0 up to this number.
+		// itemsModifiedMax - Each test is executed where the number of items modified, deleted or added is
+		//		1 up to this number; all of the test cases are run where 1 item is modified and then again
+		//		with 2 items being modified and so on.
+		var config = {
+			itemsPerQuery: 3,
+			itemOverlapMax: 2,
+			itemsModifiedMax: 2
+		};
+		itemActionTestSuite('Modify store items', modifyAction, config);
+		itemActionTestSuite('Remove store items', removeAction, config);
+		itemActionTestSuite('Insert store items before', addBeforeAction, config);
+		itemActionTestSuite('Insert store items after', addAfterAction, config);
+&nbsp;
+		itemAddEmptyStoreTestSuite(config);
+	});
+&nbsp;
+	test.suite('Multiple updates to trackable list', function () {
+		test.afterEach(destroyWidget);
+&nbsp;
+		test.test('Multiple puts', function () {
+			var i;
+			var data = [];
+			for (i = 0; i &lt; 10; i++) {
+				data.push({ id: i, value: 'Value ' + i, enabled: true });
+			}
+			var store = createSyncStore({ data: data });
+			widget = new OnDemandList({
+				collection: store.filter({ enabled: true }),
+				renderRow: renderRow
+			});
+			document.body.appendChild(widget.domNode);
+			widget.startup();
+&nbsp;
+			// Test putting several items with a filter applied;
+			// the put objects should all be seen as removed
+			for (i = 0; i &lt; 5; i++){
+				var item = data[i];
+				item.enabled = false;
+				store.put(item);
+			}
+&nbsp;
+			assert.strictEqual(widget._rows.length, 5,
+				'5 items should remain in the _rows array (5 should be removed)');
+		});
+	});
+&nbsp;
+	test.suite('shouldTrackCollection = false + store modifications', function () {
+		var numItems = 3;
+		var store;
+		var handles = [];
+&nbsp;
+		test.before(function () {
+			createList(numItems, 25, 0, false);
+		});
+&nbsp;
+		test.beforeEach(function () {
+			store = createStore(numItems);
+			widget.set('collection', store);
+		});
+&nbsp;
+		test.afterEach(function () {
+			for (var i = handles.length; i--;) {
+				handles[i].remove();
+			}
+			handles = [];
+		});
+&nbsp;
+		test.after(destroyWidget);
+&nbsp;
+		function countRows() {
+			var count = query('.dgrid-row', widget.contentNode).length;
+			return count;
+		}
+&nbsp;
+		test.test('shouldTrackCollection = false + add', function () {
+			var numRows = countRows();
+			store.addSync(createItem(3));
+			assert.strictEqual(countRows(), numRows);
+		});
+&nbsp;
+		test.test('shouldTrackCollection = false + put', function () {
+			var calls = 0;
+&nbsp;
+			handles.push(aspect.before(widget, 'removeRow', <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >				calls++;</span>
+			}));
+			handles.push(aspect.before(widget, 'insertRow', <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >				calls++;</span>
+			}));
+&nbsp;
+			for (var i = 0; i &lt; numItems; i++) {
+				store.putSync(store.getSync(indexToId(i)));
+			}
+			assert.strictEqual(calls, 0, 'insertRow and removeRow should never be called');
+		});
+&nbsp;
+		test.test('shouldTrackCollection = false + remove', function () {
+			var numRows = countRows();
+			for (var i = 0; i &lt; numItems; i++) {
+				store.removeSync(indexToId(i));
+			}
+			assert.strictEqual(countRows(), numRows);
+		});
+	});
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 20 2015 17:35:19 GMT+0200 (Mitteleuropäische Sommerzeit)</div>
+</div>
+
+<script src="../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+.hide {
+  display: none !important;
+}
+.portal-header {
+  height: 41px;
+  padding: 12px 15px 12px 15px;
+  background: #369;
+  color: #fff;
+}
+.portal-header .dijitMenuBar.headerMenuBar {
+  background-color: inherit !important;
+  background-image: inherit !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  height: inherit;
+}
+.portal-header .dijitMenuBar.headerMenuBar:before {
+/*for alignment*/
+  content: '';
+  display: inline-block;
+  height: inherit;
+}
+.portal-header .dijitMenuBar.headerMenuBar>.dijitMenuItem {
+  padding: 5px 10px 0px;
+  vertical-align: super;
+}
+.portal-header .dijitMenuBar.headerMenuBar .brand {
+  padding: 10px 0px !important;
+}
+.portal-header .dijitMenuBar.headerMenuBar .brand .applicationName,
+.portal-header .dijitMenuBar.headerMenuBar .brand .fa {
+  color: #fff;
+  text-shadow: none;
+}
+.portal-header .dijitMenuItem {
+/*float right*/
+  text-shadow: none !important;
+  color: #fff !important;
+}
+.portal-header .dijitMenuItemSelected {
+  background-color: inherit !important;
+  background-image: inherit !important;
+  box-shadow: none;
+}
+.portal-header .fa.fa-chevron-down,
+.portal-header .menu-icon {
+  margin: 0px 5px;
+  vertical-align: middle;
+}
+.portal-header .menu-icon,
+.portal-header .fa.fa-bars {
+  font-size: 22px;
+}
+.portal-header .applicationName {
+  font-size: 22px;
+}
+.portal-header .fa.fa-chevron-down {
+  font-size: 8px;
+}
+.portal-header .dijitMenuBar .dijitMenuItem.shortCut .shutCutIcon {
+  font-size: 20px;
+}
+.portal-header .dijitMenuBar .dijitMenuItem.shortCut .badge {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 8px;
+  background-color: #f00;
+  border-radius: 100px;
+  line-height: 14px;
+  padding: 3px;
+  width: 14px;
+  height: 14px;
+  opacity: 0.9;
+  text-align: center;
+}
+.portal-header .UserMenu {
+  border-left: 1px solid #fff;
+  margin-left: 10px;
+}

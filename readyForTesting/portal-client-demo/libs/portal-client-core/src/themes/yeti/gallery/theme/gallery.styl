@@ -1,0 +1,37 @@
+// :copyright: Copyright 2012 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+#bottomTabs {
+    height: 40%;
+}
+
+#progressBarTab .dijitProgressBar {
+    margin-bottom: 9px;
+}
+
+#iconsTab {
+    span {
+        display: inline-block;
+        width: 200px;
+        line-height: 40px;
+        border-radius: 12px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #fbf4f4;
+
+            [class^='icon-']:before {
+                font-size: 21px;
+            }
+        }
+
+
+    }
+
+    [class^='icon-']:before {
+        width: 30px;
+        text-align: center;
+        vertical-align: middle;
+    }
+}
+

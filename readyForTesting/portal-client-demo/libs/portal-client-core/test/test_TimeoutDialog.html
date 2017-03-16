@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'dojo/dom',
+            'dojo/when',
+            'dojo/promise/all',
+            'test/data/users',
+            'portal/_base/store/PortalStore',
+            'portal/_base/dialogs/TimeoutDialog',
+            'yeti',
+            'dojo/domReady!'
+        ], function (dom, when, all, users,PortalStore,TimeoutDialog){
+            PortalStore.setStore('memory');
+            PortalStore.users.auth=function(){
+                dom.byId('cp').innerHTML = dom.byId('cp').innerHTML + ' <br/> continue';
+                return when(true);
+            };
+            new TimeoutDialog({
+                timeout:20000,
+                _timeBefore:0
+            }).startTimer();
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+        <div id="cp">timeout for 20 sec ,remind before 10sec </div>
+</body>
+</html>

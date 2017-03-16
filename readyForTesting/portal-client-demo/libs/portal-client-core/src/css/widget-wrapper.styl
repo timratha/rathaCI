@@ -1,0 +1,17 @@
+.widget-wrapper
+  overflow: 'visible';
+  width: auto;
+  background-color:white;
+  position: relative;
+  @import 'TitleBar'
+  >.instance-container
+    width: 100%;
+    >.instance
+      width: 100%;
+
+.float-widget-wrapper
+  z-index 50;
+  box-shadow: 2px 2px 5px 1px #c7c7c7;
+  &.top
+    z-index 51;
+

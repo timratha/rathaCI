@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        //TODO have bug need reproduce.
+        require([
+            'test/widgets/ContentWidget',
+            'portal/_base/common/Util',
+            'dojo/dom',
+            'test/data/dashboards',
+            'test/data/users',
+            'dojo/promise/all',
+            'portal/_base/store/PortalStore',
+            'dojo/_base/declare',
+            'portal/_base/widgetWrappers/WidgetWrapperBase',
+            'portal/_base/wrapperMixins/ResizeAbleWrapperMixin',
+            'portal/_base/wrapperMixins/MoveAbleWrapperMixin',
+            'portal/_base/wrapperMixins/SendableWrapperMixin',
+            'yeti',
+            'dojo/domReady!'
+        ], function (ContentWidget,Util, dom, dashboards,users,all, PortalStore,declare, WidgetWrapperBase,ResizeAbleWrapperMixin,MoveAbleWrapperMixin,SendableWrapperMixin) {
+
+            ContentWidget = declare([ContentWidget],{
+                style:'width:100%;height:100%'
+            })
+            PortalStore.setStore('memory');
+            PortalStore.users._currentUser = users.basicUser;
+            all([
+                PortalStore.dashboards.installDashboard(dashboards.gridDash1),
+                PortalStore.dashboards.installDashboard(dashboards.rasterDash1),
+                PortalStore.dashboards.installDashboard(dashboards.freeDash1)
+            ]).then(function(){
+                var wrapper= new declare([WidgetWrapperBase,
+                    ResizeAbleWrapperMixin
+                ])({
+                    model: {
+                        widgetType:ContentWidget,
+                        label:'test widget',
+                        iconClass:'fa fa-users',
+                        config:{
+                            content:'success: set model to constructor'
+                        }
+                    }
+                },'cp');
+                wrapper.startup();
+                var i=true;
+                setInterval(function(){
+                    if(i){
+                        wrapper.resize({w:600,h:600})
+                    }else{
+                        wrapper.resize({w:300,h:300})
+                    }
+                    i = !i;
+                },1000)
+            });
+
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+<div id="cp" style="width: 500px;height: 500px;"></div>
+</body>
+</html>

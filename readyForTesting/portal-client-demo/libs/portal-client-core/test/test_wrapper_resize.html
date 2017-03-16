@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'dojo/dom-geometry',
+            'test/widgets/ContentWidget',
+            'portal/_base/common/Wrapper',
+            'yeti',
+            'dojo/domReady!'
+        ], function (domGeometry, ContentWidget,Wrapper) {
+
+
+
+            new Wrapper({
+                title:'test wrapper0',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    content:'basic one',
+                    style:'background-color:skyblue'
+                })
+            },'cp0').startup();
+
+
+
+            new Wrapper({
+                title:'test wrapper1',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    content:'should smaller then container',
+                    style:'background-color:skyblue;width:400px;height:300px;',
+                    resize:function(dim){
+                    }
+                })
+            },'cp1').startup();
+
+
+
+            var wrapper2= new Wrapper({
+                title:'test wrapper2',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    content:'should just have vertical scrollbar',
+                    style:'background-color:skyblue;height:700px;',
+                    resize:function(dim){
+                    }
+                })
+            },'cp2').startup();
+
+            new Wrapper({
+                title:'test wrapper3',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    content:'should just 2 scrollbar',
+                    style:'background-color:skyblue;width:600px;height:600px;',
+                    resize:function(dim){
+                    }
+                })
+            },'cp3').startup();
+
+            new Wrapper({
+                title:'test wrapper4',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    content:'should just vertical scrollbar',
+                    style:'background-color:skyblue;',
+                    resize:function(dim){
+                        if(dim){
+                            dim={h:dim.h<700?700:dim.h};
+//                            console.log(dim);
+                            domGeometry.setMarginBox(this.domNode,dim);
+                        }
+                    }
+                })
+            },'cp4').startup();
+
+           new Wrapper({
+                title:'test wrapper2',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    content:'should just have x-scrollbar',
+                    style:'background-color:skyblue;width:700px;height:100%;',
+                    resize:function(dim){
+                    }
+                })
+            },'cp5').startup();
+
+
+            new Wrapper({
+                title:'test wrapper2',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    content:'should have no scroll bar, have default width and width have been set to the wrapper , will override the default size',
+                    style:'background-color:skyblue;width:700px;'   //here width just default size.
+                })
+            },'cp6').startup();
+
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;background-color: gray;">
+    <div id="cp0" style="width:500px;height: 400px;background-color:yellow;display: inline-block;"></div>
+    <div id="cp1" style="width:500px;height: 400px;background-color:yellow;display: inline-block;"></div>
+    <div id="cp2" style="width:500px;height: 400px;background-color:yellow;display: inline-block;"></div> <!--special one-->
+    <div id="cp3" style="width:500px;height: 400px;background-color:yellow;display: inline-block;"></div>
+    <div id="cp4" style="width:500px;height: 400px;background-color:yellow;display: inline-block;"></div>
+    <div id="cp5" style="width:500px;height: 400px;background-color:yellow;display: inline-block;"></div>
+    <div id="cp6" style="width:500px;background-color:yellow;display: inline-block;"></div>
+</body>
+</html>

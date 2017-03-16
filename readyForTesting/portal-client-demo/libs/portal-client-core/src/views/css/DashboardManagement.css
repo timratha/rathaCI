@@ -1,0 +1,38 @@
+.DashboardManagement .breadCrumb {
+  padding: 10px 0;
+}
+.DashboardManagement .breadCrumb span {
+  vertical-align: middle;
+}
+.DashboardManagement .breadCrumb span i {
+  padding: 0 5px;
+}
+.DashboardManagement .breadCrumb span.root {
+  font-size: 2em;
+}
+.DashboardManagement .dashboardGrid {
+  height: auto;
+  min-width: 500px;
+}
+.DashboardManagement .dashboardGrid .dgrid-header {
+  width: 100%;
+}
+.DashboardManagement .dashboardGrid .dgrid-scrollbar-width {
+  display: none;
+  width: 0;
+}
+.DashboardManagement .dashboardGrid .dgrid-scroller {
+  position: relative;
+  overflow: visible;
+}
+.DashboardManagement .dashboardGrid .field-iconClass {
+  width: 70px;
+  text-align: center;
+}
+.DashboardManagement .dashboardGrid .dgrid-cell {
+  vertical-align: middle;
+}
+.DashboardManagement .dashboardGrid .dgrid-cell .actionsCont i {
+  padding-left: 10px;
+  cursor: pointer;
+}

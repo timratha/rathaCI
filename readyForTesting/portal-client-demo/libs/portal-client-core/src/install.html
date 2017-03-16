@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../dojo/dojo.js"></script>
+    <script type="text/javascript" >
+
+        require([
+            'portal/configData/WidgetTypeConfig',
+            'portal/configData/PermissionConfig',
+            "portal/_base/store/PortalStore",
+            'dojo/domReady!'
+        ], function(WidgetTypeConfig,PermissionConfig,PortalStore) {
+            PortalStore.setStore('rest').then(function(){
+                //TODO consider how to install core project.  maybe better install with PortalAdmin.
+                PortalStore.widgetTypeStore.install(WidgetTypeConfig);
+                PortalStore.users.installPermissions(PermissionConfig);
+            });
+        });
+
+    </script>
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.css"/>
+
+</head>
+<body style="margin: 0px;" class="yeti">
+<div id="app" ></div>
+</body>
+</html>

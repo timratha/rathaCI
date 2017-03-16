@@ -1,0 +1,24 @@
+.yeti .dijitAccordionContainer {
+  border: none;
+}
+.yeti .dijitAccordionInnerContainer {
+  margin-bottom: 2px;
+  border: 1px solid $accordionBorderColor;
+  border-radius: $btnBorderRadius;
+}
+.yeti .dijitAccordionTitle {
+  color: $linkColor;
+  border-bottom: none;
+  padding: 8px 15px;
+}
+.yeti .dijitAccordionChildWrapper {
+  border-top: 1px solid $accordionBorderColor;
+}
+.yeti .dijitAccordionContainer .dijitAccordionContainer-child {
+  padding: 9px 15px;
+}
+.yeti .dijitAccordionTitleHover,
+.yeti .dijitAccordionTitleSelected {
+  color: $linkColorHover;
+  background-color: $grayLightest;
+}

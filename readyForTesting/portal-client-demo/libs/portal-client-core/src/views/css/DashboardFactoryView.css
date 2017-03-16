@@ -1,0 +1,46 @@
+.DashboardFactoryView .breadCrumb {
+  padding: 10px 0;
+}
+.DashboardFactoryView .breadCrumb span {
+  vertical-align: middle;
+}
+.DashboardFactoryView .breadCrumb span i {
+  padding: 0 5px;
+}
+.DashboardFactoryView .breadCrumb span.root {
+  font-size: 2em;
+}
+.DashboardFactoryView .DashboardCreationForm {
+  margin: 10px auto;
+  width: 500px;
+  vertical-align: middle;
+}
+.DashboardFactoryView .DashboardCreationForm .form-table {
+  display: table;
+  margin: auto;
+  border-spacing: 10px;
+}
+.DashboardFactoryView .DashboardCreationForm .form-field {
+  display: table-row;
+}
+.DashboardFactoryView .DashboardCreationForm .form-field .field-label {
+  display: table-cell;
+  padding: 5px 10px;
+}
+.DashboardFactoryView .DashboardCreationForm .form-field .field-input {
+  display: table-cell;
+  margin: 10px;
+}
+.DashboardFactoryView .DashboardCreationForm .form-field .field-input .dijitReadOnly,
+.DashboardFactoryView .DashboardCreationForm .form-field .field-input .dijitDisabled {
+  border: none;
+  background: inherit;
+  box-shadow: none;
+}
+.DashboardFactoryView .DashboardCreationForm .btn-bar {
+  text-align: center;
+  margin: 10px 50px;
+}
+.DashboardFactoryView .DashboardCreationForm .layout-form {
+  border: none;
+}

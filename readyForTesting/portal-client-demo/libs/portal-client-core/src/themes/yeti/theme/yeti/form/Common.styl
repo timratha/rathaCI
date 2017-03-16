@@ -1,0 +1,104 @@
+// :copyright: Copyright 2012 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+.yeti fieldset {
+    @extend .yeti .well;
+}
+
+.yeti label {
+    vertical-align: middle;
+}
+
+// TextBox
+.yeti .dijitTextBox {
+    display: inline-block;
+    font-size: $baseFontSize;
+    color: $gray;
+    border-radius: $inputBorderRadius;
+    background-color: $inputBackground;
+    border: 1px solid $inputBorder;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border linear .2s, box-shadow linear .2s;
+}
+
+.yeti .dijitTextBoxFocused {
+    outline: none;
+    border-color: rgba(82,168,236,.8);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+}
+
+.yeti .dijitInputContainer {
+    padding: 6px 6px;
+}
+
+.yeti .dijitInputField .dijitInputInner {
+}
+
+.dj_webkit .yeti .dijitInputContainer {
+    padding: 4px 4px;
+}
+
+.dj_webkit .yeti .dijitInputField .dijitInputInner {
+    height: $baseLineHeight;
+}
+
+.dj_webkit .yeti .dijitInline .dijitInputField .dijitInputInner {
+    height: inherit;
+}
+
+.yeti .dijitPlaceHolder {
+    font-style: normal;
+    padding: 4px 6px;
+}
+
+.yeti .dijitTextBoxDisabled, .yeti .dijitTextBoxReadOnly {
+    background-image: none;
+    box-shadow: none;
+    background-color: $inputDisabledBackground;
+}
+
+.dj_webkit .yeti .dijitTextBoxDisabled input,
+.dj_webkit .yeti textarea.dijitTextAreaDisabled,
+.yeti .dijitTextBoxDisabled,
+.yeti .dijitTextBoxReadOnly {
+    color: $inputDisabledColor;
+}
+
+// TextArea
+.yeti .dijitTextArea {
+    padding: 4px 6px;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+// ComboBox
+.yeti .dijitComboBox .dijitButtonNode {
+    @extend .yeti .dijitComboButton .dijitButtonNode;
+}
+
+.yeti .dijitComboBox .dijitButtonNode.dijitArrowButton {
+    @extend .yeti .dijitComboButton .dijitArrowButton;
+}
+
+.yeti .dijitComboBox input.dijitArrowButtonInner {
+    display: none;
+}
+
+.yeti .dijitComboBoxDisabled .dijitButtonNode {
+    @extend .yeti .dijitComboButtonDisabled .dijitButtonNode;
+    background-color: $inputDisabledBackground;
+}
+
+// Validation
+.yeti .dijitTextBoxError {
+    color: $errorText;
+    border-color: $errorText;
+}
+
+.yeti .dijitTextBoxError.dijitTextBoxFocused {
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px lighten($errorText, 20%);
+}
+
+.yeti .dijitValidationContainer {
+    display: none;
+}

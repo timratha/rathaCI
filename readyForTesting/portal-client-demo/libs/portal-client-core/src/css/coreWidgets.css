@@ -1,0 +1,195 @@
+.timeSeries {
+  width: 1024px;
+  height: 600px;
+}
+.timeSeries .divBorderContainer {
+  border: 1px solid #000;
+}
+.timeSeries .divChart {
+  background-color: #f5f5f5;
+  width: 75%;
+}
+.timeSeries .divAccordionContainer {
+  background-color: #f5f5f5;
+  width: 25%;
+}
+.timeSeries .divMasterContainer {
+  position: absolute;
+  top: 700;
+  height: 100px;
+  width: 100%;
+}
+.timeSeries .valueClass {
+  width: 35%;
+}
+.timeSeries .timestampClass {
+  width: 65%;
+}
+.clock .dateTimeContainer {
+  overflow-y: hidden;
+  overflow-x: auto;
+  margin: auto;
+  padding: 1em 2em;
+}
+.clock .divDate {
+  font-size: 2em;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: normal;
+  white-space: nowrap;
+  color: #369;
+}
+.clock .divTime {
+  font-size: 3em;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: normal;
+  white-space: nowrap;
+  color: #369;
+}
+.clockBasic .dateTimeContainer {
+  overflow-y: hidden;
+  overflow-x: auto;
+  background-color: #f6f6f6;
+  border: "1px solid black";
+}
+.clockBasic .divDate {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: normal;
+  white-space: nowrap;
+  text-shadow: 4px 4px 5px #333;
+  color: #000;
+}
+.clockBasic .divTime {
+  text-align: center;
+  width: 100%;
+  height: auto;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: normal;
+  white-space: nowrap;
+  text-shadow: 4px 4px 5px #333;
+  color: #000;
+}
+.clockFancy .dateTimeContainer {
+  overflow-y: hidden;
+  overflow-x: auto;
+  background-color: #302b23;
+  border: "1px solid black";
+}
+.clockFancy .divDate {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: normal;
+  white-space: nowrap;
+  text-shadow: 4px 4px 5px #333;
+  color: #b8860b;
+}
+.clockFancy .divTime {
+  text-align: center;
+  width: 100%;
+  height: auto;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: normal;
+  white-space: nowrap;
+  text-shadow: 4px 4px 5px #333;
+  color: #daa520;
+}
+.credits {
+  font-size: 0.7em;
+  color: #909090;
+}
+.contentRotator {
+  display: table;
+  position: relative;
+  overflow: hidden;
+}
+.contentRotator:hover .controller {
+  display: block;
+}
+.contentRotator .pane,
+.contentRotator .pane > * {
+  width: 100%;
+  height: 100%;
+}
+.contentRotator .pager,
+.contentRotator .prev,
+.contentRotator .next {
+  position: absolute;
+  z-index: 99;
+}
+.contentRotator .pager {
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+}
+.contentRotator .dijitContentPane.pager {
+  padding: 10px 0;
+}
+.contentRotator .prev,
+.contentRotator .next {
+  bottom: 45%;
+}
+.contentRotator .prev {
+  left: 0;
+}
+.contentRotator .next {
+  right: 0;
+}
+.contentRotator .controller {
+  display: none;
+}
+.contentRotator .buttons {
+  background-color: rgba(0,0,0,0.6);
+  display: inline-block;
+  padding: 5px;
+}
+.contentRotator .prev .dijitButton .dijitButtonNode,
+.contentRotator .next .dijitButton .dijitButtonNode,
+.contentRotator .pager .dijitToggleButton .dijitButtonNode {
+  background-image: none;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+.contentRotator .prev .dijitButton .dijitButtonNode,
+.contentRotator .next .dijitButton .dijitButtonNode {
+  background-color: rgba(0,0,0,0.6);
+  text-shadow: none;
+  padding: 5px;
+  color: #808080;
+  font-size: 20px;
+}
+.contentRotator .pager .dijitToggleButton .dijitButtonNode {
+  background-color: #808080;
+  padding: 0;
+  width: 15px;
+  height: 15px;
+}
+.contentRotator .pager .dijitToggleButtonHover .dijitButtonNode,
+.contentRotator .pager .dijitToggleButtonChecked .dijitButtonNode {
+  background-color: #fff;
+  opacity: 1;
+}
+.contentRotator .prev .dijitButtonHover .dijitButtonNode .icon-chevron-left,
+.contentRotator .prev .dijitButtonActive .dijitButtonNode .icon-chevron-left,
+.contentRotator .next .dijitButtonHover .dijitButtonNode .icon-chevron-right,
+.contentRotator .next .dijitButtonActive .dijitButtonNode .icon-chevron-right {
+  color: #fff;
+}

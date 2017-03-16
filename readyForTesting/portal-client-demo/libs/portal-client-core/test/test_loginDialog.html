@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'dojo/promise/all',
+            'test/data/users',
+            'portal/_base/store/PortalStore',
+            'portal/_base/dialogs/LoginDialog',
+            'yeti',
+            'dojo/domReady!'
+        ], function (all, users,PortalStore,LoginDialog){
+            PortalStore.setStore('memory');
+            all(
+                [
+                    PortalStore.users.add({
+                        userName:'test',
+                        password:'123'
+                    })
+                ]
+            ).then(function(){
+                new LoginDialog({
+                    afterLogin:function(){
+                        alert('login success')
+                    }
+                }).show();
+            })
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+<div id="cp"></div>
+</body>
+</html>

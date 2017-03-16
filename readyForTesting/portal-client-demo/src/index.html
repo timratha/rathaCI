@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+
+
+    <script src="dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+
+
+    <link rel="stylesheet" href="../src/widgets/css/RasterMapAnimationViewer.css">
+
+    <style type="text/css">
+        .datetime {
+            bottom:  .5em;
+            left: .5em;
+        }
+    </style>
+	
+	
+    <script type="text/javascript" >
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        var theme =getParameterByName("theme") || "yeti";
+        var key =getParameterByName("app") || "Demo";
+
+    //    require(["dojo/ready","portal/portalLayer","portal/portalLayerDeps","portal-client-demo/demoApp"],function(ready){
+
+        require([
+            'portal',
+            'dojo/promise/all',
+            'portal/_base/store/PortalStore',
+            'portal-client-demo/config',
+            'test/data/users',
+            theme+"/main",
+            'dojo/domReady!'
+        ], function(portal,all,PortalStore,config, users,dashboards) {
+
+            PortalStore.setStore('memory');
+			  PortalStore.users._currentUser = users.PortalAdmin;
+            document.body.className+=  theme;
+			 all([
+                PortalStore.appStore.installApplication(config),
+            ]).then(function(){
+                var p = new portal({
+                    defaultTheme:'yeti',
+                    defaultApp:key
+                }, 'app');
+                p.startup();
+            });
+        });
+     //   });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/app.css"/>
+    <link rel="stylesheet" href="../libs/esri/css/esri.css"/>
+
+</head>
+<body class="yeti" style="margin: 0px;">
+<div id="app">hello Marko</div>
+</body>
+</html>

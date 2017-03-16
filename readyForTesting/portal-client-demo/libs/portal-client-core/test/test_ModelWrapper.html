@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'test/widgets/ContentWidget',
+            'portal/_base/common/ModelWrapper',
+            'yeti',
+            'dojo/domReady!'
+        ], function (ContentWidget,ModelWrapper) {
+            var wrapper= new ModelWrapper({
+                model:{
+                    instanceType:ContentWidget,
+                    config:{content:'test content'}
+                },
+                title:'test wrapper',
+                titleIcon:'fa fa-user'
+            });
+            wrapper.placeAt('cp1');
+            wrapper.startup();
+
+            setTimeout(function(){
+                wrapper.set('model',{
+                    instanceType:'test/widgets/ContentWidget',
+                    config:{content:'instance model changed'}
+                })
+            },1000)
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        require([
+            'dojo/Deferred',
+            'dojo/_base/declare',
+            'portal/_base/wrapper/ModelWrapper',
+            'portal/_base/wrapper/StoreModelWrapperMixin',
+            'yeti',
+            'dojo/domReady!'
+        ], function (Deferred, declare, ModelWrapper,StoreModelWrapperMixin) {
+
+            new declare([ModelWrapper,StoreModelWrapperMixin],{
+                loadModel:function(){
+                    var ready=new Deferred();
+                    setTimeout(function(){
+                        ready.resolve({
+                            config:{content:'loaded content'},
+                            instanceType:'test/widgets/ContentWidget'
+                        })
+                    },1000);
+                    return ready.promise;
+                }
+            })({
+                title:'test wrapper',
+                titleIcon:'fa fa-user'
+            },'cp1').startup();
+        });
+    </script>
+
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp1"></div>
+</body>
+</html>

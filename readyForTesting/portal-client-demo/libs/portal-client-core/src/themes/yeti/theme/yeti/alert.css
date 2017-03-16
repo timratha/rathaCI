@@ -1,0 +1,41 @@
+.yeti .alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: $baseLineHeight;
+  text-shadow: 0 1px 0 $alertTextShadow;
+  background-color: $warningBackgroundContainer;
+  border: 1px solid $warningBorder;
+  color: $warningText;
+}
+.yeti .alert h1,
+.yeti .alert h2,
+.yeti .alert h3,
+.yeti .alert h4 {
+  margin: 0;
+}
+.yeti .alert-success {
+  background-color: $successBackgroundContainer;
+  border-color: $successBorder;
+  color: $successText;
+}
+.yeti .alert-danger,
+.yeti .alert-error {
+  background-color: $errorBackgroundContainer;
+  border-color: $errorBorder;
+  color: $errorText;
+}
+.yeti .alert-info {
+  background-color: $infoBackgroundContainer;
+  border-color: $infoBorder;
+  color: $infoText;
+}
+.yeti .alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.yeti .alert-block > p,
+.yeti .alert-block > ul {
+  margin-bottom: 0;
+}
+.yeti .alert-block p + p {
+  margin-top: 5px;
+}

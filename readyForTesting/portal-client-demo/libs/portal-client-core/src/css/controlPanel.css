@@ -1,0 +1,38 @@
+.control-panel {
+  display: none;
+  z-index: 999;
+  width: 100%;
+  position: fixed;
+  height: auto;
+  top: 0px;
+  background-color: rgba(0,0,0,0.6);
+}
+.control-panel ul {
+  display: inline-block;
+  padding: 10px 20px;
+}
+.control-panel ul li {
+  display: inline-block;
+  vertical-align: middle;
+}
+.control-panel ul li .iconBox {
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 5px;
+  background-color: #fff;
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  border-radius: 5px;
+}
+.control-panel ul li .iconBox:hover {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  padding: 10px;
+}
+.control-panel ul li .iconBox i,
+.control-panel ul li .iconBox .label {
+  display: block;
+  text-align: center;
+}

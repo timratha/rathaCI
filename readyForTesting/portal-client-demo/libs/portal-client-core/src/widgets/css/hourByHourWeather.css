@@ -1,0 +1,9 @@
+.hourByHourWeather .gridWeather {
+  background-color: #f5f5f5;
+}
+.hourByHourWeather .divCredits {
+  background-color: #f5f5f5;
+  font-family: Arial Unicode MS, Arial, sans-serif;
+  font-size: 10pt;
+  font-style: italic;
+}

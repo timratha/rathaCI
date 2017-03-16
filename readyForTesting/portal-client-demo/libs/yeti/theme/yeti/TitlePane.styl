@@ -1,0 +1,47 @@
+// :copyright: Copyright 2013 Martin Pengelly-Phillips
+// :license: See LICENSE.txt.
+
+.yeti .dijitTitlePane {
+    border: 1px solid $titlePaneBorderColor;
+    border-top-left-radius: $btnBorderRadius;
+    border-top-right-radius: $btnBorderRadius;
+}
+
+
+.yeti .dijitTitlePaneTitle {
+    color: $linkColor;
+    background-color: $grayLightest;
+    border-bottom: none;
+    padding: 8px 15px;
+}
+
+.yeti .dijitTitlePaneTitleHover {
+    color: $linkColorHover;
+}
+
+.yeti .dijitTitlePaneContentOuter {
+    margin-bottom: 2px;
+    border-top: 1px solid $titlePaneBorderColor;
+}
+
+.yeti .dijitTitlePaneContentInner {
+    padding: 9px 15px;
+}
+
+.yeti .dijitTitlePane .dijitArrowNode {
+    margin-right: 9px
+}
+
+.yeti .dijitTitlePane .dijitArrowNode:before {
+    @extend .dijitIcon:before;
+    text-align: center;
+    width: 12px;
+}
+
+.yeti .dijitTitlePane .dijitOpen .dijitArrowNode:before {
+    @extend .icon-caret-down:before;
+}
+
+.yeti .dijitTitlePane .dijitClosed .dijitArrowNode:before {
+    @extend .icon-caret-right:before;
+}

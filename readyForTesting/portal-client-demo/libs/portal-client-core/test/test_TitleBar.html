@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'portal/_base/title-bar/TitleBar',
+            'yeti',
+            'dojo/domReady!'
+        ], function (TitleBar) {
+            var bar= new TitleBar({
+                title:'test title bar',
+                titleIcon:'fa fa-users'
+            },'cp');
+            bar.startup();
+            bar.addAction({
+              icon:'fa fa-bars',
+              help:'test action',
+                onClick:function(){
+                    alert('clicked 1');
+                }
+            })
+            bar.addAction({
+                icon:'fa fa-windows',
+                onClick:function(){
+                    alert('clicked 2');
+                }
+            })
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+    <div id="cp"></div>
+</body>
+</html>

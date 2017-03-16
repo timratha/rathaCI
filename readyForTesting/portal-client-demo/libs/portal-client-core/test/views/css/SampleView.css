@@ -1,0 +1,15 @@
+.SampleView {
+  background: #808080;
+}
+.SampleView .left-panel {
+  display: inline-block;
+  width: 30%;
+  float: right;
+  background: #dcdcdc;
+}
+.SampleView .right-panel {
+  display: inline-block;
+  width: 60%;
+  float: left;
+  background: #dcdcdc;
+}

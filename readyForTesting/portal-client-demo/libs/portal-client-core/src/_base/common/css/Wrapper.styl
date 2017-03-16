@@ -1,0 +1,44 @@
+//TODO
+.hide
+  display none !important
+
+
+.wrapper
+  position relative
+  //border 1px solid lightgrey //TODO let view to set it.
+  //z-index: 10;
+  overflow visible !important;// left containerNode will control the scroll bar.
+  background-color white
+  .instance-error-message
+    color red
+  .titleBarContainer
+    position absolute
+    width 100%
+    //z-index: 9;
+    .titleBarToggle
+      display none
+      position: absolute;
+      line-height: 14px;
+      color rgba(94, 91, 91, 0.59);
+      background-color white;
+      padding: 2px;
+      border-radius: 0 0 5px 0 ;
+      border-color: #ABABAB;
+      border-style: solid;
+      border-width: 0px 1px 1px 0px;
+  .wrapperOuter
+    //padding-top will set by js to leave space for title
+    height 100%
+    width  100%
+    box-sizing: border-box;
+    background inherit
+    overflow hidden
+    z-index: 8;
+  .containerNode
+    display block
+    height 100%
+    width  100%
+    box-sizing: border-box;
+    overflow auto
+    background inherit
+    z-index: 0

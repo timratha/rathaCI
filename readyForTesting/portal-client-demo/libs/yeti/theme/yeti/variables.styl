@@ -1,0 +1,381 @@
+//
+// Variables
+// --------------------------------------------------
+
+
+// Global values
+// --------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// THEME PARAMETERS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// REMOVE ROUNDED CORNERS
+// checkbox:
+$chbBorderRadius = 0px; // 2px
+// grid, well-small, textbox:
+$tableBorderRadius = 0px; // 3px
+// pane, well, alert, button, calendar:
+$btnBorderRadius = 0px; // 4px
+// menu, dialog, tooltip, well-large, timepicker:
+$popoverBorderRadius = 0px; // 6px
+
+// REMOVE COLOR GRADIENTS
+// button:
+$btnBackgroundImage = none; // linear-gradient(top, primaryColor, secondaryColor);
+// menuitem:hover, timepickeritem:hover:
+$dropdownLinkBackgroundImage = none; // linear-gradient(top, $dropdownLinkBackgroundHover, darken($dropdownLinkBackgroundHover, 5%));
+// grid header/footer:
+$gridBackgroundImage = none; // linear-gradient( center top, $gridHeaderBackground, darken($gridHeaderBackground, 5%) );
+// menubar, toolbar:
+$navbarBackgroundImage = none; // linear-gradient($navbarBackgroundHighlight, $navbarBackground);
+$navbarInverseBackgroundImage = none; // linear-gradient($navbarInverseBackgroundHighlight, $navbarInverseBackground);
+// progressbar, slider:
+$barEmptyBackgroundImage = none; // linear-gradient(center top, $backgroundColor, $backgroundHighlightColor);
+$barFullBackgroundImage = none; // linear-gradient(center top, $defaultAccentColor, $defaultAccentColorHighlight);
+$barFullVerticalBackgroundImage = none; // linear-gradient(left center, $defaultAccentColor, $defaultAccentColorHighlight);
+// progressbar + .danger, .success, .info, .warning
+$dangerBackgroundImage = none; // linear-gradient(center top, $dangerBackground, $dangerBackgroundHighlight);
+$successBackgroundImage = none; // linear-gradient(center top, $successBackground, $successBackgroundHighlight);
+$infoBackgroundImage = none; // linear-gradient(center top, $infoBackground, $infoBackgroundHighlight);
+$warningBackgroundImage = none; // linear-gradient(center top, $warningBackground, $warningBackgroundHighlight);
+
+// KISTERS FONTS AND COLORS
+$kistersCalibri = Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
+$kistersDark = #003333;
+$kistersBright = #336699;
+$kistersLight = #ffffff;
+$kistersFontDark = #333333; // #1d1d1b -> no safe color
+$kistersFontBright = #586884; // #666699 #666666 -> safe colors
+$kistersFontLight = #e2e4ed; // #ccccff #cccccc -> safe colors
+$kistersRed = #cc0033; // #d30535; -> no safe color
+$kistersOrange = #ff6600; // #ef7d00; -> no safe color
+$kistersGreen = #66cc33; // #76b937; -> no safe color
+$kistersBlue = #00ccff; // #0abbef; -> no safe color
+
+// CHANGE FONT AND COLORS
+$baseFontFamily = $kistersCalibri; // $sansFontFamily;
+$textColor = $kistersFontDark; // $grayDark;
+$bodyBackground = $kistersLight; // $white;
+// button.primary, bar, title, link, selected/hover:
+$defaultAccentColor = $kistersBright; // $blue;
+// button, alert, progressbar + .danger/.error, .warning, .success, .info:
+$dangerBackground = $kistersRed; // #ee5f5b;
+$warningBackground = $kistersOrange; // lighten($warningBackgroundHighlight, 15%);
+$successBackground = $kistersGreen; // #62c462;
+$infoBackground = $kistersBlue; // #5bc0de;
+// button, menubar + .inverse:
+$inverseBackground = $kistersDark;
+// calendarpreviousmonth, calendarnextmonth:
+$otherMonthColor = $kistersFontBright;
+$otherMonthBackgroundColor = $kistersFontLight;
+
+// yeti menu style
+$menuPadding = 0px; // 5px
+$menuMargin = 0px; // 2px
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// END THEME PARAMETERS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Grays
+// -------------------------
+$black = #000;
+$grayDarker = #222;
+$grayDark = #333;
+$gray = #555;
+$grayLight = #999;
+$grayLighter = #ddd;
+$grayLightest = #eee;
+$white = #fff;
+
+
+// Accent colors
+// -------------------------
+$blue = #049cdb;
+$blueDark = #0064cd;
+$green = #46a546;
+$red = #9d261d;
+$yellow = #ffc40d;
+$orange = #f89406;
+$pink = #c3325f;
+$purple = #7a43b6;
+
+
+// Scaffolding
+// -------------------------
+$borderColor = $grayLighter;
+$outlineColor = $gray;
+$defaultAccentColorHighlight = darken($defaultAccentColor, 15%); // darken($blue, 15%);
+
+
+// Links
+// -------------------------
+$linkColor = $defaultAccentColor; // #08c;
+$linkColorHover = darken($linkColor, 15%);
+
+// Backgrounds
+// -------------------------
+$backgroundColor = #f5f5f5;
+$backgroundHighlightColor = #f9f9f9;
+$backgroundHover = $backgroundColor;
+$backgroundActive = $backgroundHover;
+
+$infoBackgroundHighlight = $infoBackground; // #2f96b4;
+$successBackgroundHighlight = $successBackground; // #51a351;
+$warningBackgroundHighlight = $warningBackground; // $orange;
+$dangerBackgroundHighlight = $dangerBackground; // #bd362f;
+
+
+
+// Typography
+// -------------------------
+$sansFontFamily = "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serifFontFamily = Georgia, "Times New Roman", Times, serif;
+$monoFontFamily = Monaco, Menlo, Consolas, "Courier New", monospace;
+
+$baseFontSize = 14px;
+$baseLineHeight = 20px;
+$altFontFamily = $serifFontFamily;
+
+$headingsFontFamily = inherit; // empty to use BS default, $baseFontFamily
+$headingsFontWeight = bold; // instead of browser default, bold
+$headingsColor = inherit; // empty to use BS default, $textColor
+
+
+// Tables
+// -------------------------
+$tableBackground = transparent; // overall background-color
+$tableBackgroundAccent = $backgroundHighlightColor; // for striping
+$tableBackgroundHover = $backgroundHover; // for hover
+$tableBorder = $borderColor; // table and cell border
+
+// Buttons
+// -------------------------
+$btnBackground = darken($white, 10%); // $white;
+$btnBackgroundHighlight = darken($white, 10%);
+$btnBorder = #bbb;
+
+$btnPrimaryBackground = $defaultAccentColor; // $linkColor;
+$btnPrimaryBackgroundHighlight = $defaultAccentColor; // spin($btnPrimaryBackground, 20%);
+
+$btnInfoBackground = $infoBackground;
+$btnInfoBackgroundHighlight = $infoBackgroundHighlight;
+
+$btnSuccessBackground = $successBackground;
+$btnSuccessBackgroundHighlight = $successBackgroundHighlight;
+
+$btnWarningBackground = $warningBackground;
+$btnWarningBackgroundHighlight = $warningBackgroundHighlight;
+
+$btnDangerBackground = $dangerBackground;
+$btnDangerBackgroundHighlight = $dangerBackgroundHighlight;
+
+$btnInverseBackground = $inverseBackground; // #444;
+$btnInverseBackgroundHighlight = $inverseBackground; // $grayDarker;
+
+
+// Forms
+// -------------------------
+$inputBackground = $white;
+$inputBorder = #ccc;
+$inputBorderRadius = $tableBorderRadius;
+$inputDisabledColor = $gray;
+$inputDisabledBackground = $grayLighter;
+$formActionsBackground = $backgroundColor;
+
+// Dropdowns
+// -------------------------
+$dropdownBackground = $white;
+$dropdownBorder = rgba(0,0,0,.2);
+$dropdownDividerTop = #e5e5e5;
+$dropdownDividerBottom = $white;
+
+$dropdownLinkColor = $grayDark;
+
+$dropdownLinkColorHover = $white;
+$dropdownLinkBackgroundHover = $dropdownLinkBackgroundActive;
+
+$dropdownLinkColorActive = $dropdownLinkColor;
+$dropdownLinkBackgroundActive = $linkColor;
+
+// Accordions
+// -------------------------
+$accordionBorderColor = #e5e5e5;
+
+// TitlePane
+// -------------------------
+$titlePaneBorderColor = $borderColor;
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these =)
+$zindexDropdown = 1000;
+$zindexPopover = 1010;
+$zindexTooltip = 1030;
+$zindexFixedNavbar = 1030;
+$zindexModalBackdrop = 1040;
+$zindexModal = 1050;
+
+
+// Icons path
+// -------------------------
+$fontPath = "./font";
+
+// Input placeholder text color
+// -------------------------
+$placeholderText = $grayLight;
+
+
+// Hr border color
+// -------------------------
+$hrBorder = $borderColor;
+
+
+// Wells
+// -------------------------
+$wellBackground = $backgroundColor;
+
+
+// Navbar
+// -------------------------
+$navbarCollapseWidth = 979px;
+
+$navbarHeight = 40px;
+$navbarBackgroundHighlight = transparent; // #ffffff;
+$navbarBackground = $defaultAccentColor; // darken($navbarBackgroundHighlight, 5%);
+$navbarBorder = darken($navbarBackground, 12%);
+
+$navbarText = $bodyBackground; // $gray;
+$navbarLinkColor = $navbarText; // $gray;
+$navbarLinkColorHover = $navbarText; // $grayDark;
+$navbarLinkColorActive = $navbarText; // $gray;
+$navbarLinkBackgroundHover = darken($navbarBackground, 20%); // transparent;
+$navbarLinkBackgroundActive = $navbarLinkBackgroundHover; // darken($navbarBackground, 5%);
+
+$navbarBrandColor = $navbarLinkColor;
+
+// Inverted navbar
+$navbarInverseBackground = $inverseBackground; // #111111;
+$navbarInverseBackgroundHighlight = #222222;
+$navbarInverseBorder = lighten($navbarInverseBackground, 20%); // #252525;
+
+$navbarInverseText = $bodyBackground; // $grayLight;
+$navbarInverseLinkColor = $navbarInverseText; // $grayLight;
+$navbarInverseLinkColorHover = $navbarInverseText; // $white;
+$navbarInverseLinkColorActive = $navbarInverseLinkColorHover;
+$navbarInverseLinkBackgroundHover = darken($navbarInverseBackground, 20%); // transparent;
+$navbarInverseLinkBackgroundActive = $navbarInverseLinkBackgroundHover;
+
+$navbarInverseSearchBackground = lighten($navbarInverseBackground, 25%);
+$navbarInverseSearchBackgroundFocus = $white;
+$navbarInverseSearchBorder = $navbarInverseBackground;
+$navbarInverseSearchPlaceholderColor = #ccc;
+
+$navbarInverseBrandColor = $navbarInverseText; // $white;
+
+
+// Pagination
+// -------------------------
+$paginationBackground = #fff;
+$paginationBorder = $borderColor;
+$paginationActiveBackground = $backgroundActive;
+
+
+// Hero unit
+// -------------------------
+$heroUnitBackground = $grayLighter;
+$heroUnitHeadingColor = inherit;
+$heroUnitLeadColor = inherit;
+
+
+// Form states and alerts
+// -------------------------
+$alertTextShadow = transparent; // rgba(255,255,255,.5);
+$warningText = $bodyBackground; // darken($kistersOrange, 20%); // #c09853;
+$warningBackgroundContainer = $warningBackground; // lighten($kistersOrange, 80%); // #fcf8e3;
+$warningBorder = darken(spin($warningBackgroundContainer, -10), 3%);
+
+$errorText = $bodyBackground; // darken($kistersRed, 20%); // #b94a48;
+$errorBackgroundContainer = $dangerBackground; // lighten($kistersRed, 80%); // #f2dede;
+$errorBorder = darken(spin($errorBackgroundContainer, -10), 3%);
+
+$successText = $bodyBackground; // darken($kistersGreen, 20%); // #468847;
+$successBackgroundContainer = $successBackground; // lighten($kistersGreen, 80%); // #dff0d8;
+$successBorder = darken(spin($successBackgroundContainer, -10), 5%);
+
+$infoText = $bodyBackground; // darken($kistersBlue, 20%); // #3a87ad;
+$infoBackgroundContainer = $infoBackground; // lighten($kistersBlue, 80%); // #d9edf7;
+$infoBorder = darken(spin($infoBackgroundContainer, -10), 7%);
+
+
+// Tooltips and popovers
+// -------------------------
+$tooltipColor = #fff;
+$tooltipBackground = #000;
+$tooltipArrowWidth = 5px;
+$tooltipArrowColor = $tooltipBackground;
+
+$popoverBackground = $backgroundHover; // #fff;
+$popoverArrowWidth = 5px;
+$popoverArrowColor = $backgroundHover; // #fff;
+$popoverTitleBackground = darken($popoverBackground, 3%);
+
+// Special enhancement for popovers
+$popoverArrowOuterWidth = $popoverArrowWidth + 1;
+$popoverArrowOuterColor = rgba(0,0,0,.25);
+
+// Tree
+// -------------------------
+$treeRowBackgroundHover = $backgroundHover;
+$treeRowBackgroundSelected = $defaultAccentColor; // #0088CC;
+$treeRowColorSelected = $bodyBackground; // #fff;
+
+// Grid
+// --------------------------------------------------
+$gridBackground = $tableBackground;
+$gridHeaderBackground = $grayLightest;
+$gridBorder = $tableBorder;
+$gridBorderRadius = $tableBorderRadius;
+$gridRowEvenBackground = $white;
+$gridRowOddBackground = $white;
+$gridSelectedBackground = $defaultAccentColor; // $blue;
+$gridSelectedColor = $bodyBackground; // $white;
+$gridBackgroundHover = lighten($gridSelectedBackground, 20%);
+
+// Default 940px grid
+// -------------------------
+$gridColumns = 12;
+$gridColumnWidth = 60px;
+$gridGutterWidth = 20px;
+$gridRowWidth = ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+
+// 1200px min
+$gridColumnWidth1200 = 70px;
+$gridGutterWidth1200 = 30px;
+$gridRowWidth1200 = ($gridColumns * $gridColumnWidth1200) + ($gridGutterWidth1200 * ($gridColumns - 1));
+
+// 768px-979px
+$gridColumnWidth768 = 42px;
+$gridGutterWidth768 = 20px;
+$gridRowWidth768 = ($gridColumns * $gridColumnWidth768) + ($gridGutterWidth768 * ($gridColumns - 1));
+
+
+// Fluid grid
+// -------------------------
+$fluidGridColumnWidth = percentage($gridColumnWidth/$gridRowWidth);
+$fluidGridGutterWidth = percentage($gridGutterWidth/$gridRowWidth);
+
+// 1200px min
+$fluidGridColumnWidth1200 = percentage($gridColumnWidth1200/$gridRowWidth1200);
+$fluidGridGutterWidth1200 = percentage($gridGutterWidth1200/$gridRowWidth1200);
+
+// 768px-979px
+$fluidGridColumnWidth768 = percentage($gridColumnWidth768/$gridRowWidth768);
+$fluidGridGutterWidth768 = percentage($gridGutterWidth768/$gridRowWidth768);

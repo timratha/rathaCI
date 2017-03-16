@@ -1,0 +1,86 @@
+@import 'variables'
+$toggle-font-size = $header-height - 20px;
+$user-name-font-size = $header-height - 25px;
+
+.app-header
+  z-index: 999 !important
+  background-color $app-header-bgcolor
+  color $app-header-color
+  *
+    box-sizing: border-box;
+  >*
+    display inline-block
+    height: 100%;
+    top 0px;
+  .left
+    float left
+  .center
+    text-align center
+  .right
+    float right
+    border-left  1px solid $app-header-color - 20%
+
+.app-header
+  .nav-bar-toggle
+    display block
+    link(black)
+    .fa-bars
+      padding 5px
+      /*border 1px solid grey*/
+      font-size $toggle-font-size
+      margin (($header-height - @font-size)/2) - @padding 20px
+
+  .brand
+    font-size $brand-font-size
+    text-align center
+    vertical-align middle
+    padding (($header-height - @font-size)/2) 10px
+
+  .header-menu
+    padding: 10px;
+    vertical-align: middle;
+    position: relative;
+    box-sizing: border-box;
+    .menu-icon
+      font-size: 25px;
+      vertical-align: middle;
+    .menu-label
+      padding: 0 10px;
+    >.drop-menu
+      position: absolute;
+      top: 100%;
+      margin -1px;
+      display none
+    &:hover>.drop-menu
+      display block
+    .fa-chevron-down
+      font-size: 8px;
+    &.right>.drop-menu
+      right: 0;
+    &.left>.drop-menu
+      left: 0;
+
+
+
+    /*padding ( ($header-height - $avatar-size ) /2) 10px;*/
+    /*font-size $user-name-font-size;*/
+    /*line-height $avatar-size*/
+    /*.avatar-container*/
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+    /*.avatar*/
+    /*display:  inline-block;*/
+    /*width $avatar-size*/
+    /*height $avatar-size*/
+    /*border 1px solid $app-header-color - 20%*/
+    /*border-radius ($avatar-size / 2)*/
+    /*float left*/
+    /*for icon*/
+    /*line-height: 28px;*/
+    /*text-align: center;*/
+    /*font-size: 25px;*/
+    /*.user-name*/
+    /*padding 0px 10px*/
+    /*.logout*/
+    /*cursor pointer*/
+    /*padding 0px 10px;*/

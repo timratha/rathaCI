@@ -1,0 +1,6 @@
+.yeti .dijitEditor {
+  border: 1px solid $navbarBorder;
+}
+.yeti .dijitEditorDisabled {
+  opacity: 0.65;
+}

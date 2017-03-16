@@ -1,0 +1,288 @@
+.hide {
+  display: none !important;
+}
+.navigation-bar {
+  background-color: #eee;
+  color: #369;
+}
+.navMenu {
+  border-radius: 2px;
+  border: none;
+  box-shadow: none;
+  margin: 0px;
+  color: inherit;
+  background-color: inherit;
+}
+.navMenu .groupName {
+  display: none;
+  background: #fff;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-bottom: 1px solid #d3d3d3;
+  color: #808080;
+  font-weight: bolder;
+  white-space: nowrap;
+}
+.navMenu .navMenuItem .navMenuItemNode {
+  line-height: 20px;
+  padding: 10px 10px;
+  white-space: nowrap;
+}
+.navMenu .navMenuItem .navMenuItemNode .navMenuItemIcon {
+  display: inline-block;
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+.navMenu .navMenuItem .navMenuItemNode .navMenuItemLabel {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  padding-left: 10px;
+}
+.navMenu .navMenuItem .navMenuItemNode .selectedMarker {
+  display: none;
+  line-height: inherit;
+}
+.navMenu .navMenuItem .subMenuContainer {
+  display: none;
+  box-sizing: border-box;
+  padding-left: 25px;
+}
+.navMenu .navMenuItem .subMenuContainer .navMenuItem .navMenuItemLabel {
+  min-width: 95px;
+}
+.navMenu .navMenuItem {
+  cursor: pointer;
+  position: relative;
+  color: inherit;
+  background-color: inherit;
+  padding: 1px 0px;
+}
+.navMenu .navMenuItem .subMenuIndicator {
+  display: none;
+}
+.navMenu .navMenuItem.selected,
+.navMenu .navMenuItem>.navMenuItemNode:hover {
+  color: #eee;
+  background-color: #369;
+}
+.navMenu .navMenuItem.showSubMenu>.subMenuContainer,
+.navMenu .navMenuItem.childSelected>.subMenuContainer {
+  display: block;
+}
+/*Top nav bar*/
+.navigation-bar.dijitAlignTop {
+  overflow: visible;
+}
+.navigation-bar.dijitAlignTop .collapse-toggle {
+  display: none;
+}
+.navigation-bar.dijitAlignTop .navMainMenuItem.navMenuItem {
+  display: inline-block;
+  padding: 0px 1px;
+}
+.navigation-bar.dijitAlignTop .navMainMenuItem.navMenuItem.hasSubMenu>.navMenuItemNode>.subMenuIndicator {
+  display: inline-block;
+}
+.navigation-bar.dijitAlignTop .navMainMenuItem.navMenuItem.hasSubMenu>.navMenuItemNode>.subMenuIndicator >i.fa:after {
+  content: "\f078";
+}
+.navigation-bar.dijitAlignTop .navMainMenuItem.navMenuItem>.navMenuItemNode .navMenuItemIcon {
+  font-size: 24px;
+}
+.navigation-bar.dijitAlignTop .navMainMenuItem.navMenuItem>.subMenuContainer {
+  background-color: #eee;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-left: 0px;
+  box-shadow: 1px 1px 5px 1px #d3d3d3;
+}
+.navigation-bar.dijitAlignTop .navMainMenuItem.navMenuItem:hover>.subMenuContainer {
+  display: block;
+}
+.navigation-bar.dijitAlignTop .navMainMenuItem.navMenuItem.childSelected {
+  color: #eee;
+  background-color: #369;
+}
+.navigation-bar.dijitAlignLeft .navMenuItem .subMenuIndicator>i.fa:after {
+  content: "\f054";
+}
+.navigation-bar.dijitAlignLeft .navMenuItem.showSubMenu .subMenuIndicator>i.fa:after {
+  content: "\f078";
+}
+.navigation-bar.dijitAlignLeft .navMenuItem.hasSubMenu>.navMenuItemNode>.subMenuIndicator {
+  display: inline-block;
+}
+.navigation-bar.dijitAlignLeft .navMenuItem.navMainMenuItem>.navMenuItemNode .navMenuItemLabel {
+  min-width: 120px;
+}
+.navigation-bar.dijitAlignLeft .navMenuItem .subMenuContainer .navSubMenu {
+  border-left: 1px dotted #369;
+}
+.navigation-bar.dijitAlignLeft .collapse-toggle {
+  display: block;
+  z-index: 999;
+  text-align: center;
+  cursor: pointer;
+  background-color: inherit;
+  color: inherit;
+  line-height: 20px;
+  padding: 5px 10px;
+  text-align: right;
+}
+.navigation-bar.dijitAlignLeft .collapse-toggle .toggle-icon>i.fa:before {
+  display: inline-block;
+  font-size: 14px;
+  width: 20px;
+  text-align: center;
+  vertical-align: middle;
+  height: 20px;
+  content: "\f0c9";
+  line-height: 20px;
+}
+.navigation-bar.dijitAlignLeft.collapsed .navMainMenuItem.navMenuItem>.navMenuItemLabel {
+  display: none;
+}
+.navigation-bar.dijitAlignLeft.collapsed .collapse-toggle {
+  text-align: center;
+}
+.navigation-bar.dijitAlignLeft .navMenuItem.selected>.navMenuItemNode .fa.selectedMarker {
+  position: absolute;
+  right: 0px;
+  display: inline-block;
+}
+.navigation-bar.dijitAlignLeft .navMenuItem.selected>.navMenuItemNode .fa.selectedMarker:after {
+  content: "\f0d9";
+}
+.navigation-bar.dijitAlignLeft.collapsed {
+  overflow: visible;
+}
+.navigation-bar.dijitAlignLeft.collapsed .navMainMenuItem.hasSubMenu>.navMenuItemNode>.subMenuIndicator {
+  display: none;
+}
+.navigation-bar.dijitAlignLeft.collapsed .navMainMenuItem>.navMenuItemNode>.navMenuItemLabel {
+  display: none;
+}
+.navigation-bar.dijitAlignLeft.collapsed .navMainMenuItem>.subMenuContainer {
+  display: none;
+  position: absolute;
+  background-color: #eee;
+  top: 0;
+  left: 100%;
+  padding-left: 0px;
+  box-shadow: 1px 1px 5px 1px #d3d3d3;
+}
+.navigation-bar.dijitAlignLeft.collapsed .navMainMenuItem:hover>.subMenuContainer {
+  display: block;
+}
+.navigation-bar.dijitAlignLeft.collapsed .navMainMenuItem:hover>.subMenuContainer .groupName {
+  display: block;
+}
+.navigation-bar.dijitAlignLeft.collapsed .navMainMenuItem:hover>.subMenuContainer .navSubMenu {
+  border: none;
+}
+.navigation-bar.dijitAlignLeft.collapsed .navMainMenuItem.childSelected {
+  color: #eee;
+  background-color: #369;
+}
+.navigation-bar.dijitAlignLeft.collapsed .navMainMenuItem.childSelected>.navMenuItemNode .fa.selectedMarker {
+  position: absolute;
+  right: 0px;
+  display: inline-block;
+}
+.navigation-bar.dijitAlignLeft.collapsed .navMainMenuItem.childSelected>.navMenuItemNode .fa.selectedMarker:after {
+  content: "\f0d9";
+}
+.navigation-bar.dijitAlignRight .navMenuItem .subMenuIndicator>i.fa:after {
+  content: "\f054";
+}
+.navigation-bar.dijitAlignRight .navMenuItem.showSubMenu .subMenuIndicator>i.fa:after {
+  content: "\f078";
+}
+.navigation-bar.dijitAlignRight .navMenuItem.hasSubMenu>.navMenuItemNode>.subMenuIndicator {
+  display: inline-block;
+}
+.navigation-bar.dijitAlignRight .navMenuItem.navMainMenuItem>.navMenuItemNode .navMenuItemLabel {
+  min-width: 120px;
+}
+.navigation-bar.dijitAlignRight .navMenuItem .subMenuContainer .navSubMenu {
+  border-left: 1px dotted #369;
+}
+.navigation-bar.dijitAlignRight .collapse-toggle {
+  display: block;
+  z-index: 999;
+  text-align: center;
+  cursor: pointer;
+  background-color: inherit;
+  color: inherit;
+  line-height: 20px;
+  padding: 5px 10px;
+  text-align: left;
+}
+.navigation-bar.dijitAlignRight .collapse-toggle .toggle-icon>i.fa:before {
+  display: inline-block;
+  font-size: 14px;
+  width: 20px;
+  text-align: center;
+  vertical-align: middle;
+  height: 20px;
+  content: "\f0c9";
+  line-height: 20px;
+}
+.navigation-bar.dijitAlignRight.collapsed .navMainMenuItem.navMenuItem>.navMenuItemLabel {
+  display: none;
+}
+.navigation-bar.dijitAlignRight.collapsed .collapse-toggle {
+  text-align: center;
+}
+.navigation-bar.dijitAlignRight .navMenuItem.selected>.navMenuItemNode .fa.selectedMarker {
+  position: absolute;
+  left: 0px;
+  display: inline-block;
+}
+.navigation-bar.dijitAlignRight .navMenuItem.selected>.navMenuItemNode .fa.selectedMarker:after {
+  content: "\f0da";
+}
+.navigation-bar.dijitAlignRight.collapsed {
+  overflow: visible;
+}
+.navigation-bar.dijitAlignRight.collapsed .navMainMenuItem.hasSubMenu>.navMenuItemNode>.subMenuIndicator {
+  display: none;
+}
+.navigation-bar.dijitAlignRight.collapsed .navMainMenuItem>.navMenuItemNode>.navMenuItemLabel {
+  display: none;
+}
+.navigation-bar.dijitAlignRight.collapsed .navMainMenuItem>.subMenuContainer {
+  display: none;
+  position: absolute;
+  background-color: #eee;
+  top: 0;
+  right: 100%;
+  padding-left: 0px;
+  box-shadow: -1px 1px 5px 1px #d3d3d3;
+}
+.navigation-bar.dijitAlignRight.collapsed .navMainMenuItem:hover>.subMenuContainer {
+  display: block;
+}
+.navigation-bar.dijitAlignRight.collapsed .navMainMenuItem:hover>.subMenuContainer .groupName {
+  display: block;
+}
+.navigation-bar.dijitAlignRight.collapsed .navMainMenuItem:hover>.subMenuContainer .navSubMenu {
+  border: none;
+}
+.navigation-bar.dijitAlignRight.collapsed .navMainMenuItem.childSelected {
+  color: #eee;
+  background-color: #369;
+}
+.navigation-bar.dijitAlignRight.collapsed .navMainMenuItem.childSelected>.navMenuItemNode .fa.selectedMarker {
+  position: absolute;
+  left: 0px;
+  display: inline-block;
+}
+.navigation-bar.dijitAlignRight.collapsed .navMainMenuItem.childSelected>.navMenuItemNode .fa.selectedMarker:after {
+  content: "\f0da";
+}

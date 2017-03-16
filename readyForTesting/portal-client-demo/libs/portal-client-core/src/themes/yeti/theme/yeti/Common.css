@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: $baseFontFamily;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  color: $textColor;
+  background-color: $bodyBackground;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  color: $linkColorHover;
+  text-decoration: underline;
+}
+.yeti .dijitReadOnly *,
+.yeti .dijitDisabled *,
+.yeti .dijitReadOnly,
+.yeti .dijitDisabled {
+  cursor: not-allowed;
+}
+.yeti :focus {
+  outline: 1px dotted $outlineColor;
+}
+.yeti .dijitFocusedLabel {
+  outline: 1px dotted $outlineColor;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript" >
+
+        require([
+            'dojo/_base/array',
+            'dojo/dom',
+            'dojo/request',
+            'dojo/domReady!'
+        ], function(array, dom, request) {
+            var logNode = dom.byId("log");
+            var basePath = "//" + window.location.host + "/KiWebPortal/";
+            var users = ["Marko","Qiu","Stefan","Gufron","Demo","Test","Sara","Angel","Callum"]
+            createUsers= function(){
+                request.get(basePath+"rest/userRoles?roleName=BasicUser",{handleAs:"json"}).then(function(role){
+//                    console.log(role)
+                     var adminRoleId = role[0].id;
+//                    console.log(adminRoleId)
+                     array.forEach(users,function(user){
+                         request.post(basePath+"rest/users",{
+                             handleAs: "json",
+                             headers:{'Content-Type':'application/json'},
+                             data:JSON.stringify({userName:user,password:"123",email:user+"@nowhere.to",address:"Nowhere",status:"active",timezone:"Europe/Berlin",message:"...","metadata":{},"image":"","settings":{}})
+                         }).then(function(usr){
+                             request.put(basePath+"rest/users/"+usr.id+"/userRoles",{
+                                 handleAs: "json",
+                                 headers:{'Content-Type':'application/json'},
+                                 data:JSON.stringify([adminRoleId])
+                             }).then(function(){
+                                 logNode.innerHTML += "<br>added "+usr.userName+" with role BasicUser"
+                             })
+                         })
+                     })
+                })
+            }
+
+                request.post(basePath+"rest/auth/login",{handleAs: "json", headers:{'Content-Type':'application/json'},data:JSON.stringify({userName:"PortalAdmin",password:"12years"})}).then(function(){
+                    createUsers()
+                },function(err){
+//                    console.log(err)
+                    if(err.response.status==400) {
+                        createUsers()
+                    }else{
+                        logNode.innerHTML = "Error loging in";
+                    }
+                })
+
+
+        });
+
+    </script>
+
+</head>
+<body style="margin: 0px;" class="yeti">
+<div id="log" ></div>
+</body>
+</html>

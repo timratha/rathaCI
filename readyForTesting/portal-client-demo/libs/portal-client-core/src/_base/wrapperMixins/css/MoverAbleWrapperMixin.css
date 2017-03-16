@@ -1,0 +1,7 @@
+.MoveAbleWrapperMixin .titleBarContainer {
+  cursor: move;
+}
+.MoveAbleWrapperMixin.dojoMoveItem {
+  z-index: 9999 !important;
+  box-shadow: 1px 1px 5px 1px #d3d3d3;
+}

@@ -1,0 +1,72 @@
+$portal-header-background = #369
+$portal-header-color = white
+.hide
+  display none !important; //TODO move this to common
+
+
+.portal-header
+  height 41px;
+  padding: 12px 15px 12px 15px;
+  background $portal-header-background
+  color $portal-header-color
+  .dijitMenuBar.headerMenuBar
+    background-color: inherit !important; //TODO try to move all !important
+    background-image: inherit !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    height inherit
+    &:before
+      /*for alignment*/
+      content: '';
+      display: inline-block;
+      height: inherit;
+    &>.dijitMenuItem
+      padding: 5px 10px 0px;
+      vertical-align: super;
+    .brand
+      padding: 10px 0px !important;
+      .applicationName
+      .fa
+        color: $portal-header-color;
+        text-shadow: none
+  .dijitMenuItem
+    /*float right*/
+    text-shadow none !important
+    color $portal-header-color !important
+  .dijitMenuItemSelected
+    background-color: inherit !important;
+    background-image: inherit !important;
+    box-shadow none
+  .fa.fa-chevron-down
+  .menu-icon
+    margin 0px 5px
+    vertical-align: middle;
+  .menu-icon
+  .fa.fa-bars
+    font-size: 22px;
+  .applicationName
+    font-size 22px;
+  .fa.fa-chevron-down
+    font-size 8px;
+
+  .dijitMenuBar .dijitMenuItem.shortCut
+    .shutCutIcon
+      font-size 20px;
+    .badge
+      position absolute
+      top 0px
+      right 0px
+      font-size: 8px;
+      background-color: red;
+      border-radius: 100px;
+      line-height: 14px;
+      padding: 3px;
+      width: 14px;
+      height: 14px;
+      opacity: 0.9;
+      text-align center
+  .UserMenu
+    border-left 1px solid $portal-header-color
+    margin-left 10px;
+

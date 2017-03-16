@@ -1,0 +1,135 @@
+
+icon-item($height)
+  height $height
+  >.item-node
+    a
+      padding 0
+    .item-icon
+      font-size ($size = $height * 0.6)
+      width $size
+      padding (($height - $size ) / 2)
+    .item-label
+      padding-right 10px;
+    /*.item-label*/
+      /*display none*/
+      /*TODO responsive*/
+
+
+selected-item-mark()
+  .nav-item.selected
+    highlight($nav-item-font-color-selected)
+    background-color $nav-item-bg-color-selected;
+    & a:after
+      content: "\f0d9";
+      font-family: FontAwesome;
+      color: #fff;
+      position: absolute;
+      right: 0px;
+      z-index: 99;
+
+show-sub-items()
+  >.nav-group
+    display block
+basic-item()
+  .nav-item
+    color:$nav-item-font-color
+    display block
+    padding 5px 0
+    link($link-font-color)
+    >.nav-group
+      display none
+    &.active
+      highlight($link-font-color)
+    .item-node
+      display block
+      &:hover
+        highlight($nav-item-font-color-selected)
+        background-color $nav-item-bg-color-selected;
+    a
+      display inline-block
+      padding 5px 15px
+      text-decoration none
+      outline: none;
+      link($link-font-color)
+    .item-icon
+      display inline-block
+      font-size $nav-icon-size
+      width $nav-icon-size
+      text-align: center;
+    .item-label
+      display inline-block
+      white-space nowrap
+
+
+full-item(side)
+  basic-item()
+  selected-item-mark()
+  .nav-item
+    width 100%
+    a
+      display inline-block
+    .item-icon
+      display inline-block
+    .item-label
+      margin-left 10px
+      display inline-block
+      position: absolute;
+    >.nav-group
+      font-size 0.9em
+      margin-left 25px
+      border-left 1px dotted $nav-item-bg-color-selected;
+    >.nav-group
+      position: relative;
+    &.active
+      show-sub-items()
+small-item(side)
+  /* small item*/
+  basic-item()
+  selected-item-mark()
+  >.nav-item
+    position: relative;
+    width 100%
+    &+.nav-item
+      border-top 1px solid $nav-bar-bg-color + 30%
+      margin-top -1px
+    .item-label
+      display none
+    >.nav-group
+      if side == 'left'
+        box-shadow: 2px 1px 5px 1px gray;
+      else if side == 'right'
+        box-shadow: -21px 1px 5px 1px gray;
+    &:hover
+    &.active:hover
+      show-sub-items()
+    &.active>.nav-group
+      display none
+
+    >.nav-group
+      width $sidebar-full-size
+      full-item(side)
+      position absolute
+      top 0px
+      {side} $sidebar-small-size - 2
+      background-color $nav-bar-bg-color
+      margin-left: 0;
+      border none
+
+
+
+big-item()
+  basic-item()
+  >.nav-item
+    height auto
+    position relative
+    padding 0px
+    icon-item($top-bar-height)
+    >.nav-group
+      width $sidebar-full-size
+      full-item(side)
+      position absolute
+      top $top-bar-height
+      background-color $nav-bar-bg-color
+      box-shadow: 0px 2px 5px 1px gray;
+    &:hover
+      show-sub-items()

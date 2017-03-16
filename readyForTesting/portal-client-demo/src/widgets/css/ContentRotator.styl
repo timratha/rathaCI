@@ -1,0 +1,95 @@
+.contentRotator {
+  display: table;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentRotator:hover .controller {
+  display: block;
+}
+
+.contentRotator {
+  .pane,
+  .pane > * {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pager,
+  .prev,
+  .next {
+    position: absolute;
+    z-index: 99;
+  }
+
+  .pager {
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+  }
+
+  .dijitContentPane.pager {
+    padding: 10px 0;
+  }
+
+  .prev,
+  .next {
+    bottom: 45%;
+  }
+
+  .prev {
+    left: 0;
+  }
+
+  .next {
+    right: 0;
+  }
+
+  .controller {
+    display: none;
+  }
+
+  .buttons {
+    background-color: rgba(0, 0, 0, 0.6);
+    display: inline-block;
+    padding: 5px;
+  }
+
+  .prev .dijitButton .dijitButtonNode,
+  .next .dijitButton .dijitButtonNode,
+  .pager .dijitToggleButton .dijitButtonNode {
+    background-image: none;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+  }
+
+  .prev .dijitButton .dijitButtonNode,
+  .next .dijitButton .dijitButtonNode {
+    background-color: rgba(0, 0, 0, 0.6);
+    text-shadow: none;
+    padding: 5px;
+    color: #808080;
+    font-size: 20px;
+  }
+
+  .pager .dijitToggleButton .dijitButtonNode {
+    background-color: #808080;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+  }
+
+  .pager .dijitToggleButtonHover .dijitButtonNode,
+  .pager .dijitToggleButtonChecked .dijitButtonNode {
+    background-color: #ffffff;
+    opacity: 1;
+  }
+
+  .prev .dijitButtonHover .dijitButtonNode .icon-chevron-left,
+  .prev .dijitButtonActive .dijitButtonNode .icon-chevron-left,
+  .next .dijitButtonHover .dijitButtonNode .icon-chevron-right,
+  .next .dijitButtonActive .dijitButtonNode .icon-chevron-right {
+    color: #ffffff;
+  }
+}

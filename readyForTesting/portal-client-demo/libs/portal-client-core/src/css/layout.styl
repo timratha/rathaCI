@@ -1,0 +1,68 @@
+init-border-layout()
+  &.border-layout
+    position relative
+    >*
+      box-sizing: border-box;
+    >.layout-top
+      width 100%
+      position absolute
+      top 0px
+      left 0px
+      z-index 2
+    >.layout-right
+      height 100%
+      right 0px
+      top 0px
+      position absolute
+    >.layout-bottom
+      padding 0px
+      width 100%
+      position absolute
+      bottom 0px
+      left 0px;
+      line-height 3em;
+      text-align right;
+      padding-right 10px;
+    >.layout-left
+      height 100%
+      left 0px
+      top 0px
+      position absolute
+    >.layout-center
+      min-height 100%
+
+
+
+
+
+border-layout($headerHeight,$rightWidth,$footerHeight,$leftWidth)
+  init-border-layout()
+  &.border-layout
+    >.layout-top
+      height $headerHeight
+    >.layout-right
+      padding-top $headerHeight
+      padding-bottom $footerHeight
+      width $rightWidth
+    >.layout-bottom
+      height $footerHeight
+    >.layout-left
+      padding-top $headerHeight
+      padding-bottom $footerHeight
+      width $leftWidth
+    >.layout-center
+      padding $headerHeight $rightWidth $footerHeight $leftWidth
+  &.border-layout.full-screen
+    >.layout-top
+      display none !important
+    >.layout-right
+      display none !important
+    >.layout-bottom
+      display none !important
+    >.layout-left
+      display none !important
+    >.layout-center
+      padding 0px
+
+
+

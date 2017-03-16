@@ -1,0 +1,21 @@
+<div class="${baseClass}">
+     <div data-dojo-type="dijit/layout/LayoutContainer" data-dojo-props="design:'sidebar'" data-dojo-attach-point="container">
+        <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'" class="leftMenu">
+            <div data-dojo-type="dijit/DropDownMenu">
+
+                <div data-dojo-type="dijit/MenuItem" data-dojo-attach-point="inboxButton" iconClass="fa fa-inbox">${nls.inbox} <span data-dojo-attach-point="newCounter"></span></div>
+                <div data-dojo-type="dijit/MenuItem" data-dojo-attach-point="sentButton" iconClass="fa fa-share">${nls.sent}</div>
+                <div data-dojo-type="dijit/MenuItem" data-dojo-attach-point="trashButton" iconClass="fa fa-trash">${nls.trash}</div>
+            </div>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'" class="topMenu">
+            <button data-dojo-type="dijit/form/Button" data-dojo-attach-point="composeButton" iconClass="fa fa-pencil">${nls.compose}</button>
+            <button data-dojo-type="dijit/form/Button" data-dojo-attach-point="readButton" iconClass="fa fa-check">${nls.markAsRead}</button>
+            <button data-dojo-type="dijit/form/Button" data-dojo-attach-point="unreadButton" iconClass="fa fa-times">${nls.markAsUnread}</button>
+            <button data-dojo-type="dijit/form/Button" data-dojo-attach-point="deleteButton" iconClass="fa fa-trash">${nls.deleteText}</button>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" class="gridContainer">
+            <div data-dojo-attach-point="gridAttach"></div>
+        </div>
+    </div>
+</div>

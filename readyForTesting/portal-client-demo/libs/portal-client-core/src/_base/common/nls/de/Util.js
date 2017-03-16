@@ -1,0 +1,9 @@
+define({
+    year:'Jahre',
+    month:'Monate',
+    week:'Wochen',
+    day:'Tage',
+    hour:'Stunden',
+    min:'Minuten',
+    sec:'Stunden'
+})

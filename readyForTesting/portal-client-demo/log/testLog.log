@@ -1,0 +1,76 @@
+
+Running "intern:unitTest" (intern) task
+>> PASS: main - columns - className property (22ms)
+>> 0/1 tests failed
+>> PASS: main - columnSets - className property (23ms)
+>> 0/1 tests failed
+>> PASS: main - OnDemandList with zero rowHeight - _processScroll should bail out if rowHeight is 0 (0ms)
+>> FAIL: main - OnDemandList with zero rowHeight - refresh with zero rowHeight should only render minRowsPerPage rows (1ms)
+AssertionError: expected 100 to equal 25
+No stack or location
+>> 1/2 tests failed
+>> 1/4 tests failed
+
+-------------------------|-----------|-----------|-----------|-----------|
+File                     |   % Stmts |% Branches |   % Funcs |   % Lines |
+-------------------------|-----------|-----------|-----------|-----------|
+   libs\dstore\          |     26.68 |     12.01 |     33.33 |     26.68 |
+      Filter.js          |     21.43 |         0 |        50 |     21.43 |
+      Memory.js          |     37.65 |     19.23 |     58.33 |     37.65 |
+      Promised.js        |     84.62 |        50 |       100 |     84.62 |
+      QueryMethod.js     |     44.44 |         0 |     66.67 |     44.44 |
+      QueryResults.js    |     83.33 |        75 |        60 |     83.33 |
+      SimpleQuery.js     |      5.38 |         0 |      3.23 |      5.38 |
+      Store.js           |     16.67 |     19.05 |     19.05 |     16.67 |
+      Trackable.js       |     26.92 |      5.26 |        50 |     26.92 |
+   tests\                |       100 |       100 |       100 |       100 |
+      all.js             |       100 |       100 |       100 |       100 |
+      intern.js          |       100 |       100 |       100 |       100 |
+   tests\core\           |        98 |       100 |     94.74 |        98 |
+      OnDemandList.js    |     94.12 |       100 |      87.5 |     94.12 |
+      columns.js         |       100 |       100 |       100 |       100 |
+   tests\data\           |       100 |        50 |       100 |       100 |
+      createSyncStore.js |       100 |        50 |       100 |       100 |
+      genericData.js     |       100 |       100 |       100 |       100 |
+      orderedData.js     |       100 |       100 |       100 |       100 |
+-------------------------|-----------|-----------|-----------|-----------|
+All files                |      35.3 |     13.84 |     44.96 |      35.3 |
+-------------------------|-----------|-----------|-----------|-----------|
+
+>> 1/4 tests failed
+Warning: FAIL: main - OnDemandList with zero rowHeight - refresh with zero rowHeight should only render minRowsPerPage rows (1ms)
+AssertionError: expected 100 to equal 25
+No stack or location
+1/2 tests failed
+1/4 tests failed
+1/4 tests failed Used --force, continuing.
+
+Running "search:ifTestFail" (search) task
+1
+2
+Num results: 2
+Creation date: 2015-08-24 10:43:01
+Results:
+	File: ./log/testLog.log
+	Line: 8
+	Match: FAIL
+	Search: FAIL
+
+	File: ./log/testLog.log
+	Line: 41
+	Match: FAIL
+	Search: FAIL
+
+
+Num matches: 2
+
+Running "if:error" (if) task
+[if] tests evaluated true: 
+[if] running tasks: 
+	 nodemailer:errorTestBB
+
+Running "nodemailer:errorTestBB" (nodemailer) task
+Sending 1 e-mail to recipients: "RATHA CI" <timratha@gmail.com>, "Marko" <Marko.Vukadinovic@kisters.de>
+Message sent successfully.
+
+Done, but with warnings.

@@ -1,0 +1,9 @@
+.gridLayout {
+  background-color: inherit;
+}
+.gridLayout .gridContainerTable {
+  border: none;
+}
+.gridLayout .gridContainerTable .gridContainerZone {
+  background-color: inherit;
+}

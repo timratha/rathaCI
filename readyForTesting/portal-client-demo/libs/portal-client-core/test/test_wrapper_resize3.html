@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <style>
+        .fixSize{
+            width:500px;
+            height: 500px;
+        }
+    </style>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+    <script type="text/javascript">
+
+        require([
+            'test/widgets/ContentWidget',
+            'dojo/_base/declare',
+            'portal/_base/common/Wrapper',
+            'yeti',
+            'dojo/domReady!'
+        ], function (ContentWidget,declare, Wrapper) {
+            //case for resize to bigger then smaller.
+
+            ContentWidget = declare([ContentWidget],{
+                style:'background-color:skyblue'
+            });
+
+            var wrapper1= new declare([Wrapper],{
+                title:'test wrapper',
+                titleIcon:'fa fa-user',
+                instance:new ContentWidget({
+                    content:'never show scroll bar'
+                })
+            })(null,'cp1');
+            wrapper1.startup();
+
+            wrapper1.resize({w:200,h:200});
+            setTimeout(function(){
+                wrapper1.resize({w:300,h:300});
+            },1000);
+
+            setTimeout(function(){
+                wrapper1.resize({w:200,h:200});
+            },2000);
+        });
+    </script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+</head>
+<body  class="yeti"  style="margin: 0px;overflow-y: scroll;">
+    <div id="cp1" ></div>
+</body>
+</html>

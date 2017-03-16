@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./dojoConfig.js"></script>
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.css"/>
+    <script type="text/javascript" src="../libs/dojo/dojo.js"></script>
+</head>
+<body  class="yeti"  style="margin: 0px;">
+<div id="app">
+</div>
+<script type="text/javascript">
+    require([
+        'dojo/promise/all',
+        'test/data/applications',
+        'test/data/dashboards',
+        'test/data/users',
+        'dstore/Memory',
+        'portal',
+        'portal/_base/store/PortalStore',
+        'dojo/domReady!'
+    ], function (all, applications,dashboards,users, Memory, portal,PortalStore) {
+
+        PortalStore.setStore('memory');
+        PortalStore.users._currentUser = users.PortalAdmin;
+        var app = {
+                "key": 'testApp1',
+                "defaultView": "ContentView1",
+                "label": "Test Application1",
+                "editTime": "2015-08-12 18:08:44.597",
+                "creationTime": "2015-08-12 18:08:44.597",
+                "version": "0.0.9",
+                "applicationType": "Test Application",
+                "iconClass": null,
+                "theme":"yeti",
+                "packageName": "test",
+                "menu": {
+                    "position": "left",
+                    "menuSize": "responsive",
+                    "items": [
+                                {
+                                    "key": "ContentView1",
+                                    "iconClass": "fa fa-flash",
+                                    "label": "ContentView1"
+                                }
+                            ]
+                },
+                "views": [
+                    {
+                        "key": "ContentView1",
+                        "viewType": "portal/views/TemplateView",
+                        "label": "test view",
+                        "iconClass": "fa fa-users",
+                        "config": {
+                            "templateString": '<div>' +
+                                '<div data-dojo-attach-point="w1" style="width: 49%;height:1000px;display: inline-block;"></div>' +
+                                '<div data-dojo-attach-point="w2" style="width: 49%;vertical-align:top;display: inline-block;"></div>' +
+                            '</div>'
+                        },
+                        "widgets": [
+                            {
+                                "key": "w1",
+                                "widgetType": "test/widgets/ContentWidget",
+                                "label": "test widget",
+                                "iconClass": "fa fa-users",
+                                "config": {
+                                    "content": "should not have scroll bar."
+                                }
+                            },
+                            {
+                                "key": "w2",
+                                "widgetType": "test/widgets/ContentWidget",
+                                "label": "test widget",
+                                "iconClass": "fa fa-users",
+                                "config": {
+                                    "content": "should not have scroll bar."
+                                }
+                            }
+                        ]
+                    }
+                ]
+        };
+        all([
+            PortalStore.appStore.installApplication(app)
+        ]).then(function(){
+            var p = new portal({
+                defaultTheme:'yeti'
+            }, 'app');
+            p.startup();
+        });
+    });
+</script>
+</body>
+</html>

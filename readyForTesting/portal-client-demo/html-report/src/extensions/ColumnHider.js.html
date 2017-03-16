@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src\extensions\ColumnHider.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">src\extensions\ColumnHider.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">50% <small>(51 / 102)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">29.09% <small>(16 / 55)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">30% <small>(6 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">50% <small>(51 / 102)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">src\extensions\</a> &#187; ColumnHider.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">define([
+	'dojo/_base/declare',
+	'dojo/dom-construct',
+	'dojo/has',
+	'dojo/on',
+	'dgrid/util/misc',
+	'dojo/i18n!./nls/columnHider'
+], function (declare, domConstruct, has, listen, miscUtil, i18n) {
+/*
+ *	Column Hider plugin for dgrid
+ *	Originally contributed by TRT 2011-09-28
+ *
+ *	A dGrid plugin that attaches a menu to a dgrid, along with a way of opening it,
+ *	that will allow you to show and hide columns.  A few caveats:
+ *
+ *	1. Menu placement is entirely based on CSS definitions.
+ *	2. If you want columns initially hidden, you must add "hidden: true" to your
+ *		column definition.
+ *	3. This implementation does NOT support ColumnSet, and has not been tested
+ *		with multi-subrow records.
+ *	4. Column show/hide is controlled via straight up HTML checkboxes.  If you
+ *		are looking for something more fancy, you'll probably need to use this
+ *		definition as a template to write your own plugin.
+ *
+ */
+&nbsp;
+	var activeGrid, // references grid for which the menu is currently open
+		bodyListener; // references pausable event handler for body mousedown
+&nbsp;
+<span class="fstat-no" title="function not covered" >	function getColumnIdFromCheckbox(cb, grid) {</span>
+		// Given one of the checkboxes from the hider menu,
+		// return the id of the corresponding column.
+		// (e.g. gridIDhere-hider-menu-check-colIDhere -&gt; colIDhere)
+<span class="cstat-no" title="statement not covered" >		return cb.id.substr(grid.id.length + 18);</span>
+	}
+&nbsp;
+	return declare(null, {
+		// hiderMenuNode: DOMNode
+		//		The node for the menu to show/hide columns.
+		hiderMenuNode: null,
+&nbsp;
+		// hiderToggleNode: DOMNode
+		//		The node for the toggler to open the menu.
+		hiderToggleNode: null,
+&nbsp;
+		// i18nColumnHider: Object
+		//		This object contains all of the internationalized strings for
+		//		the ColumnHider extension as key/value pairs.
+		i18nColumnHider: i18n,
+&nbsp;
+		// _hiderMenuOpened: Boolean
+		//		Records the current open/closed state of the menu.
+		_hiderMenuOpened: false,
+&nbsp;
+		// _columnHiderRules: Object
+		//		Hash containing handles returned from addCssRule.
+		_columnHiderRules: null,
+&nbsp;
+		// _columnHiderCheckboxes: Object
+		//		Hash containing checkboxes generated for menu items.
+		_columnHiderCheckboxes: null,
+&nbsp;
+		_renderHiderMenuEntries: function () {
+			// summary:
+			//		Iterates over subRows for the sake of adding items to the
+			//		column hider menu.
+&nbsp;
+			var subRows = this.subRows,
+				first = true,
+				srLength, cLength, sr, c;
+&nbsp;
+			delete this._columnHiderFirstCheckbox;
+&nbsp;
+			for (sr = 0, srLength = subRows.length; sr &lt; srLength; sr++) {
+				for (c = 0, cLength = subRows[sr].length; c &lt; cLength; c++) {
+					this._renderHiderMenuEntry(subRows[sr][c]);
+					<span class="missing-if-branch" title="else path not taken" >E</span>if (first) {
+						first = false;
+						this._columnHiderFirstCheckbox =
+							this._columnHiderCheckboxes[subRows[sr][c].id];
+					}
+				}
+			}
+		},
+&nbsp;
+		_renderHiderMenuEntry: function (col) {
+			var id = col.id,
+				replacedId = miscUtil.escapeCssIdentifier(id, '-'),
+				div,
+				checkId,
+				checkbox,
+				label;
+&nbsp;
+			if (col.hidden) {
+				// Hide the column (reset first to avoid short-circuiting logic)
+				col.hidden = false;
+				this._hideColumn(id);
+				col.hidden = true;
+			}
+&nbsp;
+			// Allow cols to opt out of the hider (e.g. for selector column).
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (col.unhidable) {
+<span class="cstat-no" title="statement not covered" >				return;</span>
+			}
+&nbsp;
+			// Create the checkbox and label for each column selector.
+			div = domConstruct.create('div', { className: 'dgrid-hider-menu-row' });
+			checkId = this.domNode.id + '-hider-menu-check-' + replacedId;
+&nbsp;
+			checkbox = this._columnHiderCheckboxes[id] = domConstruct.create('input', {
+				className: 'dgrid-hider-menu-check hider-menu-check-' + replacedId,
+				id: checkId,
+				type: 'checkbox'
+			}, div);
+&nbsp;
+			label = domConstruct.create('label', {
+				className: 'dgrid-hider-menu-label hider-menu-label-' + replacedId,
+				'for': checkId
+			}, div);
+			label.appendChild(document.createTextNode(col.label || col.field || <span class="branch-2 cbranch-no" title="branch not covered" >'')</span>);
+&nbsp;
+			this.hiderMenuNode.appendChild(div);
+&nbsp;
+			if (!col.hidden) {
+				// Hidden state is false; checkbox should be initially checked.
+				// (Need to do this after adding to DOM to avoid IE6 clobbering it.)
+				checkbox.checked = true;
+			}
+		},
+&nbsp;
+		renderHeader: function () {
+			var grid = this,
+				hiderMenuNode = this.hiderMenuNode,
+				hiderToggleNode = this.hiderToggleNode,
+				id;
+&nbsp;
+<span class="fstat-no" title="function not covered" >			function stopPropagation(event) {</span>
+<span class="cstat-no" title="statement not covered" >				event.stopPropagation();</span>
+			}
+&nbsp;
+			this.inherited(arguments);
+&nbsp;
+			<span class="missing-if-branch" title="else path not taken" >E</span>if (!hiderMenuNode) {
+				// First run
+				// Assume that if this plugin is used, then columns are hidable.
+				// Create the toggle node.
+				hiderToggleNode = this.hiderToggleNode = domConstruct.create('button', {
+					'aria-label': this.i18nColumnHider.popupTriggerLabel,
+					className: 'ui-icon dgrid-hider-toggle',
+					type: 'button'
+				}, this.domNode);
+&nbsp;
+				this._listeners.push(listen(hiderToggleNode, 'click', <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >					grid._toggleColumnHiderMenu(e);</span>
+				}));
+&nbsp;
+				// Create the column list, with checkboxes.
+				hiderMenuNode = this.hiderMenuNode = domConstruct.create('div', {
+					'aria-label': this.i18nColumnHider.popupLabel,
+					className: 'dgrid-hider-menu',
+					id: this.id + '-hider-menu',
+					role: 'dialog'
+				});
+&nbsp;
+				this._listeners.push(listen(hiderMenuNode, 'keyup', <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >					var charOrCode = e.charCode || e.keyCode;</span>
+<span class="cstat-no" title="statement not covered" >					if (charOrCode === /*ESCAPE*/ 27) {</span>
+<span class="cstat-no" title="statement not covered" >						grid._toggleColumnHiderMenu(e);</span>
+<span class="cstat-no" title="statement not covered" >						hiderToggleNode.focus();</span>
+					}
+				}));
+&nbsp;
+				// Make sure our menu is initially hidden, then attach to the document.
+				hiderMenuNode.style.display = 'none';
+				this.domNode.appendChild(hiderMenuNode);
+&nbsp;
+				// Hook up delegated listener for modifications to checkboxes.
+				this._listeners.push(listen(hiderMenuNode,
+						'.dgrid-hider-menu-check:' + (has('ie') &lt; 9 ? <span class="branch-0 cbranch-no" title="branch not covered" >'click' </span>: 'change'),
+<span class="fstat-no" title="function not covered" >					function (e) {</span>
+<span class="cstat-no" title="statement not covered" >						grid._updateColumnHiddenState(</span>
+							getColumnIdFromCheckbox(e.target, grid), !e.target.checked);
+					}
+				));
+&nbsp;
+				// Stop click events from propagating from menu or trigger nodes,
+				// so that we can simply track body clicks for hide without
+				// having to drill-up to check.
+				this._listeners.push(
+					listen(hiderMenuNode, 'mousedown', stopPropagation),
+					listen(hiderToggleNode, 'mousedown', stopPropagation)
+				);
+&nbsp;
+				// Hook up top-level mousedown listener if it hasn't been yet.
+				if (!bodyListener) {
+					bodyListener = listen.pausable(document, 'mousedown', <span class="fstat-no" title="function not covered" >function (e) {</span>
+						// If an event reaches this listener, the menu is open,
+						// but a click occurred outside, so close the dropdown.
+<span class="cstat-no" title="statement not covered" >						activeGrid &amp;&amp; activeGrid._toggleColumnHiderMenu(e);</span>
+					});
+					bodyListener.pause(); // pause initially; will resume when menu opens
+				}
+			}
+			else { // subsequent run
+				// Remove active rules, and clear out the menu (to be repopulated).
+<span class="cstat-no" title="statement not covered" >				for (id in this._columnHiderRules) {</span>
+<span class="cstat-no" title="statement not covered" >					this._columnHiderRules[id].remove();</span>
+				}
+<span class="cstat-no" title="statement not covered" >				hiderMenuNode.innerHTML = '';</span>
+			}
+&nbsp;
+			this._columnHiderCheckboxes = {};
+			this._columnHiderRules = {};
+&nbsp;
+			// Populate menu with checkboxes/labels based on current columns.
+			this._renderHiderMenuEntries();
+		},
+&nbsp;
+		destroy: function () {
+			this.inherited(arguments);
+			// Remove any remaining rules applied to hidden columns.
+			for (var id in this._columnHiderRules) {
+				this._columnHiderRules[id].remove();
+			}
+		},
+&nbsp;
+		left: <span class="fstat-no" title="function not covered" >function (cell, steps) {</span>
+<span class="cstat-no" title="statement not covered" >			return this.right(cell, -steps);</span>
+		},
+&nbsp;
+		right: <span class="fstat-no" title="function not covered" >function (cell, steps) {</span>
+<span class="cstat-no" title="statement not covered" >			if (!cell.element) {</span>
+<span class="cstat-no" title="statement not covered" >				cell = this.cell(cell);</span>
+			}
+<span class="cstat-no" title="statement not covered" >			var nextCell = this.inherited(arguments),</span>
+				prevCell = cell;
+&nbsp;
+			// Skip over hidden cells
+<span class="cstat-no" title="statement not covered" >			while (nextCell.column.hidden) {</span>
+<span class="cstat-no" title="statement not covered" >				nextCell = this.inherited(arguments, [nextCell, steps &gt; 0 ? 1 : -1]);</span>
+<span class="cstat-no" title="statement not covered" >				if (prevCell.element === nextCell.element) {</span>
+					// No further visible cell found - return original
+<span class="cstat-no" title="statement not covered" >					return cell;</span>
+				}
+<span class="cstat-no" title="statement not covered" >				prevCell = nextCell;</span>
+			}
+<span class="cstat-no" title="statement not covered" >			return nextCell;</span>
+		},
+&nbsp;
+		isColumnHidden: <span class="fstat-no" title="function not covered" >function (id) {</span>
+			// summary:
+			//		Convenience method to determine current hidden state of a column
+<span class="cstat-no" title="statement not covered" >			return !!this._columnHiderRules[id];</span>
+		},
+&nbsp;
+		_toggleColumnHiderMenu: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >			var hidden = this._hiderMenuOpened, // reflects hidden state after toggle</span>
+				hiderMenuNode = this.hiderMenuNode,
+				domNode = this.domNode,
+				firstCheckbox;
+&nbsp;
+			// Show or hide the hider menu
+<span class="cstat-no" title="statement not covered" >			hiderMenuNode.style.display = (hidden ? 'none' : '');</span>
+&nbsp;
+			// Adjust height of menu
+<span class="cstat-no" title="statement not covered" >			if (hidden) {</span>
+				// Clear the set size
+<span class="cstat-no" title="statement not covered" >				hiderMenuNode.style.height = '';</span>
+			}
+			else {
+				// Adjust height of the menu if necessary
+				// Why 12? Based on menu default paddings and border, we need
+				// to adjust to be 12 pixels shorter. Given the infrequency of
+				// this style changing, we're assuming it will remain this
+				// static value of 12 for now, to avoid pulling in any sort of
+				// computed styles.
+<span class="cstat-no" title="statement not covered" >				if (hiderMenuNode.offsetHeight &gt; domNode.offsetHeight - 12) {</span>
+<span class="cstat-no" title="statement not covered" >					hiderMenuNode.style.height = (domNode.offsetHeight - 12) + 'px';</span>
+				}
+				// focus on the first checkbox
+<span class="cstat-no" title="statement not covered" >				(firstCheckbox = this._columnHiderFirstCheckbox) &amp;&amp; firstCheckbox.focus();</span>
+			}
+&nbsp;
+			// Pause or resume the listener for clicks outside the menu
+<span class="cstat-no" title="statement not covered" >			bodyListener[hidden ? 'pause' : 'resume']();</span>
+&nbsp;
+			// Update activeGrid appropriately
+<span class="cstat-no" title="statement not covered" >			activeGrid = hidden ? null : this;</span>
+&nbsp;
+			// Toggle the instance property
+<span class="cstat-no" title="statement not covered" >			this._hiderMenuOpened = !hidden;</span>
+		},
+&nbsp;
+		_hideColumn: function (id) {
+			// summary:
+			//		Hides the column indicated by the given id.
+&nbsp;
+			// Use miscUtil function directly, since we clean these up ourselves anyway
+			var grid = this,
+				selectorPrefix = '#' + miscUtil.escapeCssIdentifier(this.domNode.id) + ' .dgrid-column-',
+				tableRule; // used in IE8 code path
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (this._columnHiderRules[id]) {
+<span class="cstat-no" title="statement not covered" >				return;</span>
+			}
+&nbsp;
+			this._columnHiderRules[id] =
+				miscUtil.addCssRule(selectorPrefix + miscUtil.escapeCssIdentifier(id, '-'),
+					'display: none;');
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (has('ie') === 8 || has('ie') === 10) {
+				// Work around IE8 display issue and IE10 issue where
+				// header/body cells get out of sync when ColumnResizer is also used
+<span class="cstat-no" title="statement not covered" >				tableRule = miscUtil.addCssRule('.dgrid-row-table', 'display: inline-table;');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >				window.setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >					tableRule.remove();</span>
+<span class="cstat-no" title="statement not covered" >					grid.resize();</span>
+				}, 0);
+			}
+		},
+&nbsp;
+		_showColumn: <span class="fstat-no" title="function not covered" >function (id) {</span>
+			// summary:
+			//		Shows the column indicated by the given id
+			//		(by removing the rule responsible for hiding it).
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			if (this._columnHiderRules[id]) {</span>
+<span class="cstat-no" title="statement not covered" >				this._columnHiderRules[id].remove();</span>
+<span class="cstat-no" title="statement not covered" >				delete this._columnHiderRules[id];</span>
+			}
+		},
+&nbsp;
+		_updateColumnHiddenState: <span class="fstat-no" title="function not covered" >function (id, hidden) {</span>
+			// summary:
+			//		Performs internal work for toggleColumnHiddenState; see the public
+			//		method for more information.
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			this[hidden ? '_hideColumn' : '_showColumn'](id);</span>
+&nbsp;
+			// Update hidden state in actual column definition,
+			// in case columns are re-rendered.
+<span class="cstat-no" title="statement not covered" >			this.columns[id].hidden = hidden;</span>
+&nbsp;
+			// Emit event to notify of column state change.
+<span class="cstat-no" title="statement not covered" >			listen.emit(this.domNode, 'dgrid-columnstatechange', {</span>
+				grid: this,
+				column: this.columns[id],
+				hidden: hidden,
+				bubbles: true
+			});
+&nbsp;
+			// Adjust the size of the header.
+<span class="cstat-no" title="statement not covered" >			this.resize();</span>
+		},
+&nbsp;
+		toggleColumnHiddenState: <span class="fstat-no" title="function not covered" >function (id, hidden) {</span>
+			// summary:
+			//		Shows or hides the column with the given id.
+			// id: String
+			//		ID of column to show/hide.
+			// hide: Boolean?
+			//		If specified, explicitly sets the hidden state of the specified
+			//		column.  If unspecified, toggles the column from the current state.
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			if (typeof hidden === 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >				hidden = !this._columnHiderRules[id];</span>
+			}
+<span class="cstat-no" title="statement not covered" >			this._updateColumnHiddenState(id, hidden);</span>
+&nbsp;
+			// Since this can be called directly, re-sync the appropriate checkbox.
+<span class="cstat-no" title="statement not covered" >			if (this._columnHiderCheckboxes[id]) {</span>
+<span class="cstat-no" title="statement not covered" >				this._columnHiderCheckboxes[id].checked = !hidden;</span>
+			}
+		}
+	});
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 20 2015 17:35:19 GMT+0200 (Mitteleuropäische Sommerzeit)</div>
+</div>
+
+<script src="../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>
